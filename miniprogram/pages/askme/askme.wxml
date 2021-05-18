@@ -5,7 +5,7 @@
   <view class="content">
     <view wx:for="{{question}}" wx:key="index">
 
-      <view class="content" catchtap="GotoQuestion" data-id="{{item.quesID}}" style="padding:2vh 2vh 2vh 2vh">
+      <view class="content" catchtap="GotoQuestion" data-id="{{item.quesID}}" data-result="{{item.result}}" style="padding:2vh 2vh 2vh 2vh">
         <view class="content1">
           <view class="crname">提问者：{{item.stuName}}</view>
           <view wx:if="{{item.result=='0'}}" class="info2">未作答</view>

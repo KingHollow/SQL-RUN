@@ -5,7 +5,7 @@
   <view class="content" style="padding:1vh 1vh 1vh 1vh">{{content}}</view>
 
   <view class="subtitle">回    答</view>
-<view class="width" wx:for="{{answers}}" wx:key="index"  wx:if="{{item.result ==''}}">
+<view class="width" wx:for="{{answers}}" wx:key="index"  wx:if="{{item.result =='pass'}}">
   <view view class="answer">
     <view class = "name">{{item.name}}</view>
     <text class="text">{{item.answer}}</text>
@@ -21,9 +21,9 @@
  <view view class="answer">
     
     <text class="text">{{myanswer}}</text>
-    <view wx:if="{{myresult=='1'}}" class="info1">待审核</view>
-    <view wx:if="{{myresult=='2'}}" class="info2">已通过</view>
-    <view wx:if="{{myresult=='3'}}" class="info3">未通过</view>
+    <view wx:if="{{myresult==''}}" class="info1">待审核</view>
+    <view wx:if="{{myresult=='pass'}}" class="info2">已通过</view>
+    <view wx:if="{{myresult=='nopass'}}" class="info3">未通过</view>
 
 </view>
 </view>

@@ -1,30 +1,15 @@
 // pages/tellyou_detail/tellyou_detail.js
+const db = wx.cloud.database();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    quesID:"00001",
-    content:"图书馆七楼研讨室什么时候可以开空调呢？",
-    stuID:"001",
-    classID:"001",
-    answers:[{
-        "index": 0,
-        "id":"002",
-        "name":"陆亦王",
-        "answer":"图书管理员说要等到六月份了",
-        "result":""
-      },{
-        "index": 1,
-        "id":"003",
-        "name":"郑雅心",
-        "answer":"那我们不如在这里殉职算了",
-        "result":""
-      },
-    ],
-    myanswer:'我们联合！',
-    myresult:'2',
+    content:"",
+    answers:[],
+    myanswer:'',
+    myresult:'',
 
   },
 
@@ -32,7 +17,34 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var quesid = options.quesid;
+    var that = this;
+    var id = wx.getStorageSync('id');
+    db.collection("question").where({quesID: quesid}).get().then(res => {
+      that.setData({content: res.data[0].content});
+      var temp = [];
+      var myanswer = "";
+      var myresult = "";
+      for(var i = 0; i < res.data[0].answers.length; i++){
+        var data = {
+          index: i,
+          id: res.data[0].answers[i].id,
+          name: res.data[0].answers[i].name,
+          answer: res.data[0].answers[i].answer,
+          result: res.data[0].answers[i].result
+        }
+        temp.push(data);
+        that.setData({answers: temp});
+        if(id == res.data[0].answers[i].id){
+          myanswer = res.data[0].answers[i].answer;
+          myresult = res.data[0].answers[i].result;
+          that.setData({
+            myresult: myresult,
+            myanswer: myanswer
+          })
+        }
+      }
+    })
   },
 
   /**

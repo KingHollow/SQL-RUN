@@ -1,3 +1,38 @@
 <!--pages/rank/rank.wxml-->
+<view class="rank">
+  <view class="title">
+    <image class="pic" src="../../images/icon/rank_select.png"></image>
+    <view class="title-name">排行榜</view>
+    <image class="pic" src="../../images/icon/rank_select.png"></image>
+  </view>
+
+  <view class="rank-list">
+    <view class="list-title-group">
+      <view class="title-locate">
+        <view class="list-title">姓名</view>
+        <view class="underline"></view>
+      </view>
+      <view class="title-locate">
+        <view class="list-title">积分</view>
+        <view class="underline"></view>
+      </view>
+    </view>
+    <scroll-view scroll-y="true" style="height: 800rpx">
+      <view class="student-all">
+        <view class="name-all">
+          <view class="underline1"></view>
+          <view class="student" wx:for="{{student}}" data-name="{{item.name}}" bindtap="challenge">{{item.name}}</view>
+        </view>
+        <view class="score-all">
+          <view class="underline1"></view>
+          <view class="student" wx:for="{{student}}">{{item.score}}</view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+</view>
+
+
 <import src="../../tabbar.wxml"/> 
  <template is="tabBar" data="{{tabBar}}"/>

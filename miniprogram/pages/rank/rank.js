@@ -6,7 +6,36 @@ Page({
    * 页面的初始数据
    */
   data: {
+    student:[
+      {name: '沈黄豪',score:30},
+      {name: '马英杰',score:50},
+      {name: '马英杰',score:50},
+      {name: '马英杰',score:50},
+      {name: '马英杰',score:50},
+      {name: '马英杰',score:50},
+      {name: '马英杰',score:50},
+      {name: '马英杰',score:50},
+      {name: '马英杰',score:50},
+      {name: '马英杰',score:50},
+      {name: '马英杰',score:50},
+      {name: '马英杰',score:50},
+    ],
 
+    name:""
+  },
+
+  challenge:function(e){
+    wx.showModal({
+      content: '确认要挑战'+e.currentTarget.dataset.name+'同学吗？',
+      success: function (res) {
+        if (res.confirm) {  
+          wx.navigateTo({
+            url: '/pages/challenge/challenge'
+          })
+        } else {   
+        }
+      }
+  })
   },
 
   /**

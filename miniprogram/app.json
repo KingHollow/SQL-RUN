@@ -1,8 +1,9 @@
 {
   "pages": [
+    
     "pages/study/study",
     "pages/login/login",
-    
+    "pages/tellyou_detail/tellyou_detail",
     "pages/smine/smine",
     "pages/task/task",
     "pages/s_checkchal/s_checkchal",

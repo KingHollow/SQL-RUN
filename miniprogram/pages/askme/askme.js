@@ -6,23 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    question:[{
-      content:'小马吗？',
-      stuName:'沈黄豪',
-      result:'2',
-    },{
-      content:'什么时候马啊？',
-      stuName:'李汶珊',
-      result:'0',
-    },{
-      content:'还能马吗？',
-      stuName:'郑雅心',
-      result:'1',
-    },{
-      content:'麻了。',
-      stuName:'陆亦王',
-      result:'3',
-    },]
+    question:[]
 
   },
 
@@ -95,6 +79,20 @@ Page({
         }
       })
     })
+  },
+
+  GotoQuestion: function(e){
+    var quesid = e.currentTarget.dataset.id;
+    var result = e.currentTarget.dataset.result;
+    if(result == '0'){
+      wx.navigateTo({
+        url: '../askme_detail/askme_detail?quesid=' + quesid,
+      })
+    }else{
+      wx.navigateTo({
+        url: '../tellyou_detail/tellyou_detail?quesid=' + quesid,
+      })
+    }
   },
 
   /**

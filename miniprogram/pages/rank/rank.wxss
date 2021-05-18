@@ -1,1 +1,110 @@
 /* pages/rank/rank.wxss */
+.rank{
+  display:flex;
+  align-items:center;
+  flex-direction: column;
+}
+
+.pic{
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.title{
+  height:50rpx;
+  width:100%;
+  font-size:larger;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  color:#42589a;
+  margin-top: 30rpx;
+}
+
+.title-name{
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+}
+
+.content{
+  padding-left: 30rpx;
+}
+
+.gap{
+  height: 3rpx;
+  background-color: #2e2e2e;
+}
+
+
+.rank-list{
+  padding: 20rpx 20rpx 20rpx 20rpx;
+  background-color: #f1efef;
+  border-radius: 10rpx;
+  margin-top: 55rpx;
+  width:660rpx;
+  height: 800rpx;
+}
+
+.list-title-group{
+  display: flex;
+  justify-content: center;
+}
+
+.list-title{
+  color:#506caa;
+  font-weight: 600;
+  text-align:center;
+}
+
+.title-locate{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width:300rpx;
+}
+
+.underline{
+  background-color: #3d518a;
+  height:4rpx;
+  width:150rpx;
+}
+
+.underline1{
+  background-color:transparent;
+  height:4rpx;
+  width:200rpx;
+}
+
+.student-all{
+  display: flex;
+  justify-content: center;
+}
+
+.student{
+  margin-bottom: 0rpx;
+}
+
+.name-all{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300rpx;
+}
+
+.score-all{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300rpx;
+}
+
+.challenge{
+  width: 40rpx!important;
+  height: 40rpx!important;
+}
+
+.btnimg{
+  width: 40rpx;
+  height: 40rpx;
+}
