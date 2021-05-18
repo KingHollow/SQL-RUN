@@ -1,4 +1,5 @@
 // pages/rank/rank.js
+const db = wx.cloud.database();
 const app = getApp();
 Page({
 
@@ -30,7 +31,7 @@ Page({
       success: function (res) {
         if (res.confirm) {  
           wx.navigateTo({
-            url: '/pages/challenge/challenge'
+            url: '/pages/challenge/challenge?challengedid' + e.currentTarget.dataset.id
           })
         } else {   
         }
@@ -42,7 +43,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var id = wx.getStorageSync('id');
+    db.collection("student").where({studentID: id}).get().then(res => {
+      
+    })
   },
 
   /**

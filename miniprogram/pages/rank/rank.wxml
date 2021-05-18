@@ -21,7 +21,7 @@
       <view class="student-all">
         <view class="name-all">
           <view class="underline1"></view>
-          <view class="student" wx:for="{{student}}" data-name="{{item.name}}" bindtap="challenge">{{item.name}}</view>
+          <view class="student" wx:for="{{student}}" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="challenge">{{item.name}}</view>
         </view>
         <view class="score-all">
           <view class="underline1"></view>
