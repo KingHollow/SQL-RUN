@@ -1,0 +1,113 @@
+/* pages/parameter/parameter.wxss */
+.title{
+  height:70px;
+  width:100%;
+  font-size:larger;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  color:#42589a;
+}
+
+.subtitle{
+  margin-bottom:20rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.pic{
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 20rpx;
+}
+
+.question{
+  margin-top:20rpx;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+}
+
+.ques{
+  display: flex;
+  align-items: center;
+}
+
+.content{
+  text-align: left;
+  margin-top: 10rpx;
+  font-weight: 600;
+}
+
+.operate{
+  margin-top: 100rpx;
+  display: flex;
+  align-items: center;
+}
+
+.attend{
+  background-color: #5e7dbd;
+  width:40%!important;
+  color: white;
+  font-size:medium;
+  margin-bottom: 40rpx;
+}
+
+.answer{
+  flex: 1;
+  display: flex;
+  width: 90%;
+  height:100%;
+  margin: 0 5%;
+  overflow: hidden;
+}
+ 
+.textarea {
+  margin-top: 30rpx;
+  background-color: rgba(153, 153, 153, 0.397);
+  padding: 10rpx;
+  font-size: 34rpx;
+  width:250rpx;
+  height: 40rpx;
+  border-radius: 10px;
+}
+
+.input-radius{
+  border-radius: 15px;
+  border-color: #3d518a;
+  background-color: #88addf;
+  margin: 18px;
+  width: 270px;
+  height: 200rpx;
+  min-height: 0.8rem;
+  word-break: break-all;
+}
+
+.chapter{
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-group{
+  display: flex;
+  align-items: flex-start;
+  margin-top: 20rpx;
+  margin-bottom:30rpx;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.checkbox{
+  margin-bottom:20rpx;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  width: 28%;
+  margin-left: 30rpx;
+}

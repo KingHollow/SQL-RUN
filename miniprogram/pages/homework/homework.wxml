@@ -1,0 +1,23 @@
+<!--pages/homework/homework.wxml-->
+<view class="title">作业列表</view>
+
+<view class="container"> 
+ <view class="login-form"> 
+
+        <view wx:for="{{release}}" wx:key="index">
+          <view class="inputView" data-id="{{item.homeworkid}}">
+            <view class="homework-name">{{item.title}}</view>
+            <view wx:if="{{item.state=='0'}}" class="homework-info0" bindtap="DoHomework">待做</view>
+            <view wx:if="{{item.state=='1'}}" class="homework-info" bindtap="HomeworkResult">超时</view>
+            <view wx:if="{{item.state=='2'}}" class="homework-info2" bindtap="HomeworkResult">待批</view>
+            <view wx:if="{{item.state=='3'}}" class="homework-info" bindtap="HomeworkResult">分数：{{item.score}}</view>
+            <!--待做跳转至答题页面；其余为标答页面-->
+          </view>
+            <view class="line"></view>
+        </view>
+      
+  
+
+</view>
+ </view> 
+

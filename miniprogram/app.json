@@ -1,0 +1,29 @@
+{
+  "pages": [
+    "pages/study/study",
+    "pages/login/login",
+    
+    "pages/smine/smine",
+    "pages/task/task",
+    "pages/s_checkchal/s_checkchal",
+    "pages/check_answer/check_answer",
+    "pages/parameter/parameter",
+    "pages/create_homework/create_homework",
+    "pages/difficulty/difficulty",
+    "pages/homework_list/homework_list",
+    "pages/class/class",
+    "pages/tmine/tmine",
+    "pages/rank/rank",
+    "pages/register/register"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#88ADDF",
+    "navigationBarTitleText": "SQL RUN",
+    "navigationBarTextStyle": "black"
+  },
+
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

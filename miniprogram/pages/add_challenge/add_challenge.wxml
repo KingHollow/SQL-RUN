@@ -1,0 +1,19 @@
+<!--pages/add_challenge/add_challenge.wxml-->
+<view class="container"> 
+ <view class="login-from"> 
+<view>
+<selectchap prop-array='{{selectArray1}}' bind:chooseData='chooseData1'></selectchap>
+</view>
+
+<view>
+<selectdiff prop-array='{{selectArray2}}' bind:chooseData='chooseData2'></selectdiff>
+</view>
+
+  <!--按钮-->
+  <view class="loginBtnView">
+        <button class="register" hover-class="hover" bindtap="addChallenge" style="width:150px">
+          上传题库
+        </button>
+      </view>
+</view>
+ </view> 

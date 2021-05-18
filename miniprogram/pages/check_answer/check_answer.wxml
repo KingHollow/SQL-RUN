@@ -1,0 +1,44 @@
+<!--pages/check_answer/check_answer.wxml-->
+
+<view class="container">
+  <view class="subtitle">问    题</view>
+  <view class="content" style="padding:1vh 1vh 1vh 1vh">{{content}}</view>
+
+  <view class="subtitle">待    审    核    回    答</view>
+<view class="width" wx:for="{{answers}}" wx:key="index"  wx:if="{{item.result ==''}}">
+  <view view class="answer">
+    <view class = "name">{{item.name}}</view>
+    <text class="text">{{item.answer}}</text>
+
+    <view class="result">
+    <view class="btn {{item.result == 'pass' ? 'active' : ''}}" bindtap='selectedpass' data-id='{{item.index}}'>通过</view>
+    <view class="btn {{item.result == 'nopass' ? 'active' : ''}}" bindtap='selectednopass' data-id='{{item.index}}'>不通过</view>
+    </view>
+
+    <view class="line"></view>
+
+    
+</view>
+
+
+</view>
+<view class="subtitle">已    审    核    回    答</view>
+<view class="width" wx:for="{{c_answers}}" wx:key="index">
+  <view view class="answer">
+    <view class = "name">{{item.name}}</view>
+    <text class="text">{{item.answer}}</text>
+
+    <view class="result">
+    <view wx:if="{{item.result=='pass'}}" class="pass">通过</view>
+    <view wx:else class="nopass">不通过</view>
+    </view>
+
+    <view class="line"></view>
+
+    
+</view>
+
+
+</view>
+
+</view>

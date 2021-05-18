@@ -1,0 +1,20 @@
+<!--pages/question_detail/question_detail.wxml-->
+<view class="container">
+  <view class="subtitle">问    题</view>
+  <view class="content" style="padding:1vh 1vh 1vh 1vh">{{content}}</view>
+
+  <view class="subtitle">回    答</view>
+<view class="width" wx:for="{{answers}}" wx:key="index">
+  <view view class="answer" wx:if="{{item.result == 'pass'}}">
+    <view class = "name">{{item.name}}</view>
+    <text class="text">{{item.answer}}</text>
+
+    <view class="line"></view>
+
+    
+</view>
+
+
+</view>
+
+</view>

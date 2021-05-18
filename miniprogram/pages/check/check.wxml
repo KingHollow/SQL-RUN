@@ -1,0 +1,32 @@
+<!--pages/cheak/cheak.wxml-->
+<view class="title">待审核列表</view>
+
+<view class="container">
+<view class="topView">
+  <block wx:for="{{statusList}}" wx:key="id">
+    <view id="{{item.id}}" class="{{item.id == isChecked ? 'active':''}} topChild" bindtap="choiceStatus">{{item.statusName}}</view>
+</block>
+</view>
+<view class = "line"></view>
+
+  <view class="content" wx:if="{{isChecked=='question'}}">
+  <view wx:for="{{list1}}" wx:key="index">
+    <view view class="content" catchtap="checkanswer" data-id="{{item.quesid}}" style="padding:2vh 2vh 2vh 2vh">
+      <view class = "name" space="emsp">提问者：{{item.sname}}     {{item.cname}}</view>
+      <text class="text">{{item.content}}</text>
+
+    </view>
+    <view class="line"></view>
+  </view>
+</view>
+<view class="content" wx:else><view wx:for="{{list2}}" wx:key="index">
+    <view view class="content" catchtap="checkchallenge" data-id="{{item.chalid}}" style="padding:2vh 2vh 2vh 2vh">
+      <view class = "name" space="emsp">挑战者：{{item.crname}}             被挑战者：{{item.cdname}}            {{item.cname}}</view>
+      <text class="text">{{item.content}}</text>
+
+    </view>
+    <view class="line"></view>
+  </view>
+</view>
+
+</view>

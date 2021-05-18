@@ -1,0 +1,61 @@
+<!--pages/class/class.wxml-->
+<view class="rank">
+  <view class="title">
+    <image class="pic" src="../../images/icon/rank_select.png"></image>
+    <view class="title-name">排行榜</view>
+    <image class="pic" src="../../images/icon/rank_select.png"></image>
+  </view>
+
+  <view class="choice">
+    <view class="choose-period">
+      <view class="content">请选择时间段：</view>
+      <radio-group class="radio-group" bindchange="radioChange">
+        <label class="radio" wx:for="{{period}}">
+          <radio value="{{item.value}}" checked="{{item.checked}}" />{{item}}
+        </label>
+      </radio-group>
+    </view>
+    <view class="gap"></view>
+    <view class="choose-class">
+      <view class="content">目前班级：</view>
+      <Select prop-array='{{selectArray}}' bind:chooseData='chooseData'></Select>
+    </view>
+  </view>
+
+  <view class="rank-list">
+    <view class="list-title-group">
+      <view class="title-locate">
+        <view class="list-title">姓名</view>
+        <view class="underline"></view>
+      </view>
+      <view class="title-locate1">
+        <view class="list-title">积分</view>
+        <view class="underline"></view>
+      </view>
+    </view>
+    <scroll-view scroll-y="true" style="height: 450rpx">
+      <view class="student-all">
+        <view class="name-all">
+          <view class="underline1"></view>
+          <view class="student" wx:for="{{student}}">{{item.name}}</view>
+        </view>
+        <view class="score-all">
+          <view class="underline1"></view>
+          <view class="student" wx:for="{{student}}">{{item.score}}</view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+</view>
+
+<view class="check-work">
+  <button class="btn">
+    查看作业完成情况
+  </button>
+</view>
+
+
+
+<import src="../../tabbar.wxml" />
+<template is="tabBar" data="{{tabBar}}" />

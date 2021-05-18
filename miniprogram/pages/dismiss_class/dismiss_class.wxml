@@ -1,0 +1,30 @@
+<!--pages/dismiss_class/dismiss_class.wxml-->
+
+<view class="title">班级列表</view>
+
+
+<view class="container"> 
+ <view class="login-from"> 
+
+  <checkbox-group bindchange="checkboxChange">
+        <view wx:for="{{class}}" wx:key="classID">
+          <view class="inputView">
+            <view class="class-name">
+              <checkbox value='{{item.classID}}'>{{item.name}}</checkbox>
+            </view>     
+          </view>
+            <view class="line"></view>
+        </view>
+      </checkbox-group>
+  
+
+  <!--解散班级-->
+ <view class="loginBtnView2">
+ 
+ <button class="register" hover-class="hover" bindtap="dismissclass">
+   <image class="logo" src="../../images/icon/dismiss.png"></image>
+   解散班级
+ </button> 
+ </view> 
+</view>
+ </view> 

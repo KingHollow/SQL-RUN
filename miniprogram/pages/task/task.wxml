@@ -1,0 +1,38 @@
+<!--pages/task/task.wxml-->
+<view class="main">
+
+<!--创建作业-->
+<view class="loginBtnView1">
+<navigator url="../../pages/draft/draft">
+ <button class="register" hover-class="hover" bindtap="createhomework">
+  <image src="../../images/icon/createhomework.png" class="logo"></image> 
+  创建作业
+  </button>
+</navigator>
+ </view> 
+
+ <!--发布难题-->
+<view class="loginBtnView2">
+<navigator url="../../pages/difficulty/difficulty">
+ <button class="register" hover-class="hover" bindtap="difficulty">
+  <image src="../../images/icon/difficulty.png" class="logo"></image> 
+  发布难题
+  </button> 
+</navigator>
+ </view> 
+
+ <!--审核题目-->
+ <view class="loginBtnView2">
+<navigator url="../../pages/check/check">
+ <button class="register" hover-class="hover" bindtap="check">
+  <image src="../../images/icon/check.png" class="logo"></image> 
+  审核题目
+</button> 
+</navigator>
+ </view> 
+
+</view>
+
+
+<import src="../../tabbar.wxml"/> 
+ <template is="tabBar" data="{{tabBar}}"/>

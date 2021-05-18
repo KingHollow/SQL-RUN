@@ -1,0 +1,36 @@
+<!--pages/study/study.wxml-->
+<view class="main">
+
+<!--班级作业-->
+<view class="loginBtnView1">
+<navigator url="../../pages/homework/homework">
+ <button class="register" hover-class="hover" bindtap="dohomework">
+  <image src="../../images/icon/createhomework.png" class="logo"></image> 
+  班级作业
+  </button>
+</navigator>
+ </view> 
+
+ <!--别人的提问-->
+<view class="loginBtnView2">
+<navigator url="../../pages/askme/askme">
+ <button class="register" hover-class="hover" bindtap="o_question">
+  <image src="../../images/icon/o_question.png" class="logo"></image> 
+  提问箱
+  </button> 
+</navigator>
+ </view> 
+
+ <!--别人的挑战-->
+ <view class="loginBtnView2">
+<navigator url="../../pages/challengeme/challengeme">
+ <button class="register" hover-class="hover" bindtap="challenge">
+  <image src="../../images/icon/challenge.png" class="logo"></image> 
+  挑战箱
+</button> 
+</navigator>
+ </view> 
+
+</view>
+<import src="../../tabbar.wxml"/> 
+ <template is="tabBar" data="{{tabBar}}"/>

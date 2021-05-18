@@ -1,0 +1,30 @@
+<!--pages/question/question.wxml-->
+<!--新建作业-->
+<view class="loginBtnView2">
+  <navigator url="../../pages/raise_question/raise_question">
+    <button class="register" hover-class="hover">
+      <image class="logo" src="../../images/icon/o_question.png"></image>
+      我要提问
+    </button>
+  </navigator>
+
+</view>
+
+<view class="title">我的提问</view>
+
+<view class="container">
+  <view class="content">
+    <view wx:for="{{list}}" wx:key="index">
+
+      <view class="content" catchtap="NavigateToQues_de" data-id="{{item.quesID}}" style="padding:2vh 2vh 2vh 2vh">
+        <view class="content1">
+          <view class="name" space="emsp">提问状态：</view>
+          <view wx:if="{{item.state == '已回答'}}" class="answered">{{item.state}}</view>
+          <view wx:else class="disanswered">{{item.state}}</view>
+        </view>
+        <text class="text">{{item.content}}</text>
+      </view>
+      <view class="line"></view>
+    </view>
+  </view>
+</view>

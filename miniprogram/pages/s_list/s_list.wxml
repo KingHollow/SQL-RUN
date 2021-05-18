@@ -1,0 +1,27 @@
+<!--pages/s_list/s_list.wxml-->
+<view class="title">
+  题目详情
+</view>
+
+<view class="question">
+  <view class="subtitle">
+    <image class="pic" src="../../images/icon/lable.png"></image>
+    单选题
+  </view>
+  <view class="content">
+    {{content}}
+  </view>
+  <view class="radio-group">
+    <view class="radio" wx:for="{{items}}">
+      {{item.value}}
+    </view>
+  </view>
+  <view class="answer">
+    答案：{{answer}}
+  </view>
+</view>
+
+<view class="operate">
+  <button class="attend" bindtap="attend">选题</button>
+  <button class="back" bindtap="back">返回</button>
+</view>

@@ -1,0 +1,39 @@
+<!--pages/askme_detail/askme_detail.wxml-->
+
+<view class="container">
+  <view class="subtitle">问    题</view>
+  <view class="content" style="padding:1vh 1vh 1vh 1vh">{{content}}</view>
+
+  <view class="subtitle">回    答</view>
+<view class="width" wx:for="{{answers}}" wx:key="index"  wx:if="{{item.result ==''}}">
+  <view view class="answer">
+    <view class = "name">{{item.name}}</view>
+    <text class="text">{{item.answer}}</text>
+    <view class="line"></view>
+
+    
+</view>
+
+
+</view>
+<!--作答框-->
+<view class="login-from">
+    <form bindsubmit="formSubmit">
+      <!--我的回答-->
+      <view class="subtitle">我 的 回 答</view>
+      <view class="inputView">
+        <textarea class="textarea" placeholder="请输入回答" maxlength="-1" name="content" bindinput="contentinput"></textarea>
+      </view>
+      <view class="gap"></view>
+
+      <!--按钮-->
+      <view class="loginBtnView">
+        <button class="register" hover-class="hover" bindtap="releasequestion" style="width:150px">
+          提交回答
+        </button>
+      </view>
+
+    </form>
+  </view>
+
+</view>

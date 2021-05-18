@@ -1,0 +1,61 @@
+<!--pages/smine/smine.wxml-->
+<view class="container"> 
+  <!--个人信息-->
+  <view class="inputView"> 
+  <view class="cv">
+  <view class="name">{{name}}</view>
+  <image class="pic" src="../../images/icon/experience.png" style="width:30px;height:30px;"></image>
+  <view class="tip">{{experience}}</view>
+  <image class="pic" src="../../images/icon/coin.png" style="width:30px;height:30px;"></image>
+  <view class="tip">{{coin}}</view>
+  </view>
+  </view> 
+ <view class="gap"></view> 
+ <view class="items">
+ <!--道具背包-->
+  <navigator url="../../pages/tool/tool">
+  <view class="inputView">
+  <image class="logo" src="../../images/icon/tool.png" style="width:40px;height:40px;"></image>
+  <text class="back">道具背包</text>
+  </view>
+  </navigator> 
+  <view class="line"></view>
+  <!-- 道具商城 -->
+  <navigator url="../../pages/shop/shop">
+ <view class="inputView">
+  <image class="logo" src="../../images/icon/shop.png" style="width:40px;height:40px;"></image>
+  <text class="back">道具商城</text> 
+  </view>
+ </navigator>
+  <view class="line"></view>
+  <!-- 我的错题 -->
+  <navigator url="../../pages/mistake/mistake">
+ <view class="inputView">
+  <image class="logo" src="../../images/icon/mistake.png" style="width:40px;height:40px;"></image>
+  <text class="back">我的错题</text>
+  </view>
+ </navigator> 
+  <view class="line"></view>
+  <!--我的提问-->
+  <navigator url="../../pages/question/question">
+  <view class="inputView">
+  <image class="logo" src="../../images/icon/question.png" style="width:40px;height:40px;"></image>
+  <text class="back">我的提问</text>
+  </view>
+  </navigator> 
+  <view class="line"></view>
+  <!--今日积分-->
+  <navigator url="../../pages/message/message">
+  <view class="inputView">
+  <image class="logo" src="../../images/icon/score.png" style="width:40px;height:40px;"></image>
+  <text class="back">今日积分</text>
+  </view>
+  </navigator> 
+  <view class="line"></view>
+  </view> 
+  
+</view>
+
+
+<import src="../../tabbar.wxml"/> 
+ <template is="tabBar" data="{{tabBar}}"/>

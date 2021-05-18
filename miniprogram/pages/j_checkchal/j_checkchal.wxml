@@ -1,0 +1,22 @@
+<!--pages/j_checkchal/j_checkchal.wxml-->
+<view class="title">
+  审核题目
+</view>
+
+<view class="question">
+  <view class="subtitle">
+    <image class="pic" src="../../images/icon/lable.png"></image>
+    判断题
+  </view>
+  <view class="content">
+    {{content}}
+  </view>
+  <view class="answer">
+    学生答案：{{answer}}
+  </view>
+</view>
+
+<view class="operate">
+  <button class="attend" bindtap="popConfirm">通过</button>
+  <button class="back">退回</button>
+</view>

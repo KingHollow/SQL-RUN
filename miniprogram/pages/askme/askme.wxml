@@ -1,0 +1,24 @@
+<!--pages/askme/askme.wxml-->
+<view class="title">提问列表</view>
+
+<view class="container">
+  <view class="content">
+    <view wx:for="{{question}}" wx:key="index">
+
+      <view class="content" catchtap="GotoQuestion" data-id="{{item.quesID}}" style="padding:2vh 2vh 2vh 2vh">
+        <view class="content1">
+          <view class="crname">提问者：{{item.stuName}}</view>
+          <view wx:if="{{item.result=='0'}}" class="info2">未作答</view>
+            <view wx:if="{{item.result=='1'}}" class="info">待审核</view>
+            <view wx:if="{{item.result=='2'}}" class="info">已通过</view>
+            <view wx:if="{{item.result=='3'}}" class="info0">未通过</view>
+            <!--待做跳转至问题详情页面；其余为答案详情页面-->
+        </view>
+        <view class="text">{{item.content}}</view>
+      </view>
+      <view class="line"></view>
+    </view>
+  </view>
+</view>
+
+

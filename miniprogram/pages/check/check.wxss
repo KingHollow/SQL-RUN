@@ -1,0 +1,109 @@
+/* pages/cheak/cheak.wxss */
+.title{
+  height: 70px;
+  width: 100%;
+  font-size: larger;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight:bold;
+  color:#42589a;
+  margin-top:30rpx;
+ }
+
+ page{  
+  height: 100%;  
+  background-color: #F3F4F6;
+} 
+
+.topView{
+  width:100%;
+  height:48px;
+  display:flex;
+  background-color: #ffffff;
+  border-bottom:1px solid #e2e1e1;
+}
+.topChild{
+  width:50%;
+  height:48px;
+  text-align: center;
+  line-height: 3.4;
+  font-size:15px;
+  color:#333333;
+}
+/*点击时按钮状态*/
+.active{
+  color:#88ADDF;
+  border-bottom:2px solid #88ADDF;
+}
+
+
+page{  
+  height: 100%;  
+  background-color: #F3F4F6;
+} 
+
+
+ .line { 
+  width: 100%; 
+  height: 1px; 
+  background-color: #D7D7D7; 
+  margin-top: 1px; 
+ } 
+
+ .gap{ 
+  width: 100%; 
+  height: 5px; 
+  background-color: #7c7878; 
+  margin-top: 1px; 
+ } 
+
+
+ .container { 
+  height: 100%; 
+  display: flex; 
+  flex-direction: column; 
+  padding: 0; 
+  box-sizing: border-box; 
+  background-color: #f2f2f2
+ } 
+
+ .content{
+  background-color: #fff; 
+  
+  width:100%;
+
+  margin-bottom: 0px;
+  
+  
+  color: black;
+  
+ }
+ .content1{
+  background-color: #fff; 
+  
+  width:100%;
+
+  margin-bottom: 0px;
+  display: flex;
+  flex-direction: column;
+  color: black;
+  
+ }
+
+ .text{
+  margin-top: 10rpx; 
+  font-size:  2.3vh;
+  word-break: break-all;
+  text-align: left;
+  text-indent:2em;
+ }
+
+ .name{
+  
+ color: #88addf;
+ font-size: 15px;
+ text-align: left;
+ text-indent:1em;
+ margin-bottom: 10rpx;
+}

@@ -1,0 +1,31 @@
+<!--pages/create_class/create_class.wxml-->
+<view class="container"> 
+ <view class="login-from"> 
+ <form bindsubmit="formSubmit">
+  <!--班级代号-->
+  <view class="inputView"> 
+  <label class="loginLab">班级代号 <text class="star">*</text></label> 
+  <input class="inputText" placeholder="请输入班级代号"  name="classid"/> 
+  </view> 
+ <view class="line"></view> 
+  <!--班级名称-->
+  <view class="inputView"> 
+  <label class="loginLab">班级名称 <text class="star">*</text></label> 
+  <input class="inputText" placeholder="请输入班级名称" name="classname"/> 
+  </view> 
+  <view class="line"></view> 
+
+ <!--按钮-->
+ <view class="loginBtnView">
+ 
+  <button class="register" hover-class="hover" form-type="submit">
+    <image class="logo" src="../../images/icon/create.png"></image>
+    创建班级
+  </button>
+
+  </view> 
+ </form>
+ </view> 
+</view>
+
+

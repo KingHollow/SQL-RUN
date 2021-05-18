@@ -1,0 +1,17 @@
+<!--pages/homework_list/homework_list.wxml-->
+<view class="title">题目列表</view>
+
+<view class="container">
+  <view>
+    <Select prop-array='{{selectArray}}' bind:chooseData='chooseData'></Select>
+  </view>
+  <view wx:for="{{list}}" wx:key="index">
+    <view view class="content" catchtap="onTapNavigateTo" data-id="{{item.ID}}" style="padding:2vh 2vh 2vh 2vh">
+      <text class="text">{{item.content}}</text>
+
+    </view>
+    <view class="line"></view>
+  </view>
+
+
+</view>

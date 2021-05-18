@@ -1,0 +1,60 @@
+/* pages/tmine/tmine.wxss */
+.my_title{
+  display: flex;
+  flex-direction: column;
+  padding: 30rpx;
+}
+
+.picture{
+  display:flex;
+  justify-content: center;
+  margin-top: 80rpx;
+}
+
+.pic{
+  width: 600rpx;
+  height: 250rpx;
+}
+
+.logo{
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 30rpx;
+}
+
+.name{
+  flex: 3;
+  display: flex;
+  font-size: 40rpx;
+  justify-content: center;
+  align-content: center;
+  color: #000000;
+  margin-top: 40rpx;
+}
+
+/*按钮*/
+.loginBtnView { 
+ width: 100%; 
+ height: auto; 
+ margin-top: 70px; 
+ margin-bottom: 0px; 
+ padding-bottom: 0px; 
+} 
+
+.loginBtnView2 { 
+  width: 100%; 
+  height: auto; 
+  margin-top: 0px; 
+  margin-bottom: 0px; 
+  padding-bottom: 0px; 
+ } 
+  
+.register{
+  margin-top: 20px;
+  margin-bottom: 40px;
+  font-size: 20px;
+  color: white;
+  background-color: #88ADDF;
+  display: flex;
+  flex-direction: row;
+}

@@ -1,0 +1,88 @@
+/* pages/register/register.wxss */
+.pic{
+  width: 600rpx;
+  height: 250rpx;
+}
+
+.image{
+  display:flex;
+  justify-content: center;
+  margin-top: 120rpx;
+}
+
+.info{
+  padding:50rpx;
+}
+
+.title{
+  display:flex;
+  justify-content: center;
+}
+
+.SQL{
+  font-weight: 1000;
+  font-size: large;
+}
+
+.SQL2{
+  font-weight: 1000;
+  margin-left: 152rpx;
+  font-size: larger;
+}
+
+.form{
+  width: 330px;
+  /* margin:20px; */
+  font-family: 'Times New Roman', Times, serif;
+  margin-top: 50px;
+}
+
+.inline{
+  margin-top: 40px;
+  /* display:flex */
+  height: 15px;
+}
+
+.inline input{
+  margin-left: 5px;
+  border-bottom: 1px solid black;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.left{
+  float: left;
+  font-weight: 700;
+  color: #8096D7;
+  font-size: large;
+}
+
+.right{
+  float: right;
+  width: 300rpx;
+}
+
+.login{
+  margin-top: 80px;
+  font-size: 20px;
+  color: white;
+  /* color: teal; */
+  background-color: #88ADDF;}
+
+.register{
+  margin-top: 20px;
+  margin-bottom: 40px;
+  font-size: 20px;
+  color: white;
+  background-color: #88ADDF;}
+
+.hover {
+    background-image: linear-gradient(to left top,pink,plum);
+}
+
+.button{
+  margin-top: 80px;
+  font-size: 20px;
+  color: white;
+  /* color: teal; */
+  background-color: #88ADDF;
+}

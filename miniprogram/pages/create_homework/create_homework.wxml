@@ -1,0 +1,104 @@
+<!--pages/create_homework/create_homework.wxml-->
+<!--随机生成作业-->
+
+<view class="inputView"> 
+  <label class="loginLab">作业题目 <text class="star">*</text></label> 
+  <input class="inputText" placeholder="请输入作业题目"  name="classid"  bindinput="homeworkname"/> 
+  </view> 
+ <view class="line"></view> 
+<view class="loginBtnView2">
+
+  <button class="randomhomework" hover-class="hover" bindtap="turntoparameter" style="width:60%">
+    <image class="logo" src="../../images/icon/createhomework.png"></image>
+    随机生成作业
+  </button>
+
+</view>
+
+<view class="title">题目类型列表</view>
+<scroll-view class="scroll" scroll-y="true">
+<view class="container">
+  
+
+  
+  <view class="login-form">
+    <view class="inputView">
+
+      <view class="problem" catchtap="turntoh_sl">单选题</view>
+    </view>
+    <view class="line"></view>
+    <view wx:for="{{s_list}}" wx:key="index">
+      <view class="content" data-id="{{item.sid}}">
+        <text class="text">{{item.content}}</text>
+
+      </view>
+      <view class="line"></view>
+
+    </view>
+
+    <view class="inputView">
+      <view class="problem" catchtap="turntoh_ml">多选题</view>
+    </view>
+    <view class="line"></view>
+    <view wx:for="{{m_list}}" wx:key="index">
+      <view class="content" data-id="{{item.mid}}">
+        <text class="text">{{item.content}}</text>
+
+      </view>
+      <view class="line"></view>
+    </view>
+    <view class="inputView">
+
+
+      <view class="problem" catchtap="turntoh_jl">判断题</view>
+    </view>
+    <view class="line"></view>
+    <view wx:for="{{j_list}}" wx:key="index">
+      <view class="content" data-id="{{item.jid}}">
+        <text class="text">{{item.content}}</text>
+
+      </view>
+      <view class="line"></view>
+    </view>
+    <view class="inputView">
+
+
+      <view class="problem" catchtap="turntoh_bl">填空题</view>
+    </view>
+    <view class="line"></view>
+    <view wx:for="{{b_list}}" wx:key="index">
+      <view class="content" data-id="{{item.bid}}">
+        <text class="text">{{item.content}}</text>
+
+      </view>
+      <view class="line"></view>
+    </view>
+    <view class="inputView">
+
+
+      <view class="problem" catchtap="turntoh_ol">主观题</view>
+    </view>
+    <view class="line"></view>
+    <view wx:for="{{o_list}}" wx:key="index">
+      <view class="content" data-id="{{item.oid}}">
+        <text class="text">{{item.content}}</text>
+
+      </view>
+      <view class="line"></view>
+    </view>
+
+
+
+
+  </view>
+  
+</view>
+</scroll-view>
+<view class="loginBtnView2">
+
+  <button class="randomhomework" hover-class="hover" bindtap="createhomework" style="width:50%">
+    <image class="logo" src="../../images/icon/createhomework.png"></image>
+    生成作业
+  </button>
+
+</view>

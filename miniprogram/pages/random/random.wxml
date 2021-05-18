@@ -1,0 +1,18 @@
+<!--pages/random/random.wxml-->
+<view class="title">章节列表</view>
+
+<view class="container">
+  <view class="login-form">
+    <view wx:for="{{chapter}}" wx:key="index">
+
+      <view class="inputView">
+
+        <view class="chapter" bindtap="random">{{item}}</view>
+      </view>
+
+      <view class="line"></view>
+    </view>
+
+
+  </view>
+</view>

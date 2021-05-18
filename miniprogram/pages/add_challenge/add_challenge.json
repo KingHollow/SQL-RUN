@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "selectchap": "../../component/selectchap/selectchap",
+    "selectdiff": "../../component/selectdiff/selectdiff"
+  }
+}

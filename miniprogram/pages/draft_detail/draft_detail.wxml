@@ -1,0 +1,116 @@
+<!--pages/draft_detail/draft_detail.wxml-->
+<view class="title">
+  {{name}}
+</view>
+
+<view class="question">
+
+  <view class="ques-group">
+
+    <view class="ques" wx:if="{{sinChoice.length != 0}}">
+      <view class="subtitle">
+        <image class="pic" src="../../images/icon/lable.png"></image>
+        单选题
+      </view>
+      <view class='answer'>
+        <view class="main" wx:for="{{sinChoice}}">
+          {{index+1}}.{{item}}
+          <view class="gap"></view>
+        </view>
+      </view>
+    </view>
+    <view class="gap2"></view>
+
+    <view class="ques" wx:if="{{mulChoice.length != 0}}">
+      <view class="subtitle">
+        <image class="pic" src="../../images/icon/lable.png"></image>
+        多选题
+      </view>
+      <view class='answer'>
+        <view class="main" wx:for="{{mulChoice}}">
+          {{index+1}}.{{item}}
+          <view class="gap"></view>
+        </view>
+      </view>
+    </view>
+    <view class="gap2"></view>
+
+    <view class="ques" wx:if="{{judgement.length != 0}}">
+      <view class="subtitle">
+        <image class="pic" src="../../images/icon/lable.png"></image>
+        判断题
+      </view>
+      <view class='answer'>
+        <view class="main" wx:for="{{judgement}}">
+          {{index+1}}.{{item}}
+          <view class="gap"></view>
+        </view>
+      </view>
+    </view>
+    <view class="gap2"></view>
+
+    <view class="ques" wx:if="{{blank.length != 0}}">
+      <view class="subtitle">
+        <image class="pic" src="../../images/icon/lable.png"></image>
+        填空题
+      </view>
+      <view class='answer'>
+        <view class="main" wx:for="{{blank}}">
+          {{index+1}}.{{item}}
+          <view class="gap"></view>
+        </view>
+      </view>
+    </view>
+    <view class="gap2"></view>
+
+    <view class="ques" wx:if="{{subjective.length != 0}}">
+      <view class="subtitle">
+        <image class="pic" src="../../images/icon/lable.png"></image>
+        主观题
+      </view>
+      <view class='answer'>
+        <view class="main" wx:for="{{subjective}}">
+          {{index+1}}.{{item}}
+          <view class="gap"></view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+  <view class="content">
+    请选择需要发布的班级：
+  </view>
+  <view chapter>
+    <checkbox-group class="checkbox-group" bindchange="HandelItemChange">
+      <checkbox class="checkbox" value="{{item.id}}" wx:for="{{list}}" wx:key="index">
+        {{item.name}}
+      </checkbox>
+    </checkbox-group>
+  </view>
+
+
+  <view class="content">
+    请输入作业名称：
+  </view>
+  <view class="name">
+    <input class="textarea" fixed="true" value="{{note.content}}" maxlength="5000" focus='{{focus}}' name="content"
+      bindinput="title" />
+  </view>
+
+  <view class="content">
+    请选择作业截止时间：
+  </view>
+  <view class="name">
+    <picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeStartDateTime" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
+                <view class="textarea">{{deadline}}</view>       
+    </picker>
+  </view>
+
+
+
+</view>
+
+<view class="operate">
+  <button class="attend" bindtap="release">发布作业</button>
+</view>

@@ -1,0 +1,37 @@
+<!--pages/tmine/tmine.wxml-->
+<view class="main">
+  <!-- 名字 -->
+  <view class="my_title">
+
+    <view class="picture">
+      <image class="pic" src="../../images/pics/start.png" mode="aspectFill"></image>
+    </view>
+
+    <!-- 用户名 -->
+    <view class="name">
+      <text>{{name}}老师，您好！</text>
+    </view>
+
+  </view>
+  <!--创建班级-->
+  <view class="loginBtnView">
+    <button class="register" hover-class="hover" bindtap="createclass">
+      <image class="logo" src="../../images/icon/create.png"></image>
+      创建班级
+    </button>
+  </view>
+
+
+  <!--解散班级-->
+  <view class="loginBtnView2">
+    <button class="register" hover-class="hover" bindtap="dismissclass">
+      <image class="logo" src="../../images/icon/dismiss.png"></image>
+      解散班级
+    </button>
+  </view>
+
+
+</view>
+
+<import src="../../tabbar.wxml" />
+<template is="tabBar" data="{{tabBar}}" />

@@ -1,0 +1,158 @@
+/* pages/mychallenge/mychallenge.wxss */
+page{  
+  height: 100%;  
+  background-color: #F3F4F6;
+} 
+
+.name{
+
+  text-align:left;
+  margin-top: 5rpx; 
+   margin-bottom: 5px; 
+   margin-left: 10px;
+   width: 22%;
+}
+
+
+.logo{
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 30rpx;
+}
+
+.loginBtnView2 { 
+  width: 100%; 
+  height: auto; 
+  margin-top: 30rpx; 
+  margin-bottom: 0px; 
+  padding-bottom: 0px; 
+ } 
+  
+.register{
+  margin-top: 20px;
+  margin-bottom: 40px;
+  font-size: 20px;
+  color: white;
+  background-color: #88ADDF;
+  display: flex;
+  flex-direction: row;
+}
+
+.inputView { 
+  background-color: #fff; 
+  line-height: 44px; 
+ } 
+
+ .line { 
+  width: 100%; 
+  height: 1px; 
+  background-color: #cccccc; 
+  margin-top: 1px; 
+ } 
+
+ .container { 
+  height: 100%; 
+  display: flex; 
+  flex-direction: column; 
+  padding: 0; 
+  box-sizing: border-box; 
+  background-color: #f2f2f2
+ } 
+
+ .inputView { 
+  background-color: #fff; 
+  
+  width:300px;
+  height:50px;
+  margin-bottom: 0px;
+  display: flex;
+  flex-direction: row;
+ } 
+
+ .title{
+  height: 70px;
+  width: 100%;
+  font-size: larger;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight:bold;
+  color:#42589a;
+  margin-top:30rpx;
+ }
+
+ .homework-info{
+   width: 40%;
+  color:#88ADDF;
+  text-align: right;
+ }
+
+ .content{
+  background-color: #fff; 
+  
+  width:100%;
+
+  margin-bottom: 0px;
+  
+  
+  color: black;
+  
+ }
+
+ .content1{
+  background-color: #fff; 
+  
+  width:100%;
+
+  margin-bottom: 0px;
+  display: flex;
+  flex-direction: row;
+  color: black;
+  
+ }
+
+ .text{
+  margin-top: 15rpx; 
+  font-size:  2.3vh;
+  word-break: break-all;
+  text-align: left;
+  text-indent:2em;
+ }
+
+ .answered{
+   text-align:right;
+   margin-top: 5rpx; 
+   margin-bottom: 5px; 
+   margin-left: 10px;
+   width: 13%;
+   color:#13e263;
+ }
+
+ .unchecked{
+  text-align:right;
+  margin-top: 5rpx;  
+  margin-bottom: 5px; 
+  margin-left: 10px;
+  width: 13%;
+  color:#e23c13;
+}
+
+.disanswered{
+  text-align:right;
+  margin-top: 5rpx;  
+  margin-bottom: 5px; 
+  margin-left: 10px;
+  width: 13%;
+  color:#88addf;
+}
+
+.crname{
+  
+  color: #88addf;
+  font-size: 15px;
+  text-align: left;
+  text-indent:1em;
+  margin-top: 5rpx; 
+  margin-bottom: 10rpx;
+  width: 50%;
+ }

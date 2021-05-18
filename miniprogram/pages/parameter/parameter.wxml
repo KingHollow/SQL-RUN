@@ -1,0 +1,57 @@
+<!--pages/parameter/parameter.wxml-->
+<view class="title">
+  随机作业规则设置
+</view>
+
+<view class="question">
+  <view class="content">
+    1.请选择抽取题目的章节：
+  </view>
+  <view chapter>
+  <checkbox-group class="checkbox-group" bindchange="HandelItemChange">
+    <checkbox  class="checkbox" value="{{item.value}}" wx:for="{{list}}" wx:key="index">
+      {{item.value}}
+    </checkbox>
+  </checkbox-group>
+</view>
+
+  <view class="content">
+    2.请输入每类题目的个数：
+  </view>
+  <view class="ques-group">
+    <view class="ques">
+      单选题：
+      <view class='answer'>
+        <input class="textarea" fixed="true" value="{{note.content}}" maxlength="5000" focus='{{focus}}' name="content" bindinput="sinput"/>
+      </view>
+    </view>
+    <view class="ques">
+      多选题：
+      <view class='answer'>
+        <input class="textarea" fixed="true" value="{{note.content}}" maxlength="5000" focus='{{focus}}' name="content" bindinput="minput"/>
+      </view>
+    </view>
+    <view class="ques">
+      判断题：
+      <view class='answer'>
+        <input class="textarea" fixed="true" value="{{note.content}}" maxlength="5000" focus='{{focus}}' name="content" bindinput="jinput"/>
+      </view>
+    </view>
+    <view class="ques">
+      填空题：
+      <view class='answer'>
+        <input class="textarea" fixed="true" value="{{note.content}}" maxlength="5000" focus='{{focus}}' name="content" bindinput="binput"/>
+      </view>
+    </view>
+    <view class="ques">
+      主观题：
+      <view class='answer'>
+        <input class="textarea" fixed="true" value="{{note.content}}" maxlength="5000" focus='{{focus}}' name="content" bindinput="oinput"/>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="operate">
+  <button class="attend" bindtap="form">随机生成</button>
+</view>

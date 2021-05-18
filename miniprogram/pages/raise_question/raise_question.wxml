@@ -1,0 +1,23 @@
+<!--pages/raise_question/raise_question.wxml-->
+<view class="container">
+  <view class="login-from">
+    <form bindsubmit="formSubmit">
+      <!--我的问题-->
+      <view class="subtitle">我的问题</view>
+      <view class="inputView">
+        <textarea class="textarea" placeholder="请输入问题" maxlength="-1" name="content"></textarea>
+      </view>
+      <view class="gap"></view>
+
+      <!--按钮-->
+      <view class="loginBtnView">
+        <button class="register" hover-class="hover" style="width:150px" form-type="submit">
+          发布问题
+        </button>
+      </view>
+
+    </form>
+  </view>
+</view>
+
+

@@ -1,0 +1,32 @@
+<!--pages/correct_subj/correct_subj.wxml-->
+<view class="title">主观题批改</view>
+
+<view class="container">
+  <view class="subtitle">问    题</view>
+  <view class="content" style="padding:1vh 1vh 1vh 1vh">{{content}}</view>
+
+  <view class="subtitle">回    答</view>
+<view class="width">
+  <view view class="answer">
+    <view class = "name">{{name}}</view>
+    <text class="text">{{answers.answer}}</text>
+    <view class="line"></view>
+    <view class="inputView"> 
+  <label class="loginLab">分数 <text class="star">*</text></label> 
+  <input class="inputText" placeholder="请输入分数"  bindinput="resultInput"/> 
+  </view> 
+  </view>
+</view>
+
+<!--按钮-->
+<view class="loginBtnView">
+ 
+ <button class="button" hover-class="hover" bindtap="turntocorrect">
+   提交分数
+ </button>
+
+ </view> 
+</view>
+
+
+

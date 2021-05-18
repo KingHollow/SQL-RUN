@@ -1,0 +1,50 @@
+/* pages/task/task.wxss */
+.my_title{
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  background-color: white;
+}
+
+.name{
+  flex: 3;
+  display: flex;
+  font-size: 40rpx;
+  justify-content: center;
+  align-content: center;
+  background-color: white;
+  color: black;
+}
+
+/*按钮*/
+.loginBtnView1 { 
+ width: 100%; 
+ height: auto; 
+ margin-top: 100px; 
+ margin-bottom: 0px; 
+ padding-bottom: 0px; 
+} 
+
+.loginBtnView2 { 
+  width: 100%; 
+  height: auto; 
+  margin-top: 0px; 
+  margin-bottom: 0px; 
+  padding-bottom: 0px; 
+ } 
+
+.logo{
+  height:70rpx;
+  width: 70rpx;
+  margin-right: 30rpx;
+}
+
+.register{
+  margin-top: 20px;
+  margin-bottom: 40px;
+  font-size: 20px;
+  color: white;
+  background-color: #88ADDF;
+  display: flex;
+  align-items: center; 
+}

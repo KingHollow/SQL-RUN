@@ -1,0 +1,144 @@
+/* pages/class/class.wxss */
+.rank{
+  display:flex;
+  align-items:center;
+  flex-direction: column;
+}
+
+.pic{
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.title{
+  height:50rpx;
+  width:100%;
+  font-size:larger;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  color:#42589a;
+  margin-top: 30rpx;
+}
+
+.title-name{
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+}
+
+.content{
+  padding-left: 30rpx;
+}
+
+.choice{
+  padding: 20rpx 20rpx 20rpx 20rpx;
+  background-color: #f1efef;
+  border-radius: 10rpx;
+  margin-top: 30rpx;
+  width:660rpx;
+  height: 170rpx;
+}
+
+.choose-period{
+  display: flex;
+  align-items: center;
+  margin-bottom: 15rpx;
+}
+
+.radio-group{
+  display: flex;
+  align-items: center;
+}
+
+.radio{
+  text-align: left;
+  display: flex;
+  align-items: center;
+  margin-left: 20rpx;
+}
+
+.gap{
+  height: 3rpx;
+  background-color: #2e2e2e;
+}
+
+.choose-class{
+  margin-top: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.rank-list{
+  padding: 20rpx 20rpx 20rpx 20rpx;
+  background-color: #f1efef;
+  border-radius: 10rpx;
+  margin-top: 30rpx;
+  width:660rpx;
+  height: 500rpx;
+}
+
+.list-title-group{
+  display: flex;
+  justify-content: center;
+}
+
+.list-title{
+  color:#506caa;
+  font-weight: 600;
+}
+
+.title-locate{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title-locate1{
+  margin-left: 80rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.underline{
+  background-color: #3d518a;
+  height:4rpx;
+  width:200rpx;
+}
+
+.underline1{
+  background-color:transparent;
+  height:4rpx;
+  width:200rpx;
+}
+
+.student-all{
+  display: flex;
+  justify-content: center;
+}
+
+.student{
+  margin-bottom: 0rpx;
+}
+
+.name-all{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.score-all{
+  margin-left: 80rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn{
+  margin-top: 40rpx;
+  background-color: #5e7dbd;
+  width:48%!important;
+  color: white;
+  font-size:small;
+}

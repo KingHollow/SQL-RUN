@@ -1,0 +1,27 @@
+<!--pages/m_list/m_list.wxml-->
+<view class="title">
+  题目详情
+</view>
+
+<view class="question">
+  <view class="subtitle">
+    <image class="pic" src="../../images/icon/lable.png"></image>
+    多选题
+  </view>
+  <view class="content">
+    {{content}}
+  </view>
+  <view class="checkbox-group">
+    <view  class="checkbox" value="{{item.value}}" wx:for="{{list}}" wx:key="index">
+      {{item.value}}
+    </view>
+  </view>
+  <view class="answer">
+    答案：{{answer}}
+  </view>
+</view>
+
+<view class="operate">
+  <button class="attend" bindtap="attend">选题</button>
+  <button class="back" bindtap="back">返回</button>
+</view>

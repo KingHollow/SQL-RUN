@@ -1,0 +1,49 @@
+<!--pages/difficulty/difficulty.wxml-->
+<!--选择题目类型-->
+<view class="title">选择题目类型</view>
+
+<view class="container">
+  <view class="login-form">
+    <navigator url="../../pages/s_difficulty/s_difficulty">
+      <view class="inputView">
+        <view class="problem">单选题</view>
+      </view>
+    </navigator>
+    <view class="line"></view>
+
+    <navigator url="../../pages/m_difficulty/m_difficulty">
+      <view class="inputView">
+        <view class="problem">多选题</view>
+      </view>
+    </navigator>
+
+    <view class="line"></view>
+
+
+    <navigator url="../../pages/j_difficulty/j_difficulty">
+      <view class="inputView">
+        <view class="problem">判断题</view>
+      </view>
+    </navigator>
+
+    <view class="line"></view>
+
+
+    <navigator url="../../pages/b_difficulty/b_difficulty">
+      <view class="inputView">
+        <view class="problem">填空题</view>
+      </view>
+    </navigator>
+
+    <view class="line"></view>
+
+
+    <navigator url="../../pages/o_difficulty/o_difficulty">
+      <view class="inputView">
+        <view class="problem">主观题</view>
+      </view>
+    </navigator>
+
+
+  </view>
+</view>

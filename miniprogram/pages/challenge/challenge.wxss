@@ -1,0 +1,81 @@
+/* pages/challenge/challenge.wxss */
+page{  
+  height: 100%;  
+  background-color: #F3F4F6;
+} 
+
+
+.challenge-name{
+  color: rgba(7, 7, 7, 0.863);
+  /* height: 28px; */
+   text-align:center;
+   width: 100%;
+   color:#88ADDF;
+   font-size: medium;
+   justify-items: center;
+   margin-top: 10rpx;
+
+}
+
+
+
+
+  
+.register{
+  margin-top: 20px;
+  margin-bottom: 40px;
+  font-size: 20px;
+  color: white;
+  background-color: #88ADDF;
+  display: flex;
+  flex-direction: row;
+}
+
+.inputView { 
+  background-color: #fff; 
+  line-height: 44px; 
+ } 
+
+ .line { 
+  width: 100%; 
+  height: 1px; 
+  background-color: #cccccc; 
+  margin-top: 1px; 
+ } 
+
+ .login-form { 
+  margin-top: 20px; 
+  flex: auto; 
+  height:100%; 
+ } 
+
+ .container { 
+  height: 100%; 
+  display: flex; 
+  flex-direction: column; 
+  padding: 0; 
+  box-sizing: border-box; 
+  background-color: #f2f2f2
+ } 
+
+ .inputView { 
+  background-color: #fff; 
+  
+  width:300px;
+  height:50px;
+  margin-bottom: 0px;
+  display: flex;
+  flex-direction: row;
+ } 
+
+ .title{
+  height: 70px;
+  width: 100%;
+  font-size: larger;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight:bold;
+  color:#42589a;
+  margin-top:30rpx;
+ }

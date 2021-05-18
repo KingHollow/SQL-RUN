@@ -1,0 +1,29 @@
+<!--pages/draft/draft.wxml-->
+  <!--新建作业-->
+  <view class="loginBtnView2">
+    <navigator url="../../pages/create_homework/create_homework">
+      <button class="register" hover-class="hover" bindtap="turntoregister">
+   <image class="logo" src="../../images/icon/createhomework.png"></image>
+   新建作业
+ </button>
+</navigator>
+  
+ </view> 
+
+ <view class="title">作业列表</view>
+
+<view class="container"> 
+ <view class="login-form"> 
+
+        <view wx:for="{{homework}}" wx:key="index">
+          <view class="inputView" catchtap="onTapNavigateTo" data-id="{{item.homeworkid}}">
+            <view class="homework-name">{{item.name}}</view>
+            <view class="homework-info">作业详情</view>
+          </view>
+            <view class="line"></view>
+        </view>
+      
+  
+
+</view>
+ </view> 

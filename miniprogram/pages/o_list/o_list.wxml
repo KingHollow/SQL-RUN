@@ -1,0 +1,22 @@
+<!--pages/o_list/o_list.wxml-->
+<view class="title">
+  题目详情
+</view>
+
+<view class="question">
+  <view class="subtitle">
+    <image class="pic" src="../../images/icon/lable.png"></image>
+    主观题
+  </view>
+  <view class="content">
+    {{content}}
+  </view>
+  <view class="answer">
+    参考答案:{{answer}}
+  </view>
+</view>
+
+<view class="operate">
+  <button class="attend" bindtap="attend">选题</button>
+  <button class="back" bindtap="back">返回</button>
+</view>
