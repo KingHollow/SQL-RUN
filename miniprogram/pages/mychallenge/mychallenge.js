@@ -1,26 +1,20 @@
 // pages/mychallenge/mychallenge.js
+const app = getApp();
+const db = wx.cloud.database();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list:[{
-      quesID:'',
-      state:'1',
-      content:'中午吃什么比较健康。',
-      cdname:'万顺',
-    },{
-      state:'0',
-      content:'晚上吃什么比较健康。',
-      quesID:'',
-      cdname:'吴宇腾',
-    },{
-      state:'2',
-      content:'周末约不约研讨室',
-      quesID:'',
-      cdname:'李汶珊',
-    }]
+    list:[
+      {
+        questionID: '',
+        cdname: '',
+        state: '',
+        content: "暂无挑战",
+      }
+    ]
 
 
   },
@@ -29,7 +23,59 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this;
+    var id = wx.getStorageSync('id');
+    var rlist = new Array();
+    
+    db.collection("challenge").where({
+      challengerID: id
+    }).get().then(res => {
+      var j = 0;
+      console.log(res.data)
+      for (var i = 0; i < res.data.length; i++) {
+        //获取状态       
+        var temp = {
+          state: res.data[j].state,
+          cdname: res.data[j].challengedName,
+          questionID: res.data[j].questionID,
+          content: res.data[j].content,
+        }
+        j++;
+        rlist.push(temp);
+        that.setData({
+          list: rlist
+        })
+        
+      }
+    })
+    
 
+  },
+
+  GotoChadetail: function(e){
+    console.log(this.data.list)
+    // var quesid = e.currentTarget.dataset.id;
+    // if(quesid.charAt(0) == "s"){
+    //   wx.navigateTo({
+    //     url: '../../pages/s_cdetail/s_cdetail?id=' + quesid,
+    //   })
+    // };
+    // if(quesid.charAt(0) == "m"){
+    //   wx.navigateTo({
+    //     url: '../../pages/m_cdetail/m_cdetail?id=' + quesid,
+    //   })
+    // };
+    // if(quesid.charAt(0) == "j"){
+    //   wx.navigateTo({
+    //     url: '../../pages/j_cdetail/j_cdetail?id=' + quesid,
+    //   })
+    // };
+    // if(quesid.charAt(0) == "b"){
+    //   wx.navigateTo({
+    //     url: '../../pages/b_cdetail/b_cdetail?id=' + quesid,
+    //   })
+    // };
+    
   },
 
   /**

@@ -21,18 +21,32 @@
       <view class="student-all">
         <view class="name-all">
           <view class="underline1"></view>
-          <view class="student" wx:for="{{student}}" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="challenge">{{item.name}}</view>
+          <view class="student" wx:for="{{student}}" wx:key = "index" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="challenge">{{item.name}}</view>
         </view>
         <view class="score-all">
           <view class="underline1"></view>
-          <view class="student" wx:for="{{student}}">{{item.score}}</view>
+          <view class="student" wx:for="{{student}}" wx:key = "index" >{{item.score}}</view>
         </view>
       </view>
     </scroll-view>
   </view>
+  <view class="loginBtnView">
+ 
+ <button class="register" hover-class="hover" bindtap="turntomychallenge">
+   <image class="logo" src="../../images/icon/challenge.png"></image>
+   我的挑战
+ </button>
+
+ <button class="register" hover-class="hover" bindtap="turntorandom">
+   <image class="logo" src="../../images/icon/random.png"></image>
+   我要做题
+ </button>
 
 </view>
+</view>
 
+
+ 
 
 <import src="../../tabbar.wxml"/> 
  <template is="tabBar" data="{{tabBar}}"/>

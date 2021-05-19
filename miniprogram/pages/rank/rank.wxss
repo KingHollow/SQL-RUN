@@ -43,7 +43,7 @@
   border-radius: 10rpx;
   margin-top: 55rpx;
   width:660rpx;
-  height: 800rpx;
+  height: 600rpx;
 }
 
 .list-title-group{
@@ -107,4 +107,27 @@
 .btnimg{
   width: 40rpx;
   height: 40rpx;
+}
+
+.loginBtnView { 
+  width: 100%; 
+  height: auto; 
+  margin-top: 30rpx;
+ } 
+ 
+   
+ .register{
+   margin-bottom: 30rpx;
+   font-size: 20px;
+   color: white;
+   background-color: #88ADDF;
+   display: flex;
+   flex-direction: row;
+ }
+ 
+
+ .logo{
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 30rpx;
 }

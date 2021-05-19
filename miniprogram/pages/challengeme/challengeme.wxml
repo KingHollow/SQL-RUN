@@ -6,12 +6,12 @@
   <view class="content">
     <view wx:for="{{list}}" wx:key="index">
 
-      <view class="content" catchtap="GotoChallenge" data-id="{{item.quesID}}" style="padding:2vh 2vh 2vh 2vh">
+      <view class="content" catchtap="GotoChallenge" data-id="{{item.questionID}}" style="padding:2vh 2vh 2vh 2vh">
         <view class="content1">
-          <view class="crname">挑战者：{{item.crname}}</view>
-          <view class="name" space="emsp">挑战状态：</view>
+          <view class="crname" wx:if="{{item.crname != ''}}">挑战者：{{item.crname}}</view>
+          <view class="name" space="emsp" wx:if="{{item.state != ''}}">挑战状态：</view>
           <view wx:if="{{item.state == '2'}}" class="answered">已回答</view>
-          <view wx:else class="disanswered">待回答</view>
+          <view class="disanswered" wx:if="{{item.state == '1'}}">待回答</view>
         </view>
         <text class="text">{{item.content}}</text>
       </view>

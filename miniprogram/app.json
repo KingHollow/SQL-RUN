@@ -1,18 +1,19 @@
 {
   "pages": [
-    
+    "pages/class/class",
+    "pages/task/task",
     "pages/study/study",
     "pages/login/login",
     "pages/tellyou_detail/tellyou_detail",
     "pages/smine/smine",
-    "pages/task/task",
+    
     "pages/s_checkchal/s_checkchal",
     "pages/check_answer/check_answer",
     "pages/parameter/parameter",
     "pages/create_homework/create_homework",
     "pages/difficulty/difficulty",
     "pages/homework_list/homework_list",
-    "pages/class/class",
+    
     "pages/tmine/tmine",
     "pages/rank/rank",
     "pages/register/register"

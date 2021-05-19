@@ -19,17 +19,7 @@ Page({
     ],
     isChecked: "question" ,//判断是否选中
     list1:[],
-    list2:[{
-      crname:'郑泽宇',
-      cdname:'郑雅心',
-      cname:'电商班',
-      content:'郑雅心同学的快递取件码是多少？',
-    },{
-      crname:'万顺',
-      cdname:'唐天佑',
-      cname:'计科班',
-      content:"",
-    }],
+    list2:[],
   },
   //绑定顶部状态切换的点击事件
   choiceStatus: function (e) {
@@ -103,75 +93,84 @@ Page({
               state: 0
             }).get().then(re => {
               for(var j = 0; j < re.data.length; j++){
-                var count = 0;
-                if(re.data[j].questionID[0] == "s"){
-                  db.collection("sinChoice").where({
-                    sinID: re.data[j].questionID,
-                    type: 1
-                  }).get().then(reso => {
-                    var data = {
-                      chalid: re.data[count].questionID,
-                      crname: re.data[count].challengerName,
-                      cdname: re.data[count].challengedName,
-                      cname: re.data[count].className,
-                      content: reso.data[0].content
-                    }
-                    count++;
-                    temp2.push(data);
-                    that.setData({list2: temp2});
-                  })
+                //var count = 0;
+                var data = {
+                  chalid: re.data[j].questionID,
+                  crname: re.data[j].challengerName,
+                  cdname: re.data[j].challengedName,
+                  cname: re.data[j].className,
+                  content: re.data[j].content
                 }
-                if(re.data[j].questionID[0] == "m"){
-                  db.collection("mulChoice").where({
-                    mulID: re.data[j].questionID,
-                    type: 1
-                  }).get().then(reso => {
-                    var data = {
-                      chalid: re.data[count].questionID,
-                      crname: re.data[count].challengerName,
-                      cdname: re.data[count].challengedName,
-                      cname: re.data[count].className,
-                      content: reso.data[0].content
-                    }
-                    count++;
-                    temp2.push(data);
-                    that.setData({list2: temp2});
-                  })
-                }
-                if(re.data[j].questionID[0] == "j"){
-                  db.collection("judgement").where({
-                    judgeID: re.data[j].questionID,
-                    type: 1
-                  }).get().then(reso => {
-                    var data = {
-                      chalid: re.data[count].questionID,
-                      crname: re.data[count].challengerName,
-                      cdname: re.data[count].challengedName,
-                      cname: re.data[count].className,
-                      content: reso.data[0].content
-                    }
-                    count++;
-                    temp2.push(data);
-                    that.setData({list2: temp2});
-                  })
-                }
-                if(re.data[j].questionID[0] == "b"){
-                  db.collection("blank").where({
-                    blankID: re.data[j].questionID,
-                    type: 1
-                  }).get().then(reso => {
-                    var data = {
-                      chalid: re.data[count].questionID,
-                      crname: re.data[count].challengerName,
-                      cdname: re.data[count].challengedName,
-                      cname: re.data[count].className,
-                      content: reso.data[0].content
-                    }
-                    count++;
-                    temp2.push(data);
-                    that.setData({list2: temp2});
-                  })
-                }
+                temp2.push(data);
+                that.setData({list2: temp2});
+                // if(re.data[j].questionID[0] == "s"){
+                //   db.collection("sinChoice").where({
+                //     sinID: re.data[j].questionID,
+                //     type: 1
+                //   }).get().then(reso => {
+                //     var data = {
+                //       chalid: re.data[count].questionID,
+                //       crname: re.data[count].challengerName,
+                //       cdname: re.data[count].challengedName,
+                //       cname: re.data[count].className,
+                //       content: reso.data[0].content
+                //     }
+                //     count++;
+                //     temp2.push(data);
+                //     that.setData({list2: temp2});
+                //   })
+                // }
+                // if(re.data[j].questionID[0] == "m"){
+                //   db.collection("mulChoice").where({
+                //     mulID: re.data[j].questionID,
+                //     type: 1
+                //   }).get().then(reso => {
+                //     var data = {
+                //       chalid: re.data[count].questionID,
+                //       crname: re.data[count].challengerName,
+                //       cdname: re.data[count].challengedName,
+                //       cname: re.data[count].className,
+                //       content: reso.data[0].content
+                //     }
+                //     count++;
+                //     temp2.push(data);
+                //     that.setData({list2: temp2});
+                //   })
+                // }
+                // if(re.data[j].questionID[0] == "j"){
+                //   db.collection("judgement").where({
+                //     judgeID: re.data[j].questionID,
+                //     type: 1
+                //   }).get().then(reso => {
+                //     var data = {
+                //       chalid: re.data[count].questionID,
+                //       crname: re.data[count].challengerName,
+                //       cdname: re.data[count].challengedName,
+                //       cname: re.data[count].className,
+                //       content: reso.data[0].content
+                //     }
+                //     count++;
+                //     temp2.push(data);
+                //     that.setData({list2: temp2});
+                //   })
+                // }
+                // if(re.data[j].questionID[0] == "b"){
+                //   db.collection("blank").where({
+                //     blankID: re.data[j].questionID,
+                //     type: 1
+                //   }).get().then(reso => {
+                //     var data = {
+                //       chalid: re.data[count].questionID,
+                //       crname: re.data[count].challengerName,
+                //       cdname: re.data[count].challengedName,
+                //       cname: re.data[count].className,
+                //       content: reso.data[0].content
+                //     }
+                //     count++;
+                //     temp2.push(data);
+                //     that.setData({list2: temp2});
+                //   })
+                // }
               }
             })
           }
@@ -192,6 +191,91 @@ Page({
                 }
                 temp1.push(data);
                 that.setData({list1: temp1});
+              }
+            })
+            db.collection("challenge").where({
+              classID: res.data[i].classID,
+              state: 0
+            }).get().then(re => {
+              for(var j = 0; j < re.data.length; j++){
+                //var count = 0;
+                var data = {
+                  chalid: re.data[j].questionID,
+                  crname: re.data[j].challengerName,
+                  cdname: re.data[j].challengedName,
+                  cname: re.data[j].className,
+                  content: re.data[j].content
+                }
+                temp2.push(data);
+                that.setData({list2: temp2});
+                // if(re.data[j].questionID[0] == "s"){
+                //   db.collection("sinChoice").where({
+                //     sinID: re.data[j].questionID,
+                //     type: 1
+                //   }).get().then(reso => {
+                //     var data = {
+                //       chalid: re.data[count].questionID,
+                //       crname: re.data[count].challengerName,
+                //       cdname: re.data[count].challengedName,
+                //       cname: re.data[count].className,
+                //       content: reso.data[0].content
+                //     }
+                //     count++;
+                //     temp2.push(data);
+                //     that.setData({list2: temp2});
+                //   })
+                // }
+                // if(re.data[j].questionID[0] == "m"){
+                //   db.collection("mulChoice").where({
+                //     mulID: re.data[j].questionID,
+                //     type: 1
+                //   }).get().then(reso => {
+                //     var data = {
+                //       chalid: re.data[count].questionID,
+                //       crname: re.data[count].challengerName,
+                //       cdname: re.data[count].challengedName,
+                //       cname: re.data[count].className,
+                //       content: reso.data[0].content
+                //     }
+                //     count++;
+                //     temp2.push(data);
+                //     that.setData({list2: temp2});
+                //   })
+                // }
+                // if(re.data[j].questionID[0] == "j"){
+                //   db.collection("judgement").where({
+                //     judgeID: re.data[j].questionID,
+                //     type: 1
+                //   }).get().then(reso => {
+                //     var data = {
+                //       chalid: re.data[count].questionID,
+                //       crname: re.data[count].challengerName,
+                //       cdname: re.data[count].challengedName,
+                //       cname: re.data[count].className,
+                //       content: reso.data[0].content
+                //     }
+                //     count++;
+                //     temp2.push(data);
+                //     that.setData({list2: temp2});
+                //   })
+                // }
+                // if(re.data[j].questionID[0] == "b"){
+                //   db.collection("blank").where({
+                //     blankID: re.data[j].questionID,
+                //     type: 1
+                //   }).get().then(reso => {
+                //     var data = {
+                //       chalid: re.data[count].questionID,
+                //       crname: re.data[count].challengerName,
+                //       cdname: re.data[count].challengedName,
+                //       cname: re.data[count].className,
+                //       content: reso.data[0].content
+                //     }
+                //     count++;
+                //     temp2.push(data);
+                //     that.setData({list2: temp2});
+                //   })
+                // }
               }
             })
           }

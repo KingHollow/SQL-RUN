@@ -7,36 +7,27 @@ Page({
    * 页面的初始数据
    */
   data: {
-    student:[
-      {name: '沈黄豪',score:30},
-      {name: '马英杰',score:50},
-      {name: '马英杰',score:50},
-      {name: '马英杰',score:50},
-      {name: '马英杰',score:50},
-      {name: '马英杰',score:50},
-      {name: '马英杰',score:50},
-      {name: '马英杰',score:50},
-      {name: '马英杰',score:50},
-      {name: '马英杰',score:50},
-      {name: '马英杰',score:50},
-      {name: '马英杰',score:50},
-    ],
-
-    name:""
+    student: [],
+    name: ""
   },
 
-  challenge:function(e){
-    wx.showModal({
-      content: '确认要挑战'+e.currentTarget.dataset.name+'同学吗？',
-      success: function (res) {
-        if (res.confirm) {  
-          wx.navigateTo({
-            url: '/pages/challenge/challenge?challengedid' + e.currentTarget.dataset.id
-          })
-        } else {   
+  challenge: function (e) {
+    if (e.currentTarget.dataset.id == wx.getStorageSync('id')) {
+      wx.showModal({
+        content: "你不能挑战你自己"
+      })
+    } else {
+      wx.showModal({
+        content: '确认要挑战' + e.currentTarget.dataset.name + '同学吗？',
+        success: function (res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '/pages/challenge/challenge?challengedid' + e.currentTarget.dataset.id
+            })
+          } else {}
         }
-      }
-  })
+      })
+    }
   },
 
   /**
@@ -44,9 +35,44 @@ Page({
    */
   onLoad: function (options) {
     var id = wx.getStorageSync('id');
-    db.collection("student").where({studentID: id}).get().then(res => {
-      
+    var that = this;
+    db.collection("student").where({
+      studentID: id
+    }).get().then(res => {
+      var classid = res.data[0].classID;
+      db.collection("student").where({
+        classID: classid
+      }).orderBy("point", "desc").get().then(r => {
+        var temp = [];
+        for (var i = 0; i < r.data.length; i++) {
+          var data = {
+            id: r.data[i].studentID,
+            name: r.data[i].name,
+            score: r.data[i].point
+          }
+          temp.push(data);
+          that.setData({
+            student: temp
+          });
+        }
+      })
     })
+  },
+
+  turntomychallenge:function(e) {
+    wx.navigateTo({
+      url: '../../pages/mychallenge/mychallenge',
+    })
+
+
+  },
+
+  turntorandom:function(e) {
+    wx.navigateTo({
+      url: '../../pages/random/random',
+    })
+
+
   },
 
   /**
@@ -60,7 +86,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    app.editTabBar();    //显示自定义的底部导航
+    app.editTabBar(); //显示自定义的底部导航
   },
 
   /**

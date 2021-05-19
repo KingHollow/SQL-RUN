@@ -128,7 +128,7 @@ page{
    color:#13e263;
  }
 
- .unchecked{
+ .dispassed{
   text-align:right;
   margin-top: 5rpx;  
   margin-bottom: 5px; 
@@ -138,6 +138,15 @@ page{
 }
 
 .disanswered{
+  text-align:right;
+  margin-top: 5rpx;  
+  margin-bottom: 5px; 
+  margin-left: 10px;
+  width: 13%;
+  color:#88addf;
+}
+
+.unchecked{
   text-align:right;
   margin-top: 5rpx;  
   margin-bottom: 5px; 

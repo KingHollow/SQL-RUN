@@ -1,20 +1,17 @@
 // pages/challengeme/challengeme.js
+const app = getApp();
+const db = wx.cloud.database();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list:[{
-      quesID:'',
-      state:'1',
-      content:'中午吃什么比较健康。',
-      crname:'万顺',
-    },{
-      state:'2',
-      content:'周末约不约研讨室',
-      quesID:'',
-      crname:'李汶珊',
+    list: [{
+      questionID: '',
+      crname: '',
+      state: '',
+      content: "暂无挑战",
     }]
 
   },
@@ -23,7 +20,79 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this;
+    var id = wx.getStorageSync('id');
+    var rlist = new Array();
+    
+    db.collection("challenge").where({
+      challengedID: id,
+      state: 2
+    }).get().then(res => {
+      var j = 0;
+      console.log(res.data)
+      for (var i = 0; i < res.data.length; i++) {
+        //获取状态       
+        var temp = {
+          state: 2,
+          crname: res.data[j].challengerName,
+          questionID: res.data[j].questionID,
+          content: res.data[j].content,
+        }
+        j++;
+        rlist.push(temp);
+        that.setData({
+          list: rlist
+        })
+      }
+    })
+    db.collection("challenge").where({
+      challengedID: id,
+      state: 1
+    }).get().then(res => {
+      var j = 0;
+      console.log(res.data)
+      for (var i = 0; i < res.data.length; i++) {
+        //获取状态       
+        var temp = {
+          state: 1,
+          crname: res.data[j].challengerName,
+          questionID: res.data[j].questionID,
+          content: res.data[j].content,
+        }
+        j++;
+        rlist.push(temp);
+        that.setData({
+          list: rlist
+        })
+        
+      }
+    })
+  },
 
+  GotoChallenge: function(e){
+    console.log(e)
+    var quesid = e.currentTarget.dataset.id;
+    if(quesid.charAt(0) == "s"){
+      wx.navigateTo({
+        url: '../../pages/s_respond/s_respond?id=' + quesid,
+      })
+    };
+    if(quesid.charAt(0) == "m"){
+      wx.navigateTo({
+        url: '../../pages/m_respond/m_respond?id=' + quesid,
+      })
+    };
+    if(quesid.charAt(0) == "j"){
+      wx.navigateTo({
+        url: '../../pages/j_respond/j_respond?id=' + quesid,
+      })
+    };
+    if(quesid.charAt(0) == "b"){
+      wx.navigateTo({
+        url: '../../pages/b_respond/b_respond?id=' + quesid,
+      })
+    };
+    
   },
 
   /**

@@ -10,9 +10,9 @@
     <view class="choose-period">
       <view class="content">请选择时间段：</view>
       <radio-group class="radio-group" bindchange="radioChange">
-        <label class="radio" wx:for="{{period}}">
-          <radio value="{{item.value}}" checked="{{item.checked}}" />{{item}}
-        </label>
+        <view class="radio" wx:for="{{period}}" >
+          <radio value="{{item.value}}" checked="{{item.checked}}" />{{item.value}}
+        </view>
       </radio-group>
     </view>
     <view class="gap"></view>
