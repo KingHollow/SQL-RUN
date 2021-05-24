@@ -12,6 +12,7 @@ Page({
   },
 
   popConfirm: function(){
+    var that = this;
     wx.cloud.callFunction({
       // 云函数名称
       name: 'updatechallenge',
@@ -26,6 +27,9 @@ Page({
       success: function (res) {
         if (res.confirm) {  
           // 跳转到选择章节难度的页面
+          wx.navigateTo({
+            url: '../add_challenge/add_challenge?quesid=' + that.data.blankid,
+          })
         } else {   
           wx.navigateBack({
             delta: 1

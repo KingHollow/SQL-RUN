@@ -1,0 +1,35 @@
+<!--pages/s_mistake/s_mistake.wxml-->
+<view class="title">
+  错题详情
+</view>
+
+<view class="question">
+  <view class="subtitle">
+    <image class="pic" src="../../images/icon/lable.png"></image>
+    单选题
+  </view>
+  <view class="content">
+    {{content}}
+  </view>
+  <view class="radio-group">
+    <view class="radio" wx:for="{{items}}">
+      {{item.value}}
+    </view>
+  </view>
+  <view class="answer">
+    我的答案：{{myanswer}}
+  </view>
+</view>
+
+<view class="nbanswer">
+  <button class="nbbtn" bindtap="click">查看参考答案</button>
+</view>
+
+<view class="mask" wx:if="{{show}}"></view>
+<view class="windowsgarden" wx:if="{{show}}">
+  <view class="windows" wx:if="{{show}}">
+    <view class="ans-title">参考答案</view>
+    <view class="ans-con">{{nbanswer}}</view>
+    <button class="button1" bindtap="click" style="height=100px">返回</button>
+  </view>
+</view>

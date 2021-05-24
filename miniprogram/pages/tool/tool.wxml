@@ -1,0 +1,29 @@
+<!--pages/tool/tool.wxml-->
+<view class="title">我的道具</view>
+
+<view class="container">
+ 
+    <view class="content" style="padding:2vh 2vh 2vh 2vh">
+      <image class="logo1" src="../../images/pics/rocket.png"></image>
+
+          <view class="name">拥有数量：{{rockets}}</view>
+      
+      </view>
+      <view class="line"></view>
+      <view class="content" style="padding:2vh 2vh 2vh 2vh">
+        
+        <image class="logo" src="../../images/pics/peal.png"></image>
+          <view class="name">拥有数量：{{peals}}</view>
+        
+      </view>
+      <view class="line"></view>
+      <view class="content" style="padding:2vh 2vh 2vh 2vh">
+       
+        <image class="logo" src="../../images/pics/pass.png"></image>
+          <view class="name">拥有数量：{{cards}}</view>
+      
+      </view>
+      <view class="line"></view>
+
+</view>
+

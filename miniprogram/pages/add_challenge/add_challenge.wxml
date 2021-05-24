@@ -2,11 +2,11 @@
 <view class="container"> 
  <view class="login-from"> 
 <view>
-<selectchap prop-array='{{selectArray1}}' bind:chooseData='chooseData1'></selectchap>
+<selectchap prop-array='{{selectArray1}}' bind:chooseData='chooseData'></selectchap>
 </view>
 
 <view>
-<selectdiff prop-array='{{selectArray2}}' bind:chooseData='chooseData2'></selectdiff>
+<selectdiff prop-array='{{selectArray2}}' bind:chooseData='chooseData'></selectdiff>
 </view>
 
   <!--按钮-->
