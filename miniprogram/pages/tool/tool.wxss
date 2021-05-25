@@ -42,7 +42,7 @@ page{
   margin-top: 1px; 
  } 
 
- .content{
+ .back{
   background-color: #fff; 
   
   width:100%;
@@ -53,7 +53,7 @@ page{
   color: black;
 
   display:flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content:center;
   align-items: center;
  }
@@ -81,3 +81,33 @@ page{
   box-sizing: border-box; 
   background-color: #f2f2f2
  } 
+
+ .box{
+  background-color: #fff; 
+  
+  width:50%;
+
+  margin-bottom: 0px;
+  
+  height: auto;
+  color: black;
+
+  display:flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+ }
+
+ .content{
+  background-color: #fff; 
+  
+  width:85%;
+
+  justify-items: center;
+  display: flex;
+  flex-direction: row;
+  color: black;
+  font-size: 15px;
+  text-align: left;
+  text-indent:2em;
+ }

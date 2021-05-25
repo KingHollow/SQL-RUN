@@ -15,6 +15,7 @@ Page({
     className:'',
     answers:[],
     flag :0,
+    num:0,
 
 
   },
@@ -24,26 +25,20 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
-    var num = 0;
+    var n = 0;
     db.collection('quantity').where({
       type:'q'
     })
     .get({
       success: function(res) {
         // res.data 是包含以上定义的两条记录的数组
-        num = res.data[0].number+1
+        n = res.data[0].number+1
         that.setData({
-          quesID:'q' + ('0000' + num.toString()).substr(-5)
+          quesID:'q' + ('0000' + n.toString()).substr(-5),
+          num:n
         })
-        wx.cloud.callFunction({
-          // 云函数名称
-          name: 'updatequantity',
-          // 传给云函数的参数
-          data: {
-            number: num,
-            type: "q"
-        },
-      })
+        console.log(that.data.num)
+
       }
     })
     var stuID = wx.getStorageSync('id');
@@ -117,7 +112,13 @@ Page({
             })
             wx.hideLoading()
            console.log('[数据库] [新增记录] 成功，记录 _id: ', res._id)
-           wx.redirectTo({ url: '../question/question' })
+           
+           wx.navigateBack({
+            delta: 1,  // 返回上一级页面。
+            success: function() {
+                console.log('成功！')
+            }
+          })
           },
           fail: err => {
             wx.showToast({
@@ -127,6 +128,15 @@ Page({
             console.error('[数据库] [新增记录] 失败：', err)
           }
         })  
+        wx.cloud.callFunction({
+          // 云函数名称
+          name: 'updatequantity',
+          // 传给云函数的参数
+          data: {
+            number: that.data.num,
+            type: "q"
+        },
+      })
     }
   },
 

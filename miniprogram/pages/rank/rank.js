@@ -22,7 +22,7 @@ Page({
         success: function (res) {
           if (res.confirm) {
             wx.navigateTo({
-              url: '/pages/challenge/challenge?challengedid' + e.currentTarget.dataset.id
+              url: '../../pages/challenge/challenge?challengedid=' + e.currentTarget.dataset.id
             })
           } else {}
         }

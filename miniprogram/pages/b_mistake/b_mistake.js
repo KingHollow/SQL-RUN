@@ -1,30 +1,15 @@
 // pages/b_mistake/b_mistake.js
+const db = wx.cloud.database();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    content:"按照报表的数据组织形式、显示方式和作用的不同，Access中的报表可以分为4种基本类型，它们分别是：纵栏式报表、_____报表、图表报表和标签报表。",
+    content:"",
     
-    myanswer:[
-      {value:'嘿嘿'},
-      {value:'哈哈'}
-    ],
-    nbanswer: [ 
-        {
-          okanswer:[
-            {value:'表格式'},
-            {value:'blank'}
-          ]
-        },
-      {
-        okanswer:[
-          {value:'也是表格式'},
-        ]
-      }
-        
-    ],
+    myanswer:[],
+    nbanswer: [],
 
     show:false,
   },
@@ -40,7 +25,40 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var blankid = options.quesid;
+    var type = parseInt(options.type);
+    this.setData({blankid: blankid});
+    db.collection("blank").where({
+      blankID: blankid,
+      type: type
+    }).get().then(res => {
+      var temp = [];
+      var ans = "";
+      for(var i = 0; i < res.data[0].answer.length; i++){
+        ans = "";
+        for(var j = 0; j < res.data[0].answer[i].length; j++){
+          ans = ans + res.data[0].answer[i][j] + ",";
+        }
+        var data = {value: ans.substring(0, ans.length-1)};
+        temp.push(data);
+      }
+      this.setData({
+        content: res.data[0].content,
+        nbanswer: temp
+      })
+    })
+    db.collection("mistake").where({
+      questionID: blankid,
+      type: type,
+      studentID: wx.getStorageSync('id')
+    }).get().then(rm => {
+      var temp1 = [];
+      for(var i = 0; i < rm.data[0].answer.length; i++){
+        var data1 = {value: rm.data[0].answer[i]}
+        temp1.push(data1);
+      }
+      this.setData({myanswer: temp1});
+    })
   },
 
   /**

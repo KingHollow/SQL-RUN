@@ -1,11 +1,14 @@
 {
   "pages": [
+    "pages/rank/rank",
+    "pages/smine/smine",
+    "pages/login/login",
     "pages/class/class",
     "pages/task/task",
     "pages/study/study",
-    "pages/login/login",
+    
     "pages/tellyou_detail/tellyou_detail",
-    "pages/smine/smine",
+    "pages/b_mistake/b_mistake",
     
     "pages/s_checkchal/s_checkchal",
     "pages/check_answer/check_answer",
@@ -15,7 +18,7 @@
     "pages/homework_list/homework_list",
     
     "pages/tmine/tmine",
-    "pages/rank/rank",
+    
     "pages/register/register"
   ],
   "window": {

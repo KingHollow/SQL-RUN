@@ -17,7 +17,7 @@
     </view>
   </view>
   <view class="answer">
-    我的答案：{{answer}}
+    我的答案：{{myanswer}}
   </view>
 </view>
 

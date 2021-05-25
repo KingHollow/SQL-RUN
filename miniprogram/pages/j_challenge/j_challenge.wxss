@@ -1,0 +1,170 @@
+/* pages/j_challenge/j_challenge.wxss */
+page{ 
+  height: 100%; 
+ } 
+
+.textarea{
+  width: 600rpx;
+  height: 300rpx;
+  border-radius: 7px;
+  background-color: #e5e5e5;
+  font-size: 36rpx;
+  padding-left: 25rpx;
+  padding-top: 25rpx;
+  padding-right: 25rpx;
+  padding-bottom: 25rpx;
+}
+
+.titlearea{
+  width: 600rpx;
+  height: 100rpx;
+  border-radius: 7px;
+  background-color: #e5e5e5;
+  font-size: 36rpx;
+  padding-left: 25rpx;
+  padding-top: 25rpx;
+  padding-right: 25rpx;
+  padding-bottom: 25rpx;
+}
+   
+ .container { 
+  height: 100%; 
+  display: flex; 
+  flex-direction: column; 
+  padding: 0; 
+  box-sizing: border-box; 
+ } 
+   
+ /*表单内容*/
+ .login-form { 
+  margin-top: 20px; 
+  flex: auto; 
+  height:100%; 
+ } 
+   
+ .inputView { 
+  margin-top: 10rpx;
+  display: flex;
+  align-items: center;
+ } 
+
+ .gap { 
+  width: 100%; 
+  height: 20px;  
+  margin-top: 1px; 
+ } 
+
+.input{ 
+  text-align: left;
+ } 
+
+/*按钮*/
+.loginBtnView { 
+  width: 100%; 
+  height: auto; 
+  margin-top: 30px; 
+  margin-bottom: 0px; 
+  padding-bottom: 0px; 
+  display: flex;
+  flex-direction: row;
+ } 
+   
+ .register{
+   margin-top: 20px;
+   margin-bottom: 40px;
+   font-size: 18px;
+   width: 350rpx!important;
+   height: 100rpx;
+   color: white;
+   background-color: #88ADDF;
+   text-align:center;
+ }
+ 
+ .flex-x {
+  display: flex;
+  align-items: center;
+}
+
+.template_title, .template_title1, .template_title_list {
+  height: 90rpx;
+  background: #fff;
+  justify-content: space-between;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+
+.template_title1 {
+  background: none;
+}
+
+.template_title_list {
+  margin-bottom: 4rpx;
+}
+
+.template_title > view, .template_title1 > view {
+  font-size: 32rpx;
+  color: #8f8f8f;
+  flex-shrink: 0;
+  margin-right: 20rpx;
+}
+
+.template_title > input {
+  font-size: 28rpx;
+  color: #808080;
+  text-align: right;
+  flex-grow: 1;
+}
+
+/* 添加内容 */
+
+.add_con > text {
+  font-size: 40rpx;
+  color: #f16765;
+  display: block;
+  margin-right: 20rpx;
+  margin-left: 10rpx;
+  line-height: 44rpx;
+}
+
+.add_con > view {
+  font-size: 32rpx;
+  color: #7885cb;
+}
+
+/* 删除内容 */
+
+.del {
+  font-size: 65rpx;
+  color: #f16765;
+  margin-right: 14rpx;
+  padding: 20rpx;
+}
+
+.input {
+  flex-grow: 1;
+  font-size: 32rpx;
+  color: #808080;
+}
+
+.subtitle{
+  height: 40px;
+  width: 100%;
+  font-size: medium;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:#5e7dbd;
+ }
+
+ .title{
+  height: 70px;
+  width: 100%;
+  font-size: larger;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight:bold;
+  color:#42589a;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+ }

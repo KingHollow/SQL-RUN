@@ -12,6 +12,9 @@
 
 <view class="title">我的提问</view>
 
+
+
+
 <view class="container">
   <view class="content">
     <view wx:for="{{list}}" wx:key="index">

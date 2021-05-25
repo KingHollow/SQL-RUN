@@ -11,7 +11,7 @@ Page({
       {
         questionID: '',
         cdname: '',
-        state: '',
+        state: 10,
         content: "暂无挑战",
       }
     ]
@@ -53,28 +53,29 @@ Page({
   },
 
   GotoChadetail: function(e){
-    console.log(this.data.list)
-    // var quesid = e.currentTarget.dataset.id;
-    // if(quesid.charAt(0) == "s"){
-    //   wx.navigateTo({
-    //     url: '../../pages/s_cdetail/s_cdetail?id=' + quesid,
-    //   })
-    // };
-    // if(quesid.charAt(0) == "m"){
-    //   wx.navigateTo({
-    //     url: '../../pages/m_cdetail/m_cdetail?id=' + quesid,
-    //   })
-    // };
-    // if(quesid.charAt(0) == "j"){
-    //   wx.navigateTo({
-    //     url: '../../pages/j_cdetail/j_cdetail?id=' + quesid,
-    //   })
-    // };
-    // if(quesid.charAt(0) == "b"){
-    //   wx.navigateTo({
-    //     url: '../../pages/b_cdetail/b_cdetail?id=' + quesid,
-    //   })
-    // };
+    
+    var quesid = e.currentTarget.dataset.id;
+    console.log(quesid)
+    if(quesid.charAt(0) == "s"){
+      wx.navigateTo({
+        url: '../../pages/s_cdetail/s_cdetail?id=' + quesid,
+      })
+    };
+    if(quesid.charAt(0) == "m"){
+      wx.navigateTo({
+        url: '../../pages/m_cdetail/m_cdetail?id=' + quesid,
+      })
+    };
+    if(quesid.charAt(0) == "j"){
+      wx.navigateTo({
+        url: '../../pages/j_cdetail/j_cdetail?id=' + quesid,
+      })
+    };
+    if(quesid.charAt(0) == "b"){
+      wx.navigateTo({
+        url: '../../pages/b_cdetail/b_cdetail?id=' + quesid,
+      })
+    };
     
   },
 

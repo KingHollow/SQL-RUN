@@ -26,15 +26,37 @@ Page({
             sinID: res.data[i].questionID,
             type: res.data[i].type
           }).get().then(rm => {
-            var data = {
-              questionID: rm.data[0].sinID,
-              type: rm.data[0].type,
-              style: "单选题",
-              content: rm.data[0].content,
-              chapter: that.data.chapter[rm.data[0].chapter-1]
+            if(rm.data[0].type == 1){
+              var data = {
+                questionID: rm.data[0].sinID,
+                type: rm.data[0].type,
+                style: "单选题",
+                content: rm.data[0].content,
+                chapter: "挑战题"
+              }
+              temp.push(data);
+              that.setData({list: temp});
+            }else if(rm.data[0].type == 2){
+              var data = {
+                questionID: rm.data[0].sinID,
+                type: rm.data[0].type,
+                style: "单选题",
+                content: rm.data[0].content,
+                chapter: "难题"
+              }
+              temp.push(data);
+              that.setData({list: temp});
+            }else{
+              var data = {
+                questionID: rm.data[0].sinID,
+                type: rm.data[0].type,
+                style: "单选题",
+                content: rm.data[0].content,
+                chapter: that.data.chapter[rm.data[0].chapter-1]
+              }
+              temp.push(data);
+              that.setData({list: temp});
             }
-            temp.push(data);
-            that.setData({list: temp});
           })
         }
         if(res.data[i].questionID[0] == "m"){
@@ -42,15 +64,37 @@ Page({
             mulID: res.data[i].questionID,
             type: res.data[i].type
           }).get().then(rm => {
-            var data = {
-              questionID: rm.data[0].mulID,
-              type: rm.data[0].type,
-              style: "多选题",
-              content: rm.data[0].content,
-              chapter: that.data.chapter[rm.data[0].chapter-1]
+            if(rm.data[0].type == 1){
+              var data = {
+                questionID: rm.data[0].mulID,
+                type: rm.data[0].type,
+                style: "多选题",
+                content: rm.data[0].content,
+                chapter: "挑战题"
+              }
+              temp.push(data);
+              that.setData({list: temp});
+            }else if(rm.data[0].type == 2){
+              var data = {
+                questionID: rm.data[0].mulID,
+                type: rm.data[0].type,
+                style: "多选题",
+                content: rm.data[0].content,
+                chapter: "难题"
+              }
+              temp.push(data);
+              that.setData({list: temp});
+            }else{
+              var data = {
+                questionID: rm.data[0].mulID,
+                type: rm.data[0].type,
+                style: "多选题",
+                content: rm.data[0].content,
+                chapter: that.data.chapter[rm.data[0].chapter-1]
+              }
+              temp.push(data);
+              that.setData({list: temp});
             }
-            temp.push(data);
-            that.setData({list: temp});
           })
         }
         if(res.data[i].questionID[0] == "j"){
@@ -58,16 +102,37 @@ Page({
             judgeID: res.data[i].questionID,
             type: res.data[i].type
           }).get().then(rm => {
-            console.log(rm)
-            var data = {
-              questionID: rm.data[0].judgeID,
-              type: rm.data[0].type,
-              style: "判断题",
-              content: rm.data[0].content,
-              chapter: that.data.chapter[rm.data[0].chapter-1]
+            if(rm.data[0].type == 1){
+              var data = {
+                questionID: rm.data[0].judgeID,
+                type: rm.data[0].type,
+                style: "判断题",
+                content: rm.data[0].content,
+                chapter: "挑战题"
+              }
+              temp.push(data);
+              that.setData({list: temp});
+            }else if(rm.data[0].type == 2){
+              var data = {
+                questionID: rm.data[0].judgeID,
+                type: rm.data[0].type,
+                style: "判断题",
+                content: rm.data[0].content,
+                chapter: "难题"
+              }
+              temp.push(data);
+              that.setData({list: temp});
+            }else{
+              var data = {
+                questionID: rm.data[0].judgeID,
+                type: rm.data[0].type,
+                style: "判断题",
+                content: rm.data[0].content,
+                chapter: that.data.chapter[rm.data[0].chapter-1]
+              }
+              temp.push(data);
+              that.setData({list: temp});
             }
-            temp.push(data);
-            that.setData({list: temp});
           })
         }
         if(res.data[i].questionID[0] == "b"){
@@ -75,19 +140,66 @@ Page({
             blankID: res.data[i].questionID,
             type: res.data[i].type
           }).get().then(rm => {
-            var data = {
-              questionID: rm.data[0].blankID,
-              type: rm.data[0].type,
-              style: "填空题",
-              content: rm.data[0].content,
-              chapter: that.data.chapter[rm.data[0].chapter-1]
+            if(rm.data[0].type == 1){
+              var data = {
+                questionID: rm.data[0].blankID,
+                type: rm.data[0].type,
+                style: "填空题",
+                content: rm.data[0].content,
+                chapter: "挑战题"
+              }
+              temp.push(data);
+              that.setData({list: temp});
+            }else if(rm.data[0].type == 2){
+              var data = {
+                questionID: rm.data[0].blankID,
+                type: rm.data[0].type,
+                style: "填空题",
+                content: rm.data[0].content,
+                chapter: "难题"
+              }
+              temp.push(data);
+              that.setData({list: temp});
+            }else{
+              var data = {
+                questionID: rm.data[0].blankID,
+                type: rm.data[0].type,
+                style: "填空题",
+                content: rm.data[0].content,
+                chapter: that.data.chapter[rm.data[0].chapter-1]
+              }
+              temp.push(data);
+              that.setData({list: temp});
             }
-            temp.push(data);
-            that.setData({list: temp});
           })
         }
       }
     })
+  },
+
+  onTapNavigateTo: function(e){
+    var quesid = e.currentTarget.dataset.id;
+    var type = e.currentTarget.dataset.type;
+    if(quesid[0] == "s"){
+      wx.navigateTo({
+        url: '../s_mistake/s_mistake?quesid=' + quesid + "&type=" + type,
+      })
+    }
+    if(quesid[0] == "m"){
+      wx.navigateTo({
+        url: '../m_mistake/m_mistake?quesid=' + quesid + "&type=" + type,
+      })
+    }
+    if(quesid[0] == "j"){
+      wx.navigateTo({
+        url: '../j_mistake/j_mistake?quesid=' + quesid + "&type=" + type,
+      })
+    }
+    if(quesid[0] == "b"){
+      wx.navigateTo({
+        url: '../b_mistake/b_mistake?quesid=' + quesid + "&type=" + type,
+      })
+    }
   },
 
   /**

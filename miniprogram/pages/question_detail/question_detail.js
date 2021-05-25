@@ -10,6 +10,7 @@ Page({
     quesID:"",
     content:"",
     answers:[],
+    num:'',
 
   },
 
@@ -19,6 +20,7 @@ Page({
   onLoad: function (options) {
     let that = this;
     var quesID = options.id;
+    
     console.log(quesID)
     db.collection('question').where({
       quesID:quesID
@@ -26,10 +28,18 @@ Page({
     .get({
       success: function(res) {
         // res.data 是包含以上定义的两条记录的数组
+        var n = 0;
+        for(var i = 0;i<res.data[0].answers.length;i++) {
+          if (res.data[0].answers[i].result == "pass") {
+            n++;
+          }
+        }
+        console.log(n)
         that.setData({
           quesID:quesID,
           content: res.data[0].content,
           answers:res.data[0].answers,
+          num:n,
         })
       }
     })

@@ -125,7 +125,7 @@ Page({
     } else {
       wx.showModal({
         titel: "提示",
-        content: "确认发布？",
+        content: "确认发起？",
         duration: 3000,
         success(re) {
           var number;

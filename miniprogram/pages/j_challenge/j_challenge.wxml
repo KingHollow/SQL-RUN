@@ -1,0 +1,28 @@
+<!--pages/j_challenge/j_challenge.wxml-->
+<view class="container">
+  <view class="title">判断题出题</view>
+  <view class="login-from">
+    <form bindsubmit="formSubmit">
+      <!--题干-->
+      <view class="subtitle">题干</view>
+      <view class="inputView">
+        <textarea class="textarea" placeholder="请输入题干" maxlength="-1" name="content" bindinput="contentinput"></textarea>
+      </view>
+      <view class="gap"></view>
+
+      <!--答案-->
+      <view class="subtitle">答案</view>
+      <view class="inputView">
+        <textarea class="titlearea" placeholder="请输入答案（正确或错误）" maxlength="10" name="answer" bindinput="answerinput"></textarea>
+      </view>
+
+      <!--按钮-->
+      <view class="loginBtnView">
+        <button class="register" hover-class="hover" bindtap="turntochallenge">
+          发起挑战
+        </button>
+      </view>
+
+    </form>
+  </view>
+</view>

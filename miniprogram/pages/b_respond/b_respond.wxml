@@ -1,0 +1,25 @@
+<!--pages/b_respond/b_respond.wxml-->
+<view class="title">
+  挑战详情
+</view>
+
+<view class="question">
+  <view class="subtitle">
+    <image class="pic" src="../../images/icon/lable.png"></image>
+    填空题
+  </view>
+  <view class="content">
+    {{content}}
+  </view>
+</view>
+
+<view class="answer">
+  <block wx:for="{{nbanswer}}" wx:for-item="i">
+    <input class='input' data-index='{{index}}' placeholder='请输入第{{index+1}}空答案' placeholder-class='iconfont icon-sousuo mid-font '
+      placeholder-style='color:#999999;font-size:14px' bindinput="answerInput"/>
+  </block>
+</view>
+
+<view class="operate">
+  <button class="back" bindtap="submit">提交</button>
+</view>

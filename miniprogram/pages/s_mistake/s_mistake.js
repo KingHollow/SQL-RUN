@@ -1,21 +1,17 @@
 // pages/s_mistake/s_mistake.js
+const db = wx.cloud.database();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    items: [
-      {value: 'A.文件形式'},
-      {value: 'B.数据模型'},
-      {value: 'C.记录形式'},
-      {value: 'D.数据存储方式'},
-    ],
+    items: [],
 
-    content:"数据库类型是按照_______来划分的。",
+    content:"",
 
-    myanswer:"B",
-    nbanswer:"D",
+    myanswer:"",
+    nbanswer:"",
 
     show:false,
   },
@@ -30,7 +26,31 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var sinid = options.quesid;
+    var type = parseInt(options.type);
+    this.setData({sinid: sinid});
+    db.collection("sinChoice").where({
+      sinID: sinid,
+      type: type
+    }).get().then(res => {
+      var temp = [];
+      for(var i = 0; i < res.data[0].options.length; i++){
+        var data = {value: res.data[0].options[i]};
+        temp.push(data);
+      }
+      this.setData({
+        items: temp,
+        content: res.data[0].content,
+        nbanswer: res.data[0].answer
+      })
+    })
+    db.collection("mistake").where({
+      questionID: sinid,
+      type: type,
+      studentID: wx.getStorageSync('id')
+    }).get().then(rm => {
+      this.setData({myanswer: rm.data[0].answer[0]})
+    })
   },
 
   /**

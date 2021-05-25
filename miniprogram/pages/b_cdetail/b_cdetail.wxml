@@ -1,0 +1,21 @@
+<!--pages/b_list/b_list.wxml-->
+<view class="title">
+  题目详情
+</view>
+
+<view class="question">
+  <view class="subtitle">
+    <image class="pic" src="../../images/icon/lable.png"></image>
+    填空题
+  </view>
+  <view class="content">
+    {{content}}
+  </view>
+  <view class="answer" wx:for="{{answer}}" wx:key="index">
+    答案{{index+1}}：{{item.value}}
+  </view>
+</view>
+
+<view class="operate">
+  <button class="back">返回</button>
+</view>

@@ -1,0 +1,49 @@
+<!--pages/shop/shop.wxml-->
+<view class="title">道具商城</view>
+
+<view class="container">
+ 
+    <view class="back" style="padding:2vh 2vh 2vh 2vh" bindtap="buyRocket">
+    <view class="box">
+      <image class="logo1" src="../../images/pics/rocket.png"></image>
+      <view class = "content1">
+          <view class="name">价格：{{rocket}}</view>
+          <image class="pic" src="../../images/icon/coin.png"></image>
+      </view>
+    </view>
+      
+      <view class = "content">使用加速火箭可以在赛跑时直接前进两格且无需答题。</view>
+      
+      
+      </view>
+      <view class="line"></view>
+      <view class="back" style="padding:2vh 2vh 2vh 2vh" bindtap="buyPeal">
+        <view class="box">
+          <image class="logo" src="../../images/pics/peal.png"></image>
+        <view class = "content1">
+          <view class="name">价格：{{peal}}</view>
+          <image class="pic" src="../../images/icon/coin.png"></image>
+        </view>
+        </view>
+        
+        <view class = "content">使用香蕉皮可以在赛跑时让对手在下次答题正确时无法前进。</view>
+        
+      </view>
+      <view class="line"></view>
+      <view class="back" style="padding:2vh 2vh 2vh 2vh" bindtap="buyPass">
+       <view class="box">
+        <image class="logo" src="../../images/pics/pass.png"></image>
+        <view class="content1">
+          <view class="name">价格：{{card}}</view>
+          <image class="pic" src="../../images/icon/coin.png"></image>
+       </view>
+       
+        </view>
+        <view class = "content">使用pass卡可以在赛跑时更换题目一次。</view>
+      
+      </view>
+      <view class="line"></view>
+
+</view>
+
+

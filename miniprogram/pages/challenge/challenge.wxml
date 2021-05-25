@@ -4,25 +4,25 @@
 <view class="container">
   <view class="login-form">
 
-    <navigator url="../../pages/s_challenge/s_challenge">
+    <navigator url="../../pages/s_challenge/s_challenge?challengedid={{challengedid}}">
       <view class="inputView">
         <view class="challenge-name">单选题</view>
       </view>
     </navigator>
     <view class="line"></view>
-    <navigator url="../../pages/m_challenge/m_challenge">
+    <navigator url="../../pages/m_challenge/m_challenge?challengedid={{challengedid}}">
       <view class="inputView">
         <view class="challenge-name">多选题</view>
       </view>
     </navigator>
     <view class="line"></view>
-    <navigator url="../../pages/j_challenge/j_challenge">
+    <navigator url="../../pages/j_challenge/j_challenge?challengedid={{challengedid}}">
       <view class="inputView">
         <view class="challenge-name">判断题</view>
       </view>
     </navigator>
     <view class="line"></view>
-    <navigator url="../../pages/b_challenge/b_challenge">
+    <navigator url="../../pages/b_challenge/b_challenge?challengedid={{challengedid}}">
       <view class="inputView">
         <view class="challenge-name">填空题</view>
       </view>

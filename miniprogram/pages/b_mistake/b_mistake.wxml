@@ -32,11 +32,7 @@
     <view class="ans-title">参考答案</view>
     <view class="answer" wx:for="{{nbanswer}}" wx:key="index">
       【答案{{index+1}}】
-      <view class="answer-group">
-        <view class="answer" wx:for="{{item.okanswer}}" wx:for-item="okanswer" wx:key="index">
-          {{okanswer.value}};
-        </view>
-      </view>
+      <view>{{item.value}}</view>
       <view class="gap"></view>
     </view>
     <button class="button1" bindtap="click">返回</button>

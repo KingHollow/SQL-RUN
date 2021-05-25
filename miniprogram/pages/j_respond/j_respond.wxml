@@ -1,0 +1,23 @@
+<!--pages/j_respond/j_respond.wxml-->
+<view class="title">
+  挑战详情
+</view>
+
+<view class="question">
+  <view class="subtitle">
+    <image class="pic" src="../../images/icon/lable.png"></image>
+    判断题
+  </view>
+  <view class="content">
+    {{content}}
+  </view>
+  <radio-group class="radio-group" bindchange="radioChange">
+    <label class="radio" wx:for="{{items}}">
+        <radio value="{{item.value}}" checked="{{item.checked}}"/>{{item.value}}
+    </label>
+  </radio-group>
+</view>
+
+<view class="operate">
+  <button class="back" bindtap="submit">提交</button>
+</view>
