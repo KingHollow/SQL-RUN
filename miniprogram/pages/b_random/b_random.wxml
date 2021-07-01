@@ -1,0 +1,39 @@
+<!--pages/b_homework/b_homework.wxml-->
+<view class="title">
+  题目详情
+</view>
+
+<view class="question">
+  <view class="subtitle">
+    <image class="pic" src="../../images/icon/lable.png"></image>
+    填空题
+  </view>
+  <view class="content">
+    {{content}}
+  </view>
+</view>
+
+<view class="answer">
+  <view wx:for="{{nbanswer}}" wx:for-item="i" wx:if="{{flag==0}}">
+    <input class='input' data-index='{{index}}' placeholder='请输入第{{index+1}}空答案' placeholder-class='iconfont icon-sousuo mid-font '
+      placeholder-style='color:#999999;font-size:14px' bindinput="answerInput"/>
+  </view>
+</view>
+
+<button class="submit" bindtap="submit" wx:if="{{flag==0}}">提交</button>
+
+<view class="operate" wx:if="{{flag==1}}">
+  <button class="attend" bindtap="finish">结束做题</button>
+  <button class="back" bindtap="again">再来一题</button>
+</view>
+
+<view class="nbanswer" wx:if="{{flag==1}}">
+  <view class="ans-title">【参考答案】</view>
+    <view class="ans-con" wx:for="{{nbanswer}}" wx:key="index">
+      <view>
+        答案{{index+1}}:
+        {{item}}
+      </view>
+      <view class="gap"></view>
+    </view>
+</view>

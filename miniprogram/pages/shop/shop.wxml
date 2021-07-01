@@ -39,7 +39,7 @@
        </view>
        
         </view>
-        <view class = "content">使用pass卡可以在赛跑时更换题目一次。</view>
+        <view class = "content">使用pass卡可以在赛跑答题错误时清除罚时。</view>
       
       </view>
       <view class="line"></view>

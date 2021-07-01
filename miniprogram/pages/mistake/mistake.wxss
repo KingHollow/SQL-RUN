@@ -92,9 +92,14 @@ page{
  }
 
  .text{
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
   margin-top: 10rpx; 
   font-size:  2.3vh;
-  word-break: break-all;
   text-align: left;
   text-indent:2em;
  }

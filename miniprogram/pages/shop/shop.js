@@ -7,9 +7,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    rocket:'9',
-    peal:'6',
-    card:'3',
+    rocket:'6',
+    peal:'4',
+    card:'2',
 
 
   },
@@ -33,7 +33,7 @@ Page({
           }).get().then(res => {
             var coin = res.data[0].coin;
             var rockets = res.data[0].rockets;
-            if (coin < 9) {
+            if (coin < 6) {
               wx.showToast({
                 title: '余额不足',          
                 icon: 'error',          
@@ -41,7 +41,7 @@ Page({
               })
             } else {
               rockets = rockets+1;
-              coin = coin-9;
+              coin = coin-6;
               wx.cloud.callFunction({
                 name: "updatetool", //云函数名
                 data: {
@@ -79,7 +79,7 @@ Page({
           }).get().then(res => {
             var coin = res.data[0].coin;
             var peals = res.data[0].peals;
-            if (coin < 6) {
+            if (coin < 4) {
               wx.showToast({
                 title: '余额不足',           
                 icon: 'error',      
@@ -87,7 +87,7 @@ Page({
               })
             } else {
               peals = peals+1;
-              coin = coin-6;
+              coin = coin-4;
               wx.cloud.callFunction({
                 name: "updatetool", //云函数名
                 data: {
@@ -125,7 +125,7 @@ Page({
           }).get().then(res => {
             var coin = res.data[0].coin;
             var cards = res.data[0].cards;
-            if (coin < 3) {
+            if (coin < 2) {
               wx.showToast({
                 title: '余额不足',          
                 icon: 'error',       
@@ -133,7 +133,7 @@ Page({
               })
             } else {
               cards = cards+1;
-              coin = coin-3;
+              coin = coin-2;
               wx.cloud.callFunction({
                 name: "updatetool", //云函数名
                 data: {

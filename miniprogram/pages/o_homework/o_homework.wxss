@@ -1,0 +1,97 @@
+/* pages/o_homework/o_homework.wxss */
+.title{
+  height:70px;
+  width:100%;
+  font-size:larger;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  color:#42589a;
+}
+
+.subtitle{
+  margin-bottom:20rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.pic{
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 20rpx;
+}
+
+.question{
+  margin-top:40rpx;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+}
+
+.content{
+  text-align: left;
+  margin-top: 30rpx;
+}
+
+.operate{
+  margin-top: 100rpx;
+  display: flex;
+  align-items: center;
+}
+
+.attend{
+  background-color: #5e7dbd;
+  width:30%!important;
+  color: white;
+  font-size:medium;
+}
+
+.back{
+  background-color: rgb(161, 196, 228);
+  width:30%!important;
+  color:white;
+  font-size: medium;
+}
+
+.answer{
+  flex: 1;
+  display: flex;
+  width: 90%;
+  height:100%;
+  margin: 0 5%;
+  overflow: hidden;
+}
+ 
+.textarea {
+  margin-top: 30rpx;
+  background-color: rgba(153, 153, 153, 0.397);
+  padding: 10rpx;
+  font-size: 34rpx;
+  width: 650rpx;
+  height: 400rpx;
+  border-radius: 10px;
+}
+
+.input-radius{
+  border-radius: 15px;
+  border-color: #3d518a;
+  background-color: #88addf;
+  margin: 18px;
+  width: 270px;
+  height: 200rpx;
+  min-height: 0.8rem;
+  word-break: break-all;
+}
+
+.submit{
+  background-color: rgb(179, 188, 196);
+  width:30%!important;
+  color:white;
+  font-size: medium;
+  margin-top: 100rpx;
+}

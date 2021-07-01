@@ -1,0 +1,109 @@
+/* pages/s_answer/s_answer.wxss */
+.title{
+  height:70px;
+  width:100%;
+  font-size:larger;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  color:#42589a;
+}
+
+.subtitle{
+  margin-bottom:20rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.pic{
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 20rpx;
+}
+
+.question{
+  margin-top:60rpx;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+}
+
+.content{
+  text-align: left;
+}
+
+.radio-group{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 100rpx;
+}
+
+.radio{
+  margin-bottom:20rpx;
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+.answer{
+  margin-top: 50rpx;
+  font-weight: 600;
+  color:#3d518a;
+}
+
+.operate{
+  margin-top: 80rpx;
+  display: flex;
+  align-items: center;
+}
+
+.nbanswer{
+  margin-top:120rpx;
+  align-items: center;
+}
+
+.nbbtn{
+  background-color: rgb(161, 196, 228);
+  width:40%!important;
+  text-align:center;
+  color:white;
+}
+
+.windows{
+  width: 450rpx;
+  height: 350rpx;
+  background-color: rgb(221, 222, 223);
+  position: absolute;
+  z-index: 999;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button1{
+  background-color: rgb(161, 196, 228);
+  color: white;
+  margin-top: 60rpx;
+  margin-bottom:30rpx;
+  width: 50%!important;
+  height:25%!important;
+}
+
+.ans-title{
+  margin-top: 130rpx;
+  font-weight: 600;
+  font-size: medium;
+}
+
+.ans-con{
+  margin-top:40rpx;
+  font-size: medium;
+  font-weight: 600;
+}

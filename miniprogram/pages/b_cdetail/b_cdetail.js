@@ -1,21 +1,42 @@
 // pages/b_list/b_list.js
+const db = wx.cloud.database();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    content:"按照报表的数据组织形式、显示方式和作用的不同，Access中的报表可以分为4种基本类型，它们分别是：纵栏式报表、_____报表、图表报表和标签报表。",
-    answer: [ 
-         {value:'表格式'}
-    ],
+    content:"",
+    answer: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var id = options.id;
+    this.setData({
+      id: id
+    });
+    db.collection("blank").where({
+      blankID: id,
+      type: 1
+    }).get().then(res => {
+      var temp = [];
+      var ans = "";
+      for(var i = 0; i < res.data[0].answer.length; i++){
+        ans = "";
+        for(var j = 0; j < res.data[0].answer[i].length; j++){
+          ans = ans + res.data[0].answer[i][j] + ",";
+        }
+        var data = {value: ans.substring(0, ans.length-1)};
+        temp.push(data);
+      }
+      this.setData({
+        content: res.data[0].content,
+        answer: temp
+      })
+    })
   },
 
   /**

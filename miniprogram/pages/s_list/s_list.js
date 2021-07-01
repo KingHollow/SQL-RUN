@@ -26,7 +26,9 @@ Page({
     this.setData({
       id: id
     });
-    db.collection("sinChoice").where({sinID: id}).get().then(res => {
+    db.collection("sinChoice").where({
+      sinID: id,
+    }).get().then(res => {
       var temp = [];
       for(var i = 0; i < res.data[0].options.length; i++){
         var data = {value: res.data[0].options[i]};

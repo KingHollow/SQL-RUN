@@ -20,6 +20,17 @@
   </block>
 </view>
 
-<view class="operate">
+<view class="operate" wx:if="{{flag==0}}">
   <button class="back" bindtap="submit">提交</button>
+</view>
+
+<view class="nbanswer" wx:if="{{flag==1}}">
+  <view class="ans-title">【参考答案】</view>
+    <view class="ans-con" wx:for="{{nbanswer}}" wx:key="index">
+      <view>
+        答案{{index+1}}:
+        {{item}}
+      </view>
+      <view class="gap"></view>
+    </view>
 </view>

@@ -7,7 +7,7 @@
 
       <view class="inputView">
 
-        <view class="chapter" bindtap="random">{{item}}</view>
+        <view class="chapter" bindtap="random" data-chapter="{{item.flag}}">{{item.name}}</view>
       </view>
 
       <view class="line"></view>

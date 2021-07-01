@@ -6,10 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    content:"在层次数据模型中，有2个节点无双亲。",
+    content:"",
     
-    myanswer:"对",
-    nbanswer:"错",
+    myanswer:"",
+    nbanswer:"",
 
     show:false,
   },

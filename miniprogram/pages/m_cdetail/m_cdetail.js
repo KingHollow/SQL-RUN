@@ -1,19 +1,15 @@
 // pages/m_list/m_list.js
+const db = wx.cloud.database();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    content:"查询条件中“Between 70 and 90”的意思是_____ 。",
-    list: [
-      {value: 'A.文件形式'},
-      {value: 'B.数据模型'},
-      {value: 'C.记录形式'},
-      {value: 'D.数据存储方式'},
-    ],
+    content:"",
+    list: [],
     checkedList:[],
-    answer:"AB"
+    answer:""
   },
 
 
@@ -21,7 +17,25 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var id = options.id;
+    this.setData({
+      id: id
+    });
+    db.collection("mulChoice").where({
+      mulID: id,
+      type: 1
+    }).get().then(res => {
+      var temp = [];
+      for(var i = 0; i < res.data[0].options.length; i++){
+        var data = {value: res.data[0].options[i]};
+        temp.push(data);
+      }
+      this.setData({
+        list: temp,
+        content: res.data[0].content,
+        answer: res.data[0].answer
+      })
+    })
   },
 
   /**

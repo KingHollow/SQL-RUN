@@ -1,0 +1,33 @@
+<!--pages/j_homework/j_homework.wxml-->
+<view class="title">
+  题目详情
+</view>
+
+<view class="question">
+  <view class="subtitle">
+    <image class="pic" src="../../images/icon/lable.png"></image>
+    判断题
+  </view>
+  <view class="content">
+    {{content}}
+  </view>
+  <radio-group class="radio-group" bindchange="radioChange" wx:if="{{flag==0}}">
+    <label class="radio" wx:for="{{items}}">
+        <radio value="{{item.value}}" checked="{{item.checked}}"/>{{item.value}}
+    </label>
+  </radio-group>
+</view>
+
+<button class="submit" bindtap="submit" wx:if="{{flag==0}}">提交</button>
+
+<view class="operate" wx:if="{{flag==1}}">
+  <button class="attend" bindtap="finish">结束做题</button>
+  <button class="back" bindtap="again">再来一题</button>
+</view>
+
+<view class="nbanswer" wx:if="{{flag==1}}">
+  <view class="ans-title">【参考答案】</view>
+    <view class="ans-con">
+      {{nbanswer}}
+    </view>
+</view>

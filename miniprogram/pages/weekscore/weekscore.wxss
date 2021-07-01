@@ -1,0 +1,132 @@
+/* pages/weekscore/weekscore.wxss */
+.title{
+  height:70px;
+  width:100%;
+  font-size:larger;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight:bold;
+  color:#42589a;
+}
+
+.subtitle{
+  font-weight:bold;
+  color:#42589a;
+}
+
+.score-week{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.score-week-text{
+  color:#5e7dbd;
+  font-size:large;
+}
+
+.divider{
+  margin-top: 20rpx;
+  height:4rpx;
+  width: 700rpx;
+  background-color:rgb(95, 95, 95);
+}
+
+.rule{
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 10rpx;
+}
+
+progress {
+  margin: 10px;
+  width: 580rpx;
+}
+
+.score-all{
+  margin-top: 50rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.score-mono{
+  background-color:white;
+  border-radius: 25rpx;
+  width: 700rpx;
+  height: 120rpx;
+  padding:10rpx;
+}
+
+.detail{
+  display: flex;
+  align-items: center;
+}
+
+.margin{
+  height: 40rpx;
+}
+
+.mask{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(56, 55, 55, 0.651);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 900;
+}
+
+.windowsgarden{
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+  top:0;
+  left: 0;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.windows{
+  width: 700rpx;
+  height: 900rpx;
+  background-color: rgb(221, 222, 223);
+  position: absolute;
+  z-index: 999;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15rpx;
+}
+
+.ans-title{
+  margin-top: 30rpx;
+  font-weight: 600;
+  font-size: medium;
+  color:#42589A;
+}
+
+.ans-con{
+  margin-top:40rpx;
+  font-size: medium;
+  font-weight: 600;
+}
+
+.button{
+  background-color: rgb(161, 196, 228);
+  color: white;
+  margin-top: rpx;
+  margin-bottom:30rpx;
+  width: 40%!important;
+  height:13%!important;
+}
+
+.rulepic{
+  margin-top: 70rpx;
+}

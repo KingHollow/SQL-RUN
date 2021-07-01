@@ -1,0 +1,38 @@
+<!--pages/m_homework/m_homework.wxml-->
+<view class="title">
+  题目详情
+</view>
+
+<view class="question">
+  <view class="subtitle">
+    <image class="pic" src="../../images/icon/lable.png"></image>
+    多选题
+  </view>
+  <view class="content">
+    {{content}}
+  </view>
+  <checkbox-group class="checkbox-group" bindchange="HandelItemChange" wx:if="{{flag==0}}">
+    <checkbox  class="checkbox" value="{{item}}" wx:for="{{list}}" wx:key="index">
+      {{item}}
+    </checkbox>
+  </checkbox-group>
+  <view class="checkbox-group"  wx:if="{{flag==1}}">
+    <view  class="checkbox" value="{{item}}" wx:for="{{list}}" wx:key="index">
+      {{item}}
+    </view>
+  </view>
+</view>
+
+<button class="submit" bindtap="submit" wx:if="{{flag==0}}">提交</button>
+
+<view class="operate" wx:if="{{flag==1}}">
+  <button class="attend" bindtap="finish">结束做题</button>
+  <button class="back" bindtap="again">再来一题</button>
+</view>
+
+<view class="nbanswer" wx:if="{{flag==1}}">
+  <view class="ans-title">【参考答案】</view>
+    <view class="ans-con">
+      {{nbanswer}}
+    </view>
+</view>

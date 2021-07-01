@@ -1,0 +1,75 @@
+<!--pages/weekscore/weekscore.wxml-->
+<view class="title">
+  本周积分
+  <image class="rule" src="../../images/icon/ques.png" bindtap="checkrule"></image>
+</view>
+
+<view class="score-week">
+  <view class="score-week-text">
+    本周总积分：{{weekscore}}
+  </view>
+
+</view>
+
+<view class="score-all">
+  <view class="score-mono">
+    <view class="subtitle">
+      · 成功发起挑战
+    </view>
+    <view class="detail">
+      <progress percent="{{challengego_per}}" color="#506caa" border-radius='15' stroke-width="15" />
+      <view class="score">{{challengego}}/{{challengego_top}}</view>
+    </view>
+  </view>
+
+  <view class="margin"></view>
+
+  <view class="score-mono">
+    <view class="subtitle">
+      · 成功回答提问
+    </view>
+    <view class="detail">
+      <progress percent="{{questionans_per}}" color="#506caa" border-radius='15' stroke-width="15" />
+      <view class="score">{{questionans}}/{{questionans_top}}</view>
+    </view>
+  </view>
+
+  <view class="margin"></view>
+
+  <view class="score-mono">
+    <view class="subtitle">
+      · 随机答题
+    </view>
+    <view class="detail">
+      <progress percent="{{random_per}}" color="#506caa" border-radius='15' stroke-width="15" />
+      <view class="score">{{random}}/{{random_top}}</view>
+    </view>
+  </view>
+
+  <view class="margin"></view>
+
+<view class="score-mono">
+  <view class="subtitle">
+    · 赛跑
+  </view>
+  <view class="detail">
+    <progress percent="{{run_per}}" color="#506caa" border-radius='15' stroke-width="15" />
+    <view class="score">{{run}}/{{run_top}}</view>
+  </view>
+</view>
+</view>
+
+
+<view class="mask" wx:if="{{show}}"></view>
+<view class="windowsgarden" wx:if="{{show}}">
+  <view class="windows" wx:if="{{show}}">
+    <view class="ans-title">积分规则</view>
+    <view class="ans-con">
+      <view>1.周积分每周更新，于周日24：00清零。</view>
+      <view>2.学生学期总积分由每周积分累加得到，作为课程平时分的构成要素。</view>
+      <view>3.周积分获取渠道与规则如下表所示。</view>
+    </view>
+    <image class="rulepic" src="../../images/pics/rule.png"></image>
+    <button class="button" bindtap="checkrule" style="height=100px">返回</button>
+  </view>
+</view>

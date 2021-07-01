@@ -32,8 +32,10 @@
 }
 
 .gap{
-  height: 3rpx;
-  background-color: #2e2e2e;
+  height: 170rpx;
+  display:flex;
+  align-items:center;
+  flex-direction: column;
 }
 
 

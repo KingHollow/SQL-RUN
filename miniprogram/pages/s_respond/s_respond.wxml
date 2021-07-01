@@ -11,13 +11,25 @@
   <view class="content">
     {{content}}
   </view>
-  <radio-group class="radio-group" bindchange="radioChange">
+  <radio-group class="radio-group" bindchange="radioChange" wx:if="{{flag==0}}">
     <label class="radio" wx:for="{{items}}">
-        <radio value="{{item.value}}" checked="{{item.checked}}"/>{{item.value}}
+        <radio value="{{item}}" checked="{{item.checked}}"/>{{item}}
     </label>
   </radio-group>
+  <view class="radio-group" wx:if="{{flag==1}}">
+    <view class="radio" wx:for="{{items}}">
+        {{item}}
+    </view>
+  </view>
 </view>
 
-<view class="operate">
+<view class="operate" wx:if="{{flag==0}}">
   <button class="back" bindtap="submit">提交</button>
+</view>
+
+<view class="nbanswer" wx:if="{{flag==1}}">
+  <view class="ans-title">【参考答案】</view>
+    <view class="ans-con">
+      {{nbanswer}}
+    </view>
 </view>

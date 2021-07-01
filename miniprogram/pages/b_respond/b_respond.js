@@ -1,16 +1,18 @@
 // pages/b_respond/b_respond.js
+const app = getApp();
+const db = wx.cloud.database();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    content:"按照报表的数据组织形式、显示方式和作用的不同，Access中的报表可以分为4种基本类型，它们分别是：纵栏式报表、_____报表、图表报表和标签报表。",
-    nbanswer: [ 
-      {value:'表格式'},
-      {value:'blank'},
-      {value:'也是表格式'},
-  ],
+    questionid:'',
+    content:"",
+    state:'',//challenge
+    flag:0,
+    nbanswer: [],
     answer:[]
   },
 
@@ -21,11 +23,12 @@ Page({
     var val = e.detail.value; //当前输入的值
     console.log(val)
     var _list = this.data.answer; //data中存放的数据
-    for (let i = 0; i < _list.length; i++) {
-      if (idx == i) {
-        _list[i] = { val } //将当前输入的值放到数组中对应的位置
-      }
-    }
+    _list[idx] = val
+    // for (let i = 0; i < _list.length; i++) {
+    //   if (idx == i) {
+    //     _list[i] = { val } //将当前输入的值放到数组中对应的位置
+    //   }
+    // }
     this.setData({
       answer: _list
     })
@@ -45,11 +48,84 @@ Page({
               }
             }
             if(flag){
-              wx.showToast({
-                title: '完成挑战！',
-                icon: 'success', 
-                duration: 1500 
+              console.log(that.data.answer)
+              console.log(that.data.nbanswer)
+              var correct;
+              for (var i=0;i<that.data.answer.length;i++) {
+                
+                  for (var j=0;j<that.data.nbanswer[i].length;j++) {
+                    if (that.data.answer[i]!=that.data.nbanswer[i][j]) {
+                      correct = false;
+                      continue;
+                    } else {
+                      correct = true;
+                      break;
+                    }
+                  }
+
+                  if(!correct) break;
+                
+              }
+
+              if (!correct){
+                //存错题
+                db.collection('mistake').add({
+                  data: {
+                    answer:that.data.answer,
+                    questionID:that.data.questionid,
+                    studentID:wx.getStorageSync('id'),
+                    type:1
+                  },
+                  success: res => {
+                    // 在返回结果中会包含新创建的记录的 _id
+                    
+                    console.log('[数据库] [新增记录] 成功')
+                  },
+                  fail: err => {
+                    
+                    console.error('[数据库] [新增记录] 失败：', err)
+                  }
+                  
+                })
+                wx.showToast({
+                  title: '答案错误',
+                  icon: 'error', 
+                  duration: 1500 
+                })
+         
+              } else {
+                wx.showToast({
+                  title: '答案正确',
+                  icon: 'success', 
+                  duration: 1500 
+                })
+              }
+              wx.cloud.callFunction({
+                // 云函数名称
+                name: 'updatechallenge',
+                // 传给云函数的参数
+                data: {
+                  questionid: that.data.questionid,
+                  state: 2
+              },
+            })
+
+            const pages = getCurrentPages(); //获取页面栈堆
+            const prev = pages[pages.length - 2]; //-2即为父级页面，想跳两层的话就-3
+            let ads = prev.data.list
+            for (var i = 0;i < ads.length;i++) {
+              if (ads[i].questionID == that.data.questionid) {
+                ads[i].state = 2;
+                prev.setData({ //用setData()的特性给父级页面赋值并重新渲染
+                  list: ads
               })
+              }
+            }
+
+              that.setData({
+                flag:1
+              })
+             
             } 
             else{
               wx.showToast({
@@ -68,9 +144,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    for(var index in this.data.nbanswer){
+    for(var i=0;i< this.data.nbanswer.length;i++){
       this.data.answer.push("")
     }
+    var quesid = options.id;
+
+    db.collection("blank").where({
+      blankID: quesid,
+      type:1
+    }).get().then(res => {
+      console.log(res.data)
+      
+      this.setData({
+        questionid:quesid,
+        content: res.data[0].content,
+        nbanswer:res.data[0].answer,
+      })
+    })
+    console.log(this.data)
   },
 
   /**

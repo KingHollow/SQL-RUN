@@ -1,0 +1,28 @@
+<!--pages/b_homework/b_homework.wxml-->
+<view class="title">
+  题目详情
+</view>
+
+<view class="question">
+  <view class="subtitle">
+    <image class="pic" src="../../images/icon/lable.png"></image>
+    填空题
+  </view>
+  <view class="content">
+    {{content}}
+  </view>
+</view>
+
+<view class="answer">
+  <view wx:for="{{nbanswer}}" wx:for-item="i">
+    <input class='input' data-index='{{index}}' value='{{oldanswer[index]}}' placeholder='请输入第{{index+1}}空答案' placeholder-class='iconfont icon-sousuo mid-font '
+      placeholder-style='color:#999999;font-size:14px' bindinput="answerInput"/>
+  </view>
+</view>
+
+<view class="operate">
+  <button class="attend" bindtap="problemChangeBack">上一题</button>
+  <button class="back" bindtap="problemChangeNext">下一题</button>
+</view>
+
+<button class="submit" bindtap="submit">提交</button>

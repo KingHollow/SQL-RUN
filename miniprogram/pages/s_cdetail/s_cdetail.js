@@ -1,20 +1,16 @@
 // pages/s_list/s_list.js
+const db = wx.cloud.database();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    items: [
-      {value: 'A.文件形式'},
-      {value: 'B.数据模型'},
-      {value: 'C.记录形式'},
-      {value: 'D.数据存储方式'},
-    ],
+    items: [],
 
-    content:"数据库类型是按照_______来划分的。",
+    content:"",
 
-    answer:"B"
+    answer:""
   },
 
 
@@ -22,7 +18,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var id = options.id;
+    this.setData({
+      id: id,
+      type: 1
+    });
+    db.collection("sinChoice").where({sinID: id}).get().then(res => {
+      var temp = [];
+      for(var i = 0; i < res.data[0].options.length; i++){
+        var data = {value: res.data[0].options[i]};
+        temp.push(data);
+      }
+      this.setData({
+        items: temp,
+        content: res.data[0].content,
+        answer: res.data[0].answer
+      })
+    })
   },
 
   /**

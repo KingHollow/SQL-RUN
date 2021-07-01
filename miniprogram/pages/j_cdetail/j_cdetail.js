@@ -1,19 +1,32 @@
 // pages/j_list/j_list.js
+const db = wx.cloud.database();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    content:"在层次数据模型中，有2个节点无双亲。",
-    answer:"错误"
+    content:"",
+    answer:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var id = options.id;
+    this.setData({
+      id: id
+    });
+    db.collection("judgement").where({
+      judgeID: id,
+      type: 1
+    }).get().then(res => {
+      this.setData({
+        content: res.data[0].content,
+        answer: res.data[0].answer
+      })
+    })
   },
 
   /**

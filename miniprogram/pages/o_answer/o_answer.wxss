@@ -1,0 +1,119 @@
+/* pages/o_answer/o_answer.wxss */
+.title{
+  height:70px;
+  width:100%;
+  font-size:larger;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  color:#42589a;
+}
+
+.subtitle{
+  margin-bottom:20rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.pic{
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 20rpx;
+}
+
+.question{
+  margin-top:60rpx;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+}
+
+.content{
+  text-align: left;
+  margin-top: 30rpx;
+}
+
+.answer{
+  margin-top: 100rpx;
+  font-weight: 600;
+  color:#3d518a;
+}
+
+.operate{
+  margin-top: 300rpx;
+  display: flex;
+  align-items: center;
+}
+
+.nbanswer{
+  margin-top:120rpx;
+  align-items: center;
+}
+
+.nbbtn{
+  background-color: rgb(161, 196, 228);
+  width:40%!important;
+  text-align:center;
+  color:white;
+}
+
+.mask{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(56, 55, 55, 0.651);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 900;
+}
+
+.windows{
+  width: 450rpx;
+  height: 350rpx;
+  background-color: rgb(221, 222, 223);
+  position: absolute;
+  z-index: 999;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button1{
+  background-color: rgb(161, 196, 228);
+  color: white;
+  margin-top: 50rpx;
+  margin-bottom:30rpx;
+  width: 50%!important;
+  height:25%!important;
+}
+
+.windowsgarden{
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+  top:0;
+  left: 0;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ans-title{
+  margin-top: 130rpx;
+  font-weight: 600;
+  font-size: medium;
+}
+
+.ans-con{
+  margin-top:40rpx;
+  font-size: medium;
+  font-weight: 600;
+}

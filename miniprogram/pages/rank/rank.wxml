@@ -42,6 +42,15 @@
    我要做题
  </button>
 
+ <button class="register" hover-class="hover" bindtap="turntorun">
+   <image class="logo" src="../../images/icon/run.png"></image>
+   我要赛跑
+ </button>
+
+ <view class = "gap"></view>
+
+
+
 </view>
 </view>
 

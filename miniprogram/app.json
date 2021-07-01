@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/rank/rank",
+    "pages/homework/homework",
+    
     "pages/smine/smine",
     "pages/login/login",
     "pages/class/class",

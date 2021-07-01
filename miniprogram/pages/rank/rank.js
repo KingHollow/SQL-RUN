@@ -75,6 +75,14 @@ Page({
 
   },
 
+  turntorun:function(e) {
+    wx.navigateTo({
+      url: '../../pages/run_wait/run_wait',
+    })
+
+
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

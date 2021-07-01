@@ -1,0 +1,25 @@
+<!--pages/m_answer/m_answer.wxml-->
+<view class="title">
+  作业详情
+</view>
+
+<view class="question">
+  <view class="subtitle">
+    <image class="pic" src="../../images/icon/lable.png"></image>
+    多选题
+  </view>
+  <view class="content">
+    {{content}}
+  </view>
+  <view class="checkbox-group">
+    <view  class="checkbox" value="{{item.value}}" wx:for="{{list}}" wx:key="index">
+      {{item.value}}
+    </view>
+  </view>
+  <view class="answer">
+    我的答案：{{answer}}
+  </view>
+  <view class="ans-title">【参考答案】</view>
+    <view class="ans-con">{{nbanswer}}</view>
+</view>
+

@@ -1,0 +1,27 @@
+<!--pages/o_homework/o_homework.wxml-->
+<view class="title">
+  题目详情
+</view>
+
+<view class="question">
+  <view class="subtitle">
+    <image class="pic" src="../../images/icon/lable.png"></image>
+    主观题
+  </view>
+  <view class="content">
+    {{content}}
+  </view>
+</view>
+
+ <view class='answer'>
+  <textarea class="textarea" fixed="true"  value="{{oldanswer}}" maxlength="5000"  
+        focus='{{focus}}' name="content"   placeholder="{{de_text}}" bindinput="answerInput"/>
+ </view>
+
+
+ <view class="operate">
+  <button class="attend" bindtap="problemChangeBack">上一题</button>
+  <button class="back" bindtap="problemChangeNext">下一题</button>
+</view>
+
+<button class="submit" bindtap="submit">提交</button>
