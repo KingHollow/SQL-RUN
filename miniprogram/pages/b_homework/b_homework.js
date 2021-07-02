@@ -81,21 +81,9 @@ Page({
         db.collection("blank").where({
           blankID: quesid,
         }).get().then(res => {
-          var temp = [];
-          var ans = "";
-          for (var i = 0; i < res.data[0].answer.length; i++) {
-            ans = "";
-            for (var j = 0; j < res.data[0].answer[i].length; j++) {
-              ans = ans + res.data[0].answer[i][j] + ",";
-            }
-            var data = {
-              value: ans.substring(0, ans.length - 1)
-            };
-            temp.push(data);
-          }
           this.setData({
             content: res.data[0].content,
-            nbanswer: temp
+            nbanswer: res.data[0].answer
           })
           var that = this;
           for (var index in that.data.nbanswer) {
@@ -112,21 +100,9 @@ Page({
           blankID: quesid,
           type: 2
         }).get().then(res => {
-          var temp = [];
-          var ans = "";
-          for (var i = 0; i < res.data[0].answer.length; i++) {
-            ans = "";
-            for (var j = 0; j < res.data[0].answer[i].length; j++) {
-              ans = ans + res.data[0].answer[i][j] + ",";
-            }
-            var data = {
-              value: ans.substring(0, ans.length - 1)
-            };
-            temp.push(data);
-          }
           this.setData({
             content: res.data[0].content,
-            nbanswer: temp
+            nbanswer: res.data[0].answer
           })
           var that = this;
           for (var index in that.data.nbanswer) {
@@ -163,6 +139,25 @@ Page({
           var time = "";
           var score = "";
           answer[this.data.index].ans = this.data.answer;
+          var correct = false;
+          var that = this;
+          for (var i = 0; i < that.data.answer.length; i++) {
+            for (var j = 0; j < that.data.nbanswer[i].length; j++) {
+              if (that.data.answer[i] != that.data.nbanswer[i][j]) {
+                correct = false;
+                continue;
+              } else {
+                correct = true;
+                break;
+              }
+            }
+            if (!correct) break;
+          }
+          if (correct) {
+            answer[that.data.index].result = "√";
+          } else {
+            answer[that.data.index].result = "×";
+          }
           wx.cloud.callFunction({
             // 云函数名称
             name: 'updateresult',
@@ -229,6 +224,25 @@ Page({
         var time = "";
         var score = "";
         answer[this.data.index].ans = this.data.answer;
+        var correct = false;
+        var that = this;
+        for (var i = 0; i < that.data.answer.length; i++) {
+          for (var j = 0; j < that.data.nbanswer[i].length; j++) {
+            if (that.data.answer[i] != that.data.nbanswer[i][j]) {
+              correct = false;
+              continue;
+            } else {
+              correct = true;
+              break;
+            }
+          }
+          if (!correct) break;
+        }
+        if (correct) {
+          answer[that.data.index].result = "√";
+        } else {
+          answer[that.data.index].result = "×";
+        }
         wx.cloud.callFunction({
           // 云函数名称
           name: 'updateresult',
@@ -293,6 +307,24 @@ Page({
           var time = formatTime(new Date());
           var score = "";
           answer[that.data.index].ans = that.data.answer;
+          var correct = false;
+          for (var i = 0; i < that.data.answer.length; i++) {
+            for (var j = 0; j < that.data.nbanswer[i].length; j++) {
+              if (that.data.answer[i] != that.data.nbanswer[i][j]) {
+                correct = false;
+                continue;
+              } else {
+                correct = true;
+                break;
+              }
+            }
+            if (!correct) break;
+          }
+          if(correct){
+            answer[that.data.index].result = "√";
+          }else{
+            answer[that.data.index].result = "×";
+          }
           wx.cloud.callFunction({
             // 云函数名称
             name: 'updateresult',

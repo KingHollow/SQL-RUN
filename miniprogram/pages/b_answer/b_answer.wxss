@@ -36,7 +36,7 @@
 .content{
   text-align: left;
   margin-top: 30rpx;
-  margin-bottom: 100rpx;
+  margin-bottom: 60rpx;
 }
 
 .answer{
@@ -127,7 +127,7 @@
 }
 
 .ans-title{
-  margin-top: 100rpx;
+  margin-top: 60rpx;
   font-weight: 600;
   font-size: medium;
   text-align: center;
@@ -138,4 +138,24 @@
   margin-top:40rpx;
   font-size: medium;
   font-weight: 600;
+}
+
+.operate{
+  margin-top: 60rpx;
+  display: flex;
+  align-items: center;
+}
+
+.attend{
+  background-color: #5e7dbd;
+  width:30%!important;
+  color: white;
+  font-size:medium;
+}
+
+.back{
+  background-color: rgb(161, 196, 228);
+  width:30%!important;
+  color:white;
+  font-size: medium;
 }

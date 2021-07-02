@@ -122,6 +122,7 @@ Page({
           var time = "";
           var score = "";
           answer[this.data.index].ans = this.data.answer;
+          answer[that.data.index].result = "";
           wx.cloud.callFunction({
             // 云函数名称
             name: 'updateresult',
@@ -188,6 +189,7 @@ Page({
         var time = "";
         var score = "";
         answer[this.data.index].ans = this.data.answer;
+        answer[that.data.index].result = "";
         wx.cloud.callFunction({
           // 云函数名称
           name: 'updateresult',
@@ -252,6 +254,7 @@ Page({
           var time = formatTime(new Date());
           var score = "";
           answer[that.data.index].ans = that.data.answer;
+          answer[that.data.index].result = "";
           wx.cloud.callFunction({
             // 云函数名称
             name: 'updateresult',

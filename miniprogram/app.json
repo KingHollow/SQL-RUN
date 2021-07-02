@@ -1,10 +1,11 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/rank/rank",
     "pages/homework/homework",
     
     "pages/smine/smine",
-    "pages/login/login",
+    
     "pages/class/class",
     "pages/task/task",
     "pages/study/study",

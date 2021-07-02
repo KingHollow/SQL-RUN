@@ -1,0 +1,31 @@
+<!--pages/run_competitor/run_competitor.wxml-->
+<view class="rank">
+  <view class="title">
+    <view class="title-name">可挑战列表</view>
+  </view>
+
+  <view class="rank-list" style="width: 700rpx; height: 1040rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">
+    <view class="list-title-group">
+      <view class="title-locate">
+        <view class="list-title">姓名</view>
+        <view class="underline"></view>
+      </view>
+      <view class="title-locate">
+        <view class="list-title">积分</view>
+        <view class="underline"></view>
+      </view>
+    </view>
+    <scroll-view scroll-y="true" style="height: 800rpx">
+      <view class="student-all">
+        <view class="name-all">
+          <view class="underline1"></view>
+          <view class="student" wx:for="{{student}}" wx:key = "index" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="invite">{{item.name}}</view>
+        </view>
+        <view class="score-all">
+          <view class="underline1"></view>
+          <view class="student" wx:for="{{student}}" wx:key = "index" >{{item.score}}</view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

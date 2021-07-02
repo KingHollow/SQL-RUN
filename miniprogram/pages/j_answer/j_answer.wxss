@@ -117,3 +117,23 @@
   font-size: medium;
   font-weight: 600;
 }
+
+.operate{
+  margin-top: 80rpx;
+  display: flex;
+  align-items: center;
+}
+
+.attend{
+  background-color: #5e7dbd;
+  width:30%!important;
+  color: white;
+  font-size:medium;
+}
+
+.back{
+  background-color: rgb(161, 196, 228);
+  width:30%!important;
+  color:white;
+  font-size: medium;
+}

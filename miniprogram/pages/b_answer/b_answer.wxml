@@ -1,6 +1,6 @@
 <!--pages/b_answer/b_answer.wxml-->
 <view class="title">
-  作业详情
+  参考答案
 </view>
 
 <view class="question">
@@ -21,12 +21,12 @@
   </view>
   <view class="ans-title">【参考答案】</view>
     <view class="answer1" wx:for="{{nbanswer}}" wx:key="index">
-      答案{{index+1}}
-      <view class="answer-group">
-        <view class="answer1" wx:for="{{item.okanswer}}" wx:for-item="okanswer" wx:key="index">
-          {{okanswer.value}};
-        </view>
-      </view>
+      答案{{index+1}}：{{item.value}}
       <view class="gap"></view>
     </view>
+</view>
+
+<view class="operate">
+  <button class="attend" bindtap="problemChangeBack">上一题</button>
+  <button class="back" bindtap="problemChangeNext">下一题</button>
 </view>

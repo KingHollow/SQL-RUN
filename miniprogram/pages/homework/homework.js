@@ -274,33 +274,34 @@ Page({
               score: ""
             }
           })
+          if (rm.data[0].problem[0][0] == 's') {
+            wx.navigateTo({
+              url: '../s_homework/s_homework?quesid=' + rm.data[0].problem[0] + '&homeworkid=' + homeworkid + "&index=0&type=" + rm.data[0].type,
+            })
+          }
+          if (rm.data[0].problem[0][0] == 'm') {
+            wx.navigateTo({
+              url: '../m_homework/m_homework?quesid=' + rm.data[0].problem[0] + '&homeworkid=' + homeworkid + "&index=0&type=" + rm.data[0].type,
+            })
+          }
+          if (rm.data[0].problem[0][0] == 'j') {
+            wx.navigateTo({
+              url: '../j_homework/j_homework?quesid=' + rm.data[0].problem[0] + '&homeworkid=' + homeworkid + "&index=0&type=" + rm.data[0].type,
+            })
+          }
+          if (rm.data[0].problem[0][0] == 'b') {
+            wx.navigateTo({
+              url: '../b_homework/b_homework?quesid=' + rm.data[0].problem[0] + '&homeworkid=' + homeworkid + "&index=0&type=" + rm.data[0].type,
+            })
+          }
+          if (rm.data[0].problem[0][0] == 'o') {
+            wx.navigateTo({
+              url: '../o_homework/o_homework?quesid=' + rm.data[0].problem[0] + '&homeworkid=' + homeworkid + "&index=0&type=" + rm.data[0].type,
+            })
+          }
         }
       })
-      if (rm.data[0].problem[0][0] == 's') {
-        wx.navigateTo({
-          url: '../s_homework/s_homework?quesid=' + rm.data[0].problem[0] + '&homeworkid=' + homeworkid + "&index=0&type=" + rm.data[0].type,
-        })
-      }
-      if (rm.data[0].problem[0][0] == 'm') {
-        wx.navigateTo({
-          url: '../m_homework/m_homework?quesid=' + rm.data[0].problem[0] + '&homeworkid=' + homeworkid + "&index=0&type=" + rm.data[0].type,
-        })
-      }
-      if (rm.data[0].problem[0][0] == 'j') {
-        wx.navigateTo({
-          url: '../j_homework/j_homework?quesid=' + rm.data[0].problem[0] + '&homeworkid=' + homeworkid + "&index=0&type=" + rm.data[0].type,
-        })
-      }
-      if (rm.data[0].problem[0][0] == 'b') {
-        wx.navigateTo({
-          url: '../b_homework/b_homework?quesid=' + rm.data[0].problem[0] + '&homeworkid=' + homeworkid + "&index=0&type=" + rm.data[0].type,
-        })
-      }
-      if (rm.data[0].problem[0][0] == 'o') {
-        wx.navigateTo({
-          url: '../o_homework/o_homework?quesid=' + rm.data[0].problem[0] + '&homeworkid=' + homeworkid + "&index=0&type=" + rm.data[0].type,
-        })
-      }
+      
     })
   },
 

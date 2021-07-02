@@ -1,6 +1,6 @@
 <!--pages/o_answer/o_answer.wxml-->
 <view class="title">
-  作业详情
+  参考答案
 </view>
 
 <view class="question">
@@ -16,4 +16,9 @@
   </view>
   <view class="ans-title">【参考答案】</view>
   <view class="ans-con">{{nbanswer}}</view>
+</view>
+
+<view class="operate">
+  <button class="attend" bindtap="problemChangeBack">上一题</button>
+  <button class="back" bindtap="problemChangeNext">下一题</button>
 </view>

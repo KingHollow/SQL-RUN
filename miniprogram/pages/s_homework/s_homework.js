@@ -34,6 +34,7 @@ Page({
     homeworkid: '',
     index: 0,
     type: 0,
+    nbanswer: "",
     oldanswer: "",
     oldindex: ""
   },
@@ -65,8 +66,10 @@ Page({
       studentID: wx.getStorageSync('id')
     }).get().then(r => {
       console.log(r.data[0])
-      if(r.data[0].answer[index].ans != undefined){
-        this.setData({ oldanswer: r.data[0].answer[index].ans });
+      if (r.data[0].answer[index].ans != undefined) {
+        this.setData({
+          oldanswer: r.data[0].answer[index].ans
+        });
       }
       if (type == 0) {
         db.collection("sinChoice").where({
@@ -82,6 +85,7 @@ Page({
           this.setData({
             items: temp,
             content: res.data[0].content,
+            nbanswer: res.data[0].answer
           })
           var that = this;
           if (that.data.oldanswer == 'A') {
@@ -114,7 +118,7 @@ Page({
               answer: that.data.oldanswer
             })
           }
-  
+
         })
       } else {
         db.collection("sinChoice").where({
@@ -131,6 +135,7 @@ Page({
           this.setData({
             items: temp,
             content: res.data[0].content,
+            nbanswer: res.data[0].answer
           })
           var that = this;
           if (that.data.oldanswer == 'A') {
@@ -153,7 +158,7 @@ Page({
               oldindex: 3
             })
           }
-  
+
           if (that.data.oldanswer != "") {
             var temp = that.data.items;
             console.log(that.data)
@@ -167,7 +172,7 @@ Page({
         })
       }
     })
-    
+
   },
 
   problemChangeNext: function (e) {
@@ -191,6 +196,12 @@ Page({
           var time = "";
           var score = "";
           answer[this.data.index].ans = this.data.answer;
+          var that = this;
+          if (that.data.answer == that.data.nbanswer) {
+            answer[that.data.index].result = "√";
+          } else {
+            answer[that.data.index].result = "×";
+          }
           console.log(answer)
           wx.cloud.callFunction({
             // 云函数名称
@@ -258,6 +269,12 @@ Page({
         var time = "";
         var score = "";
         answer[this.data.index].ans = this.data.answer;
+        var that = this;
+        if (that.data.answer == that.data.nbanswer) {
+          answer[that.data.index].result = "√";
+        } else {
+          answer[that.data.index].result = "×";
+        }
         wx.cloud.callFunction({
           // 云函数名称
           name: 'updateresult',
@@ -322,6 +339,11 @@ Page({
           var time = formatTime(new Date());
           var score = "";
           answer[that.data.index].ans = that.data.answer;
+          if (that.data.answer == that.data.nbanswer) {
+            answer[that.data.index].result = "√";
+          } else {
+            answer[that.data.index].result = "×";
+          }
           wx.cloud.callFunction({
             // 云函数名称
             name: 'updateresult',

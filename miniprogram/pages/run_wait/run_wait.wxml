@@ -1,0 +1,30 @@
+<!--pages/run_wait/run_wait.wxml-->
+<view class="image">
+  <image class="pic" src="../../images/pics/start.png" mode="aspectFill"></image>
+</view>
+<view class="title">
+  <text class="SQL">SQL>SELECT competitor FROM your class</text>
+</view>
+<view class='whole'>
+  <!-- 个人信息 -->
+  <button class="register">
+    玩家A：{{userInfoAnickname}}
+  </button>
+  <!-- 邀请按钮-->
+  <view wx:if="{{yaoqing}}">
+    <button class="register" hover-class="hover" bindtap="invite">
+      <image class="logo" src="../../images/icon/invite.png"></image>
+      邀请好友
+    </button>
+  </view>
+
+  <view wx:else>
+    <button class="register">
+    玩家B：{{userInfoBnickname}}
+  </button>
+  <view class="subtitle">
+    邀请倒计时: {{second}}
+  </view>
+  </view>
+
+</view>
