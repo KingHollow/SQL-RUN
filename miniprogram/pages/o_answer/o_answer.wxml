@@ -8,14 +8,17 @@
     <image class="pic" src="../../images/icon/lable.png"></image>
     主观题
   </view>
-  <view class="content">
+  <view wx:if="{{flag}}" class='subpic'>
+    <image class='img' src="{{picurl}}" mode='widthFix'></image>
+  </view>
+  <text class="content">
     {{content}}
-  </view>
-  <view class="answer">
+  </text>
+  <text class="answer">
     我的答案：{{myanswer}}
-  </view>
+  </text>
   <view class="ans-title">【参考答案】</view>
-  <view class="ans-con">{{nbanswer}}</view>
+  <text class="ans-con">{{nbanswer}}</text>
 </view>
 
 <view class="operate">

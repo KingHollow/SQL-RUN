@@ -1,0 +1,23 @@
+<!--pages/run_result/run_result.wxml-->
+<view class="pictitle">
+  <image class="pic" src="../../images/pics/start.png" mode="aspectFill"></image>
+</view>
+
+<view class="load">
+  <image wx:if="{{node1}}" class="node" src="../../images/pics/node.png"></image>
+  <view class="gap"></view>
+  <image wx:if="{{node2}}" class="node" src="../../images/pics/node.png"></image>
+  <view class="gap"></view>
+  <image wx:if="{{node3}}" class="node" src="../../images/pics/node.png"></image>
+</view>
+
+<view class="win">
+  <image wx:if="{{result == 0 && node4}}" class="pic2" src="../../images/pics/happyl.png"></image>
+  <image wx:if="{{result == 0 && node4}}" class="pic1" src="../../images/pics/win.png"></image>
+  <image wx:if="{{result == 1 && node4}}" class="pic1" src="../../images/pics/lose.png"></image>
+  <image wx:if="{{result == 0 && node4}}" class="pic2" src="../../images/pics/happyr.png"></image>
+</view>
+
+<view wx:if="{{back}}" class="back">
+  <button class="btn" bindtap="back">返回</button>
+</view>

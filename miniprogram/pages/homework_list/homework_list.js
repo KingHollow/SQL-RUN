@@ -59,7 +59,7 @@ Page({
         for(var i = 0; i < res.data.length; i++){
           var data = {
             ID: res.data[i].sinID,
-            content: res.data[i].content
+            content: res.data[i].content.split('&hc').join('\n')
           }
           temp.push(data);
         }
@@ -78,7 +78,7 @@ Page({
         for(var i = 0; i < res.data.length; i++){
           var data = {
             ID: res.data[i].mulID,
-            content: res.data[i].content
+            content: res.data[i].content.split('&hc').join('\n')
           }
           temp.push(data);
         }
@@ -97,7 +97,7 @@ Page({
         for(var i = 0; i < res.data.length; i++){
           var data = {
             ID: res.data[i].judgeID,
-            content: res.data[i].content
+            content: res.data[i].content.split('&hc').join('\n')
           }
           temp.push(data);
         }
@@ -116,7 +116,7 @@ Page({
         for(var i = 0; i < res.data.length; i++){
           var data = {
             ID: res.data[i].blankID,
-            content: res.data[i].content
+            content: res.data[i].content.split('&hc').join('\n')
           }
           temp.push(data);
         }
@@ -135,7 +135,7 @@ Page({
         for(var i = 0; i < res.data.length; i++){
           var data = {
             ID: res.data[i].subID,
-            content: res.data[i].content
+            content: res.data[i].content.split('&hc').join('\n')
           }
           temp.push(data);
         }

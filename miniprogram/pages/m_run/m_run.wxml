@@ -1,0 +1,21 @@
+<!--pages/m_run/m_run.wxml-->
+<view class="title">
+  赛跑答题
+</view>
+
+<view class="question">
+  <view class="subtitle">
+    <image class="pic" src="../../images/icon/lable.png"></image>
+    多选题 · 难度：{{level}}
+  </view>
+  <view class="content">
+    {{content}}
+  </view>
+  <checkbox-group class="checkbox-group" bindchange="HandelItemChange">
+    <checkbox  class="checkbox" value="{{item.value}}" checked="{{item.checked}}" wx:for="{{list}}" wx:key="index">
+      {{item.value}}
+    </checkbox>
+  </checkbox-group>
+</view>
+
+<button class="submit" bindtap="submit">提交</button>

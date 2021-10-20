@@ -127,3 +127,10 @@ page{
  justify-items: center;
  margin-top: 5px;
 }
+
+.deadline { 
+  background-color: #fff; 
+  line-height: 20px; 
+  text-indent:10px;
+  color:#cccccc
+ } 

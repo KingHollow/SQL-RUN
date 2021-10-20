@@ -1,0 +1,60 @@
+/* pages/m_run/m_run.wxss */
+.title{
+  height:70px;
+  width:100%;
+  font-size:larger;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  color:#42589a;
+}
+
+.question{
+  margin-top:60rpx;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+}
+
+.subtitle{
+  margin-bottom:20rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.pic{
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 20rpx;
+}
+
+.content{
+  text-align: left;
+}
+
+.checkbox-group{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 100rpx;
+}
+
+.checkbox{
+  margin-bottom:40rpx;
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+.submit{
+  background-color: #5e7dbd;
+  width:30%!important;
+  color:white;
+  font-size: medium;
+  margin-top: 100rpx;
+}

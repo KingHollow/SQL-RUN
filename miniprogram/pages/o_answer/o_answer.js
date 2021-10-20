@@ -13,6 +13,8 @@ Page({
     type: 0,
     myanswer:"",
     nbanswer:"",
+    picurl: "",
+    flag: 0
   },
 
   problemChangeNext: function (e) {
@@ -135,7 +137,7 @@ Page({
           });
         } else {
           that.setData({
-            myanswer: r.data[0].answer[index].ans
+            myanswer: r.data[0].answer[index].ans.split('&hc').join('\n')
           });
         }
       }
@@ -144,9 +146,15 @@ Page({
           subID: quesid,
         }).get().then(res => {
           this.setData({
-            content: res.data[0].content,
-            nbanswer: res.data[0].answer
+            content: res.data[0].content.split('&hc').join('\n'),
+            nbanswer: res.data[0].answer.split('&hc').join('\n'),
+            picurl: res.data[0].picurl
           })
+          if(res.data[0].picurl != "" && res.data[0].picurl != undefined){
+            this.setData({
+              flag: 1
+            })
+          }
         })
       } else {
         db.collection("subjective").where({
@@ -154,9 +162,15 @@ Page({
           type: 2
         }).get().then(res => {
           this.setData({
-            content: res.data[0].content,
-            nbanswer: res.data[0].answer
+            content: res.data[0].content.split('&hc').join('\n'),
+            nbanswer: res.data[0].answer.split('&hc').join('\n'),
+            picurl: res.data[0].picurl
           })
+          if(res.data[0].picurl != "" && res.data[0].picurl != undefined){
+            this.setData({
+              flag: 1
+            })
+          }
         })
       }
     })

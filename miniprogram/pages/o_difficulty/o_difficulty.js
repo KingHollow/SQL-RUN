@@ -147,10 +147,11 @@ Page({
             var subid = "o" + temp.substring(temp.length - 5, temp.length)
             db.collection("subjective").add({
               data: {
-                answer: that.data.answer,
-                content: that.data.content,
+                answer: that.data.answer.split('\n').join('&hc'),
+                content: that.data.content.split('\n').join('&hc'),
                 type: 2,
-                subID: subid
+                subID: subid,
+                picurl: ""
               }
             });
             var homeworkid;
@@ -181,7 +182,8 @@ Page({
                         homeworkID: homeworkid,
                         title: "难题",
                         date: temp1,
-                        type: 1
+                        type: 1,
+                        correct: 2
                       }
                     })
                   }
@@ -196,7 +198,8 @@ Page({
                         homeworkID: homeworkid,
                         title: "难题",
                         date: temp1,
-                        type: 1
+                        type: 1,
+                        correct: 2
                       }
                     })
                   }

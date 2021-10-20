@@ -6,7 +6,7 @@
   <view class="content">
     <view wx:for="{{list}}" wx:key="index">
 
-      <view class="content" catchtap="GotoChallenge" data-id="{{item.questionID}}" style="padding:2vh 2vh 2vh 2vh">
+      <view class="content" catchtap="GotoChallenge" data-id="{{item.questionID}}" data-state="{{item.state}}" style="padding:2vh 2vh 2vh 2vh">
         <view class="content1">
           <view class="crname" wx:if="{{item.crname != ''}}">挑战者：{{item.crname}}</view>
           <view class="name" space="emsp" wx:if="{{item.state != ''}}">挑战状态：</view>

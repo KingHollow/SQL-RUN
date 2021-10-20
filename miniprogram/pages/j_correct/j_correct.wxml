@@ -1,0 +1,17 @@
+<!--pages/j_correct/j_correct.wxml-->
+<view class="title">
+  题目详情
+</view>
+
+<view class="question">
+  <view class="subtitle">
+    <image class="pic" src="../../images/icon/lable.png"></image>
+    判断题
+  </view>
+  <view class="content">
+    {{content}}
+  </view>
+  <view class="answer">
+    答案：{{answer}}
+  </view>
+</view>

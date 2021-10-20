@@ -23,6 +23,14 @@
   margin-right: 20rpx;
 }
 
+.subpic{
+  width: 100%;
+}
+
+.img{
+  width: 100%;
+}
+
 .question{
   margin-top:60rpx;
   text-align: center;

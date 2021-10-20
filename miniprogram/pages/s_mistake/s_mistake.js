@@ -49,7 +49,7 @@ Page({
       type: type,
       studentID: wx.getStorageSync('id')
     }).get().then(rm => {
-      this.setData({myanswer: rm.data[0].answer[0]})
+      this.setData({myanswer: rm.data[0].answer})
     })
   },
 

@@ -181,7 +181,8 @@ Page({
                         homeworkID: homeworkid,
                         title: "难题",
                         date: temp1,
-                        type: 1
+                        type: 1,
+                        correct: 2
                       }
                     })
                   }
@@ -196,7 +197,8 @@ Page({
                         homeworkID: homeworkid,
                         title: "难题",
                         date: temp1,
-                        type: 1
+                        type: 1,
+                        correct: 2
                       }
                     })
                   }

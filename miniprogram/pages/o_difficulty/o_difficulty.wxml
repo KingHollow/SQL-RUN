@@ -13,7 +13,7 @@
       <!--答案-->
       <view class="subtitle">参考答案</view>
       <view class="inputView">
-        <textarea class="titlearea" placeholder="请输入答案" maxlength="10" name="answer" bindinput="answerinput"></textarea>
+        <textarea class="titlearea" placeholder="请输入答案" maxlength="-1" name="answer" bindinput="answerinput"></textarea>
       </view>
 
       <!--按钮-->

@@ -37,13 +37,46 @@ Page({
               var correct = false;
               if (that.data.answer==that.data.nbanswer) {
                 correct = true;
+                //根据积分上限进行积分更新
+                var id = wx.getStorageSync('id')
+                db.collection("student").where({
+                  studentID: id
+                }).get().then( res => {
+                  if(res.data[0].random == 4){
+                    wx.showToast({
+                      title: '本周该项积分已满',
+                      icon: 'none', 
+                      duration: 1500 
+                    })
+                  }
+                  else{
+                    wx.cloud.callFunction({
+                      // 云函数名称
+                      name: 'updatestudent',
+                      // 传给云函数的参数
+                      data: {
+                        studentID: res.data[0].studentID,
+                        experience: res.data[0].experience + 0.5,
+                        point: res.data[0].point + 0.5,
+                        challenge: res.data[0].challenge,
+                        answer: res.data[0].answer,
+                        random: res.data[0].random + 0.5,
+                        race: res.data[0].race,
+                        rockets: res.data[0].rockets,
+                        peals: res.data[0].peals,
+                        cards: res.data[0].cards,
+                        coin: res.data[0].coin + 1
+                      },
+                    })
+                  }
+                })
               }
 
               if (!correct){
                 //存错题
                 db.collection('mistake').add({
                   data: {
-                    answer:Array(that.data.answer),
+                    answer:that.data.answer,
                     questionID:that.data.questionid,
                     studentID:wx.getStorageSync('id'),
                     type:0

@@ -108,7 +108,7 @@ Page({
             subID: res.data[0].problem[i]
           }).get().then(rm => {
             var temp = that.data.subjective;
-            temp.push(rm.data[0].content);
+            temp.push(rm.data[0].content.split('&hc').join('\n'));
             that.setData({
               subjective: temp
             });
@@ -177,6 +177,7 @@ Page({
       deadline: dateArr[0][arr[0]] + '-' + dateArr[1][arr[1]] + '-' + dateArr[2][arr[2]] + ' ' + dateArr[3][arr[3]] + ':' + dateArr[4][arr[4]]
     });
   },
+
   /**某一列的值改变时触发*/
   changeDateTimeColumn1(e) {
     let arr = this.data.dateTime1
@@ -251,7 +252,8 @@ Page({
                     title: that.data.title,
                     date: date,
                     deadline: that.data.deadline + ":00",
-                    type: 0
+                    type: 0,
+                    correct: 0
                   }
                 })
               }

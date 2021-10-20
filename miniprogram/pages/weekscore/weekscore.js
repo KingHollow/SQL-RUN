@@ -42,7 +42,7 @@ Page({
       
       this.setData({
         weekscore:res.data[0].point,
-        challengego:res.data[0].challenge,
+        challengego:res.data[0].challengescore,
         questionans:res.data[0].answer,
         random:res.data[0].random,
         run:res.data[0].race,

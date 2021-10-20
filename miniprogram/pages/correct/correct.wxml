@@ -52,15 +52,15 @@
       <view class="scroll1">
         <view class="list-title-group">
           <view class="list-title">
-            <view class="comb">
+            <view class="comb" data-index="{{[problem1.index]}}" bindtap="checkquestion">
               {{problem1.value}}
               <view class="underline"></view>
             </view>
-            <view class="comb">
+            <view class="comb" data-index="{{[problem2.index]}}" bindtap="checkquestion">
               {{problem2.value}}
               <view class="underline"></view>
             </view>
-            <view class="comb">
+            <view class="comb" data-index="{{[problem3.index]}}" bindtap="checkquestion">
               {{problem3.value}}
               <view class="underline"></view>
             </view>
@@ -90,11 +90,11 @@
           </view>
 
             <view class="score">
-              <view class="score1" wx:if="{{result[problem1.index][0] != ''}}" wx:for="{{result[problem1.index]}}">
-                <view wx:if="{{item != ''}}">
+              <view class="score1" wx:for="{{result[problem1.index]}}">
+                <view wx:if="{{item != ''}}" data-index="{{index}}" data-problem="{{[problem1.index]}}" data-number="{{1}}" bindtap="correct">
                   {{item}}
                 </view>
-                <view wx:if="{{item == ''}}" bindtap="correct">
+                <view wx:if="{{item == ''}}" data-index="{{index}}" data-problem="{{[problem1.index]}}" data-number="{{1}}" bindtap="correct">
                   待批
                 </view>
               </view>
@@ -102,11 +102,11 @@
 
 
             <view class="score">
-              <view class="score1" wx:if="{{result[problem2.index][0] != ''}}" wx:for="{{result[problem2.index]}}">
-                <view wx:if="{{item != ''}}">
+              <view class="score1"  wx:for="{{result[problem2.index]}}">
+                <view wx:if="{{item != ''}}" data-index="{{index}}" data-problem="{{[problem2.index]}}" data-number="{{2}}" bindtap="correct">
                   {{item}}
                 </view>
-                <view wx:if="{{item == ''}}" bindtap="correct">
+                <view wx:if="{{item == ''}}" data-index="{{index}}" data-problem="{{[problem2.index]}}" data-number="{{2}}" bindtap="correct">
                   待批
                 </view>
               </view>
@@ -114,11 +114,11 @@
 
 
             <view class="score">
-              <view class="score1" wx:if="{{result[problem4.index][0] != ''}}" wx:for="{{result[problem3.index]}}">
-                <view wx:if="{{item != ''}}">
+              <view class="score1"  wx:for="{{result[problem3.index]}}">
+                <view wx:if="{{item != ''}}" data-index="{{index}}" data-problem="{{[problem3.index]}}" data-number="{{3}}" bindtap="correct">
                   {{item}}
                 </view>
-                <view wx:if="{{item == ''}}" bindtap="correct">
+                <view wx:if="{{item == ''}}" data-index="{{index}}" data-problem="{{[problem3.index]}}" data-number="{{3}}" bindtap="correct">
                   待批
                 </view>
               </view>
@@ -136,8 +136,12 @@
     </view>
   </view>
 
-  <button class="announce" bindtap="confirm">
+  <button wx:if= "{{correct == 0}}" class="announce" bindtap="confirm">
     发布成绩
+  </button>
+
+  <button wx:if= "{{correct == 1}}" class="announce">
+    成绩已发布
   </button>
 
 </view>

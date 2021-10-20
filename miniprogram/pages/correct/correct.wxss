@@ -140,8 +140,10 @@
 }
 
 .score{
+  height: 45rpx;
   width: 130rpx;
   text-align: center;
+  margin-bottom: 5rpx;
 }
 
 .X{

@@ -25,20 +25,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-    content:"",
-    answer:'',
+    content: "",
+    answer: '',
     quesid: '',
     homeworkid: '',
     index: 0,
     type: 0,
     //原答案
-    oldanswer:'',
+    oldanswer: '',
+    picurl: "",
+    flag: 0
   },
 
-  answerInput:function(e)
-  {
+  answerInput: function (e) {
     this.setData({
-      answer: e.detail.value
+      answer: e.detail.value.split('\n').join('&hc')
     })
     console.log(this.data.answer)
   },
@@ -64,7 +65,7 @@ Page({
     }).get().then(r => {
       if (r.data[0].answer[index].ans != undefined) {
         this.setData({
-          oldanswer: r.data[0].answer[index].ans
+          oldanswer: r.data[0].answer[index].ans.split('&hc').join('\n')
         });
       }
       if (type == 0) {
@@ -72,12 +73,18 @@ Page({
           subID: quesid,
         }).get().then(res => {
           this.setData({
-            content: res.data[0].content,
+            content: res.data[0].content.split('&hc').join('\n'),
+            picurl: res.data[0].picurl
           })
+          if (res.data[0].picurl != "" && res.data[0].picurl != undefined) {
+            this.setData({
+              flag: 1
+            })
+          }
           var that = this;
-          if(that.data.oldanswer!=''){
+          if (that.data.oldanswer != '') {
             that.setData({
-              answer:that.data.oldanswer
+              answer: that.data.oldanswer
             })
           }
 
@@ -88,12 +95,18 @@ Page({
           type: 2
         }).get().then(res => {
           this.setData({
-            content: res.data[0].content,
+            content: res.data[0].content.split('&hc').join('\n'),
+            picurl: res.data[0].picurl
           })
+          if (res.data[0].picurl != "" && res.data[0].picurl != undefined) {
+            this.setData({
+              flag: 1
+            })
+          }
           var that = this;
-          if(that.data.oldanswer!=''){
+          if (that.data.oldanswer != '') {
             that.setData({
-              answer:that.data.oldanswer
+              answer: that.data.oldanswer
             })
           }
         })
@@ -122,7 +135,7 @@ Page({
           var time = "";
           var score = "";
           answer[this.data.index].ans = this.data.answer;
-          answer[that.data.index].result = "";
+          answer[this.data.index].result = "";
           wx.cloud.callFunction({
             // 云函数名称
             name: 'updateresult',
@@ -130,7 +143,7 @@ Page({
             data: {
               homeworkid: homeworkid,
               studentid: studentid,
-              answer: answer,
+              answer: answer.split('\n').join('&hc'),
               state: state,
               time: time,
               score: score
@@ -189,7 +202,7 @@ Page({
         var time = "";
         var score = "";
         answer[this.data.index].ans = this.data.answer;
-        answer[that.data.index].result = "";
+        answer[this.data.index].result = "";
         wx.cloud.callFunction({
           // 云函数名称
           name: 'updateresult',
@@ -197,7 +210,7 @@ Page({
           data: {
             homeworkid: homeworkid,
             studentid: studentid,
-            answer: answer,
+            answer: answer.split('\n').join('&hc'),
             state: state,
             time: time,
             score: score
@@ -242,37 +255,103 @@ Page({
       titel: "提示",
       content: "确定要提交作业吗？",
       duration: 3000,
-      success(r) {
-        var homeworkid = that.data.homeworkid;
-        var studentid = wx.getStorageSync('id');
-        db.collection("result").where({
-          homeworkID: homeworkid,
-          studentID: studentid
-        }).get().then(res => {
-          var answer = res.data[0].answer;
-          var state = 2;
-          var time = formatTime(new Date());
-          var score = "";
-          answer[that.data.index].ans = that.data.answer;
-          answer[that.data.index].result = "";
-          wx.cloud.callFunction({
-            // 云函数名称
-            name: 'updateresult',
-            // 传给云函数的参数
-            data: {
-              homeworkid: homeworkid,
-              studentid: studentid,
-              answer: answer,
-              state: state,
-              time: time,
-              score: score
-            },
+      success: function (r) {
+        if (r.confirm) {
+          var homeworkid = that.data.homeworkid;
+          var studentid = wx.getStorageSync('id');
+          db.collection("result").where({
+            homeworkID: homeworkid,
+            studentID: studentid
+          }).get().then(res => {
+            var answer = res.data[0].answer;
+            var state = 2;
+            var time = formatTime(new Date());
+            var score = "";
+            answer[that.data.index].ans = that.data.answer;
+            answer[that.data.index].result = "";
+            db.collection('homework').where({
+              homeworkID: that.data.homeworkid
+            }).get().then(r1 => {
+              var problem = r1.data[0].problem
+              for (var i = 0; i < answer.length; i++) {
+                console.log(i)
+                if (answer[i].result == "×") {
+                  console.log(i)
+                  if (that.data.type == 0) {
+                    db.collection('mistake').add({
+                      data: {
+                        studentID: wx.getStorageSync('id'),
+                        questionID: problem[i],
+                        answer: answer[i].ans,
+                        type: 0
+                      }
+                    })
+                  } else {
+                    db.collection('mistake').add({
+                      data: {
+                        studentID: wx.getStorageSync('id'),
+                        questionID: problem[i],
+                        answer: answer[i].ans,
+                        type: 2
+                      }
+                    })
+                  }
+                }
+              }
+            })
+            wx.cloud.callFunction({
+              // 云函数名称
+              name: 'updateresult',
+              // 传给云函数的参数
+              data: {
+                homeworkid: homeworkid,
+                studentid: studentid,
+                answer: answer.split('\n').join('&hc'),
+                state: state,
+                time: time,
+                score: score
+              },
+            })
+            wx.redirectTo({
+              url: '../study/study',
+            })
           })
-          wx.redirectTo({
-            url: '../study/study',
-          })
-        })
+        }
       }
+    })
+  },
+
+  save: function () {
+    var homeworkid = this.data.homeworkid;
+    var studentid = wx.getStorageSync('id');
+    db.collection("result").where({
+      homeworkID: homeworkid,
+      studentID: studentid
+    }).get().then(res => {
+      var answer = res.data[0].answer;
+      var state = 0;
+      var time = "";
+      var score = "";
+      answer[this.data.index].ans = this.data.answer;
+      answer[this.data.index].result = "";
+      wx.cloud.callFunction({
+        // 云函数名称
+        name: 'updateresult',
+        // 传给云函数的参数
+        data: {
+          homeworkid: homeworkid,
+          studentid: studentid,
+          answer: answer,
+          state: state,
+          time: time,
+          score: score
+        },
+      })
+      wx.showToast({
+        title: '保存成功！',
+        icon: 'none',
+        duration: 1500
+      })
     })
   },
 

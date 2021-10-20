@@ -1,5 +1,26 @@
 // pages/j_challenge/j_challenge.js
 const db = wx.cloud.database();
+
+const formatTime = date => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const hour = date.getHours()
+  const minute = date.getMinutes()
+  const second = date.getSeconds()
+
+  return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+}
+
+const formatNumber = n => {
+  n = n.toString()
+  return n[1] ? n : '0' + n
+}
+
+module.exports = {
+  formatTime: formatTime
+}
+
 Page({
 
   /**
@@ -139,6 +160,7 @@ Page({
                 judgeID: judgeid
               }
             });
+            var time = formatTime(new Date());
             db.collection("challenge").add({
               data: {
                 challengedID: that.data.challengedID,
@@ -149,7 +171,8 @@ Page({
                 className: that.data.className,
                 content: that.data.content,
                 questionID: judgeid,
-                state: 0
+                state: 0,
+                time: time
               }
             })
           })

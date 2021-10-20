@@ -78,29 +78,29 @@ Page({
   },
 
   GotoChallenge: function(e){
-    console.log(e)
-    var quesid = e.currentTarget.dataset.id;
-    if(quesid.charAt(0) == "s"){
-      wx.navigateTo({
-        url: '../../pages/s_respond/s_respond?id=' + quesid,
-      })
-    };
-    if(quesid.charAt(0) == "m"){
-      wx.navigateTo({
-        url: '../../pages/m_respond/m_respond?id=' + quesid,
-      })
-    };
-    if(quesid.charAt(0) == "j"){
-      wx.navigateTo({
-        url: '../../pages/j_respond/j_respond?id=' + quesid,
-      })
-    };
-    if(quesid.charAt(0) == "b"){
-      wx.navigateTo({
-        url: '../../pages/b_respond/b_respond?id=' + quesid,
-      })
-    };
-    
+    if(e.currentTarget.dataset.state == 2){}else{
+      var quesid = e.currentTarget.dataset.id;
+      if(quesid.charAt(0) == "s"){
+        wx.navigateTo({
+          url: '../../pages/s_respond/s_respond?id=' + quesid,
+        })
+      };
+      if(quesid.charAt(0) == "m"){
+        wx.navigateTo({
+          url: '../../pages/m_respond/m_respond?id=' + quesid,
+        })
+      };
+      if(quesid.charAt(0) == "j"){
+        wx.navigateTo({
+          url: '../../pages/j_respond/j_respond?id=' + quesid,
+        })
+      };
+      if(quesid.charAt(0) == "b"){
+        wx.navigateTo({
+          url: '../../pages/b_respond/b_respond?id=' + quesid,
+        })
+      };
+    }
   },
 
   /**

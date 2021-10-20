@@ -6,23 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    content: "按照报表的数据组织形式、显示方式和作用的不同，Access中的报表可以分为4种基本类型，它们分别是：纵栏式报表、_____报表、图表报表和标签报表。",
-
-    myanswer: [{
-        value: '嘿嘿'
-      },
-      {
-        value: '哈哈'
-      }
-    ],
-    nbanswer: [{
-        value: 'blank'
-      },
-      {
-        value: '表格式'
-      }
-
-    ],
+    content: "。",
+    myanswer: [],
+    nbanswer: [],
     quesid: '',
     homeworkid: '',
     index: 0,

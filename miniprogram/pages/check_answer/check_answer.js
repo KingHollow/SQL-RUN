@@ -102,7 +102,7 @@ Page({
       for(var i = 0; i < res.data[0].answers.length; i++){
         var data = {
           index: i,
-          id: res.data[0].answers[i].stuID,
+          id: res.data[0].answers[i].id,
           name: res.data[0].answers[i].name,
           answer: res.data[0].answers[i].answer,
           result: res.data[0].answers[i].result

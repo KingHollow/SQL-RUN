@@ -50,7 +50,8 @@ Component({
             var nowIdx = e.target.dataset.index;//当前点击的索引
             var nowText = nowData[nowIdx].text;//当前点击的内容
             var Data={
-              text:nowText
+              text:nowText,
+              index:nowIdx
           }
             this.triggerEvent('chooseData', Data)
             //再次执行动画，注意这里一定，一定，一定是this.animation来使用动画

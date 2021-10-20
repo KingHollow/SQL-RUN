@@ -1,0 +1,49 @@
+/* pages/b_correct/b_correct.wxss */
+.title{
+  height:70px;
+  width:100%;
+  font-size:larger;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  color:#42589a;
+}
+
+.subtitle{
+  margin-bottom:20rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.pic{
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 20rpx;
+}
+
+.question{
+  margin-top:60rpx;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+}
+
+.content{
+  text-align: left;
+  margin-top: 30rpx;
+}
+
+.answer-group{
+  margin-top: 100rpx;
+}
+
+.answer{
+  margin-top: 20rpx;
+  font-weight: 600;
+  color:#3d518a;
+}

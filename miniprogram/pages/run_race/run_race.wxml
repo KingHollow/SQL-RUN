@@ -1,0 +1,70 @@
+<!--pages/run_racet/run_racet.wxml-->
+<view class="title">赛跑</view>
+
+<view class="time-area">
+    <view class="sub-title">罚时</view>
+    <view class="time">{{time}}s</view>
+</view>
+
+<view class="runway">
+    <view class="count">{{countP}}</view>
+    <image wx:if="{{countP == 0}}" src="../../images/pics/跑道1.1.png" mode="widthFix" class="infoImg" />
+    <image wx:if="{{countP < 10 && countP > 0}}" src="../../images/pics/跑道1.2.png" mode="widthFix" class="infoImg" />
+    <image wx:if="{{countP == 10}}" src="../../images/pics/跑道1.3.png" mode="widthFix" class="infoImg" />
+    <image wx:if="{{countR == 0}}" src="../../images/pics/跑道2.1.png" mode="widthFix" class="infoImg" />
+    <image wx:if="{{countR < 10 && countR > 0}}" src="../../images/pics/跑道2.2.png" mode="widthFix" class="infoImg" />
+    <image wx:if="{{countR >= 10}}" src="../../images/pics/跑道2.3.png" mode="widthFix" class="infoImg" />
+    <view class="count">{{countR}}</view>
+</view>
+
+<view class="player">
+    <image src="../../images/pics/people1.png" mode="widthFix" class="people"></image>
+</view>
+
+<view class="rival">
+    <image src="../../images/pics/people2.png" mode="widthFix" class="people"></image>
+</view>
+
+<view class="bottom">
+    <view class="choose-area">
+        <view class="diff-name">难 度</view>
+        <view class="level">
+            <view class="square" bindtap="level" data-level="{{1}}">1</view>
+            <view class="gap"></view>
+            <view class="square" bindtap="level" data-level="{{2}}">2</view>
+            <view class="gap"></view>
+            <view class="square" bindtap="level" data-level="{{3}}">3</view>
+        </view>
+        <!--
+        4、5加上之后要删掉的东西：
+        level view；
+        gap宽度改回20.
+        <view class="gap"></view>
+        <view class="square" bindtap="level" data-level="{{4}}">4</view>
+        <view class="gap"></view>
+        <view class="square" bindtap="level" data-level="{{5}}">5</view>
+        -->
+    </view>
+</view>
+
+<view class="bottom">
+    <view class="tool-area">
+        <view class="tool-name">道 具</view>
+        <view class="pic-group">
+            <view class="comb">
+                <image class="pic" src="../../images/pics/pass.png" bindtap="usepass"></image>
+                <view>×{{pass}}</view>
+            </view>
+            <view class="gap1"></view>
+            <view class="comb">
+                <image class="pic" src="../../images/pics/peal.png" bindtap="usepeal"></image>
+                <view>×{{peal}}</view>
+            </view>
+            <view class="gap1"></view>
+            <view class="comb">
+                <image class="pic1" src="../../images/pics/rocket.png" bindtap="userocket"></image>
+                <view>×{{rocket}}</view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -23,6 +23,14 @@
   margin-right: 20rpx;
 }
 
+.subpic{
+  width: 100%;
+}
+
+.img{
+  width: 100%;
+}
+
 .question{
   margin-top:80rpx;
   text-align: center;
@@ -36,12 +44,15 @@
 .content{
   text-align: left;
   margin-top: 30rpx;
+  white-space: pre-wrap;
 }
 
 .answer{
   margin-top: 100rpx;
   font-weight: 600;
   color:#3d518a;
+  white-space: pre-wrap;
+  text-align: left;
 }
 
 .operate{

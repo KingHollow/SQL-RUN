@@ -1,0 +1,59 @@
+/* pages/run_result/run_result.wxss */
+.pic{
+  width: 600rpx;
+  height: 250rpx;
+}
+
+.pictitle{
+  margin-top: 100rpx;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.load{
+  margin-top: 50rpx;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.node{
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.gap{
+  width: 30rpx;
+}
+
+.win{
+  margin-top: 50rpx;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.pic1{
+  width: 740rpx;
+  height: 200rpx;
+}
+
+.pic2{
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.back{
+  margin-top: 150rpx;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.btn{
+  background-color: rgb(161, 196, 228);
+  width:30%!important;
+  color: white;
+  font-size: medium;
+}

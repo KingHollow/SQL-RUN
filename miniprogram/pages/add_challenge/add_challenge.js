@@ -71,6 +71,23 @@ Page({
         content: "请选择题目的难度",
       })
     }else{
+      db.collection('challenge').where({
+        questionID: that.data.quesid
+      }).get().then( res => {
+        db.collection('student').where({
+          studentID: res.data[0].challengerID
+        }).get().then( r => {
+          wx.cloud.callFunction({
+            // 云函数名称
+            name: 'updatestudent',
+            // 传给云函数的参数
+            data: {
+              studentID: r.data[0].studentID,
+              coin: r.data[0].coin + 2
+            },
+          })
+        })
+      })
       var that = this;
       if(that.data.quesid[0] == "s"){
         db.collection("sinChoice").where({

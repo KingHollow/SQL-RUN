@@ -141,22 +141,26 @@ Page({
           answer[this.data.index].ans = this.data.answer;
           var correct = false;
           var that = this;
-          for (var i = 0; i < that.data.answer.length; i++) {
-            for (var j = 0; j < that.data.nbanswer[i].length; j++) {
-              if (that.data.answer[i] != that.data.nbanswer[i][j]) {
-                correct = false;
-                continue;
-              } else {
-                correct = true;
-                break;
-              }
-            }
-            if (!correct) break;
-          }
-          if (correct) {
-            answer[that.data.index].result = "√";
+          if (that.data.answer.length == 0) {
+            answer[that.data.index].result = "-";
           } else {
-            answer[that.data.index].result = "×";
+            for (var i = 0; i < that.data.answer.length; i++) {
+              for (var j = 0; j < that.data.nbanswer[i].length; j++) {
+                if (that.data.answer[i] != that.data.nbanswer[i][j]) {
+                  correct = false;
+                  continue;
+                } else {
+                  correct = true;
+                  break;
+                }
+              }
+              if (!correct) break;
+            }
+            if (correct) {
+              answer[that.data.index].result = "√";
+            } else {
+              answer[that.data.index].result = "×";
+            }
           }
           wx.cloud.callFunction({
             // 云函数名称
@@ -226,22 +230,26 @@ Page({
         answer[this.data.index].ans = this.data.answer;
         var correct = false;
         var that = this;
-        for (var i = 0; i < that.data.answer.length; i++) {
-          for (var j = 0; j < that.data.nbanswer[i].length; j++) {
-            if (that.data.answer[i] != that.data.nbanswer[i][j]) {
-              correct = false;
-              continue;
-            } else {
-              correct = true;
-              break;
-            }
-          }
-          if (!correct) break;
-        }
-        if (correct) {
-          answer[that.data.index].result = "√";
+        if (that.data.answer.length == 0) {
+          answer[that.data.index].result = "-";
         } else {
-          answer[that.data.index].result = "×";
+          for (var i = 0; i < that.data.answer.length; i++) {
+            for (var j = 0; j < that.data.nbanswer[i].length; j++) {
+              if (that.data.answer[i] != that.data.nbanswer[i][j]) {
+                correct = false;
+                continue;
+              } else {
+                correct = true;
+                break;
+              }
+            }
+            if (!correct) break;
+          }
+          if (correct) {
+            answer[that.data.index].result = "√";
+          } else {
+            answer[that.data.index].result = "×";
+          }
         }
         wx.cloud.callFunction({
           // 云函数名称
@@ -295,54 +303,169 @@ Page({
       titel: "提示",
       content: "确定要提交作业吗？",
       duration: 3000,
-      success(r) {
-        var homeworkid = that.data.homeworkid;
-        var studentid = wx.getStorageSync('id');
-        db.collection("result").where({
-          homeworkID: homeworkid,
-          studentID: studentid
-        }).get().then(res => {
-          var answer = res.data[0].answer;
-          var state = 2;
-          var time = formatTime(new Date());
-          var score = "";
-          answer[that.data.index].ans = that.data.answer;
-          var correct = false;
-          for (var i = 0; i < that.data.answer.length; i++) {
-            for (var j = 0; j < that.data.nbanswer[i].length; j++) {
-              if (that.data.answer[i] != that.data.nbanswer[i][j]) {
-                correct = false;
-                continue;
+      success: function (r) {
+        if (r.confirm) {
+          var homeworkid = that.data.homeworkid;
+          var studentid = wx.getStorageSync('id');
+          db.collection("result").where({
+            homeworkID: homeworkid,
+            studentID: studentid
+          }).get().then(res => {
+            var answer = res.data[0].answer;
+            var state = 2;
+            var time = formatTime(new Date());
+            var score = "";
+            answer[that.data.index].ans = that.data.answer;
+            var correct = false;
+            if (that.data.answer.length == 0) {
+              answer[that.data.index].result = "-";
+            } else {
+              for (var i = 0; i < that.data.answer.length; i++) {
+                for (var j = 0; j < that.data.nbanswer[i].length; j++) {
+                  if (that.data.answer[i] != that.data.nbanswer[i][j]) {
+                    correct = false;
+                    continue;
+                  } else {
+                    correct = true;
+                    break;
+                  }
+                }
+                if (!correct) break;
+              }
+              if (correct) {
+                answer[that.data.index].result = "√";
+                if (that.data.type == 1) {
+                  state = 3;
+                  score = "5"
+                  var stuid = wx.getStorageSync('id')
+                  db.collection("student").where({
+                    studentID: stuid
+                  }).get().then(r => {
+                    wx.cloud.callFunction({
+                      // 云函数名称
+                      name: 'updatestudent',
+                      // 传给云函数的参数
+                      data: {
+                        studentID: stuid,
+                        point: r.data[0].point + 5,
+                        experience: r.data[0].experience + 5
+                      },
+                    })
+                  })
+                }
               } else {
-                correct = true;
-                break;
+                answer[that.data.index].result = "×";
+                if (that.data.type == 1) {
+                  state = 3;
+                  score = "0"
+                }
               }
             }
-            if (!correct) break;
-          }
-          if(correct){
-            answer[that.data.index].result = "√";
-          }else{
-            answer[that.data.index].result = "×";
-          }
-          wx.cloud.callFunction({
-            // 云函数名称
-            name: 'updateresult',
-            // 传给云函数的参数
-            data: {
-              homeworkid: homeworkid,
-              studentid: studentid,
-              answer: answer,
-              state: state,
-              time: time,
-              score: score
-            },
+            db.collection('homework').where({
+              homeworkID: that.data.homeworkid
+            }).get().then(r1 => {
+              var problem = r1.data[0].problem
+              for (var i = 0; i < answer.length; i++) {
+                console.log(i)
+                if (answer[i].result == "×") {
+                  console.log(i)
+                  if (that.data.type == 0) {
+                    db.collection('mistake').add({
+                      data: {
+                        studentID: wx.getStorageSync('id'),
+                        questionID: problem[i],
+                        answer: answer[i].ans,
+                        type: 0
+                      }
+                    })
+                  } else {
+                    db.collection('mistake').add({
+                      data: {
+                        studentID: wx.getStorageSync('id'),
+                        questionID: problem[i],
+                        answer: answer[i].ans,
+                        type: 2
+                      }
+                    })
+                  }
+                }
+              }
+            })
+            wx.cloud.callFunction({
+              // 云函数名称
+              name: 'updateresult',
+              // 传给云函数的参数
+              data: {
+                homeworkid: homeworkid,
+                studentid: studentid,
+                answer: answer,
+                state: state,
+                time: time,
+                score: score
+              },
+            })
+            wx.redirectTo({
+              url: '../study/study',
+            })
           })
-          wx.redirectTo({
-            url: '../study/study',
-          })
-        })
+        }
       }
+    })
+  },
+
+  save:function(){
+    var homeworkid = this.data.homeworkid;
+    var studentid = wx.getStorageSync('id');
+    db.collection("result").where({
+      homeworkID: homeworkid,
+      studentID: studentid
+    }).get().then(res => {
+      var answer = res.data[0].answer;
+      var state = 0;
+      var time = "";
+      var score = "";
+      answer[this.data.index].ans = this.data.answer;
+      var correct = false;
+      var that = this;
+      if (that.data.answer.length == 0) {
+        answer[that.data.index].result = "-";
+      } else {
+        for (var i = 0; i < that.data.answer.length; i++) {
+          for (var j = 0; j < that.data.nbanswer[i].length; j++) {
+            if (that.data.answer[i] != that.data.nbanswer[i][j]) {
+              correct = false;
+              continue;
+            } else {
+              correct = true;
+              break;
+            }
+          }
+          if (!correct) break;
+        }
+        if (correct) {
+          answer[that.data.index].result = "√";
+        } else {
+          answer[that.data.index].result = "×";
+        }
+      }
+      wx.cloud.callFunction({
+        // 云函数名称
+        name: 'updateresult',
+        // 传给云函数的参数
+        data: {
+          homeworkid: homeworkid,
+          studentid: studentid,
+          answer: answer,
+          state: state,
+          time: time,
+          score: score
+        },
+      })
+      wx.showToast({
+        title: '保存成功！',
+        icon: 'none',
+        duration: 1500
+      })
     })
   },
 

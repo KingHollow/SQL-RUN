@@ -199,26 +199,26 @@ Page({
             number["m008"] = res1.data.concat(res2.data.concat(res3.data))[17].number;
             number["m009"] = res1.data.concat(res2.data.concat(res3.data))[18].number;
             number["m010"] = res1.data.concat(res2.data.concat(res3.data))[19].number;
-            number["j001"] = res1.data.concat(res2.data.concat(res3.data))[20].number;
-            number["j002"] = res1.data.concat(res2.data.concat(res3.data))[21].number;
-            number["j003"] = res1.data.concat(res2.data.concat(res3.data))[22].number;
-            number["j004"] = res1.data.concat(res2.data.concat(res3.data))[23].number;
-            number["j005"] = res1.data.concat(res2.data.concat(res3.data))[24].number;
-            number["j006"] = res1.data.concat(res2.data.concat(res3.data))[25].number;
-            number["j007"] = res1.data.concat(res2.data.concat(res3.data))[26].number;
-            number["j008"] = res1.data.concat(res2.data.concat(res3.data))[27].number;
-            number["j009"] = res1.data.concat(res2.data.concat(res3.data))[28].number;
-            number["j010"] = res1.data.concat(res2.data.concat(res3.data))[29].number;
-            number["b001"] = res1.data.concat(res2.data.concat(res3.data))[30].number;
-            number["b002"] = res1.data.concat(res2.data.concat(res3.data))[31].number;
-            number["b003"] = res1.data.concat(res2.data.concat(res3.data))[32].number;
-            number["b004"] = res1.data.concat(res2.data.concat(res3.data))[33].number;
-            number["b005"] = res1.data.concat(res2.data.concat(res3.data))[34].number;
-            number["b006"] = res1.data.concat(res2.data.concat(res3.data))[35].number;
-            number["b007"] = res1.data.concat(res2.data.concat(res3.data))[36].number;
-            number["b008"] = res1.data.concat(res2.data.concat(res3.data))[37].number;
-            number["b009"] = res1.data.concat(res2.data.concat(res3.data))[38].number;
-            number["b010"] = res1.data.concat(res2.data.concat(res3.data))[39].number;
+            number["b001"] = res1.data.concat(res2.data.concat(res3.data))[20].number;
+            number["b002"] = res1.data.concat(res2.data.concat(res3.data))[21].number;
+            number["b003"] = res1.data.concat(res2.data.concat(res3.data))[22].number;
+            number["b004"] = res1.data.concat(res2.data.concat(res3.data))[23].number;
+            number["b005"] = res1.data.concat(res2.data.concat(res3.data))[24].number;
+            number["b006"] = res1.data.concat(res2.data.concat(res3.data))[25].number;
+            number["b007"] = res1.data.concat(res2.data.concat(res3.data))[26].number;
+            number["b008"] = res1.data.concat(res2.data.concat(res3.data))[27].number;
+            number["b009"] = res1.data.concat(res2.data.concat(res3.data))[28].number;
+            number["b010"] = res1.data.concat(res2.data.concat(res3.data))[29].number;
+            number["j001"] = res1.data.concat(res2.data.concat(res3.data))[30].number;
+            number["j002"] = res1.data.concat(res2.data.concat(res3.data))[31].number;
+            number["j003"] = res1.data.concat(res2.data.concat(res3.data))[32].number;
+            number["j004"] = res1.data.concat(res2.data.concat(res3.data))[33].number;
+            number["j005"] = res1.data.concat(res2.data.concat(res3.data))[34].number;
+            number["j006"] = res1.data.concat(res2.data.concat(res3.data))[35].number;
+            number["j007"] = res1.data.concat(res2.data.concat(res3.data))[36].number;
+            number["j008"] = res1.data.concat(res2.data.concat(res3.data))[37].number;
+            number["j009"] = res1.data.concat(res2.data.concat(res3.data))[38].number;
+            number["j010"] = res1.data.concat(res2.data.concat(res3.data))[39].number;
             number["o001"] = res1.data.concat(res2.data.concat(res3.data))[40].number;
             number["o002"] = res1.data.concat(res2.data.concat(res3.data))[41].number;
             number["o003"] = res1.data.concat(res2.data.concat(res3.data))[42].number;
@@ -239,7 +239,7 @@ Page({
               var typeid = "s0" + temp1.substring(temp1.length - 2, temp1.length);
               var num = that.data.number[typeid];
               var temp2 = "00000" + Math.floor(Math.random() * num + 1).toString();
-              var questionid = "s" + chap + temp2.substring(temp2.length-5, temp2.length);
+              var questionid = "s" + chap.substring(chap.length-1,chap.length) + temp2.substring(temp2.length-5, temp2.length);
               temp.push(questionid);
             }
             for (var i = 0; i < mnum; i++) {
@@ -248,16 +248,7 @@ Page({
               var typeid = "m0" + temp1.substring(temp1.length - 2, temp1.length);
               var num = that.data.number[typeid];
               var temp2 = "00000" + Math.floor(Math.random() * num + 1).toString();
-              var questionid = "m" + chap + temp2.substring(temp2.length-5, temp2.length);
-              temp.push(questionid);
-            }
-            for (var i = 0; i < jnum; i++) {
-              var chap = chapter[Math.floor(Math.random() * chapter.length)];
-              var temp1 = "0" + chap;
-              var typeid = "j0" + temp1.substring(temp1.length - 2, temp1.length);
-              var num = that.data.number[typeid];
-              var temp2 = "00000" + Math.floor(Math.random() * num + 1).toString();
-              var questionid = "j" + chap + temp2.substring(temp2.length-5, temp2.length);
+              var questionid = "m" + chap.substring(chap.length-1,chap.length) + temp2.substring(temp2.length-5, temp2.length);
               temp.push(questionid);
             }
             for (var i = 0; i < bnum; i++) {
@@ -266,7 +257,16 @@ Page({
               var typeid = "b0" + temp1.substring(temp1.length - 2, temp1.length);
               var num = that.data.number[typeid];
               var temp2 = "00000" + Math.floor(Math.random() * num + 1).toString();
-              var questionid = "b" + chap + temp2.substring(temp2.length-5, temp2.length);
+              var questionid = "b" + chap.substring(chap.length-1,chap.length) + temp2.substring(temp2.length-5, temp2.length);
+              temp.push(questionid);
+            }
+            for (var i = 0; i < jnum; i++) {
+              var chap = chapter[Math.floor(Math.random() * chapter.length)];
+              var temp1 = "0" + chap;
+              var typeid = "j0" + temp1.substring(temp1.length - 2, temp1.length);
+              var num = that.data.number[typeid];
+              var temp2 = "00000" + Math.floor(Math.random() * num + 1).toString();
+              var questionid = "j" + chap.substring(chap.length-1,chap.length) + temp2.substring(temp2.length-5, temp2.length);
               temp.push(questionid);
             }
             for (var i = 0; i < onum; i++) {
@@ -275,7 +275,7 @@ Page({
               var typeid = "o0" + temp1.substring(temp1.length - 2, temp1.length);
               var num = that.data.number[typeid];
               var temp2 = "00000" + Math.floor(Math.random() * num + 1).toString();
-              var questionid = "o" + chap + temp2.substring(temp2.length-5, temp2.length);
+              var questionid = "o" + chap.substring(chap.length-1,chap.length) + temp2.substring(temp2.length-5, temp2.length);
               temp.push(questionid);
             }
             var homeworkid;

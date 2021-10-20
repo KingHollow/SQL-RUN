@@ -23,4 +23,7 @@
   <button class="back" bindtap="problemChangeNext">下一题</button>
 </view>
 
-<button class="submit" bindtap="submit">提交</button>
+<view class="operate">
+  <button class="submit" bindtap="save">保存</button>
+  <button class="submit" bindtap="submit">提交</button>
+</view>

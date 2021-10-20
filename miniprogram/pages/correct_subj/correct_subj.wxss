@@ -181,3 +181,11 @@ page{
   flex-direction: column;
   justify-content: center;
 }
+
+.subpic{
+  width: 100%;
+}
+
+.img{
+  width: 100%;
+}

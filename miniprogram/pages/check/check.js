@@ -8,7 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    statusList: [{//顶部状态按钮
+    statusList: [
+    {                            //顶部状态按钮
       "statusName": "提问的答案",
       "id": "question"
     },
@@ -323,7 +324,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    
+
   },
 
   /**

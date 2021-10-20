@@ -23,5 +23,5 @@
 
 <view class="operate">
   <button class="attend" bindtap="popConfirm">通过</button>
-  <button class="back">退回</button>
+  <button class="back" bindtap="back">退回</button>
 </view>

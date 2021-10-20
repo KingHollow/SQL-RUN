@@ -8,9 +8,12 @@
     <image class="pic" src="../../images/icon/lable.png"></image>
     主观题
   </view>
-  <view class="content">
-    {{content}}
+  <view wx:if="{{flag}}" class='subpic'>
+    <image class='img' src="{{picurl}}" mode='widthFix'></image>
   </view>
+  <text class="content">
+    {{content}}
+  </text>
 </view>
 
  <view class='answer'>
@@ -24,4 +27,7 @@
   <button class="back" bindtap="problemChangeNext">下一题</button>
 </view>
 
-<button class="submit" bindtap="submit">提交</button>
+<view class="operate">
+  <button class="submit" bindtap="save">保存</button>
+  <button class="submit" bindtap="submit">提交</button>
+</view>

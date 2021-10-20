@@ -1,0 +1,21 @@
+<!--pages/s_run/s_run.wxml-->
+<view class="title">
+  赛跑答题
+</view>
+
+<view class="question">
+  <view class="subtitle">
+    <image class="pic" src="../../images/icon/lable.png"></image>
+    单选题 · 难度：{{level}}
+  </view>
+  <view class="content">
+    {{content}}
+  </view>
+  <radio-group class="radio-group" bindchange="radioChange">
+    <label class="radio" wx:for="{{items}}">
+        <radio value="{{item.value}}" checked="{{item.checked}}"/>{{item.value}}
+    </label>
+  </radio-group>
+</view>
+
+<button class="submit" bindtap="submit">提交</button>

@@ -8,7 +8,9 @@ Page({
   data: {
     id:"",
     content:"",
-    answer: ""
+    answer: "",
+    picurl: "",
+    flag: 0
   },
 
   /**
@@ -21,9 +23,16 @@ Page({
     });
     db.collection("subjective").where({subID: id}).get().then(res => {
       this.setData({
-        content: res.data[0].content,
-        answer: res.data[0].answer
+        content: res.data[0].content.split('&hc').join('\n'),
+        answer: res.data[0].answer.split('&hc').join('\n'),
+        picurl: res.data[0].picurl
       })
+      if(res.data[0].picurl != "" && res.data[0].picurl != undefined){
+        this.setData({
+          flag: 1
+        })
+      }
+      console.log(this.data)
     })
   },
 

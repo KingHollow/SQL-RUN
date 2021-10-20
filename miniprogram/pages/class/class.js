@@ -12,15 +12,8 @@ Page({
       {value: "本学期"}
     ],
     timechoosed: "本周",
-    selectArray: [{
-            "text": "电子商务"
-          }, {
-            "text": "信管一班"
-          }, {
-            "text": "信管二班"
-          },
-    ],
-    classids: ["0842", "0843", "0844"],
+    selectArray: [],
+    classids: [],
     classchoosed: "",
     student:[]
   },
@@ -45,27 +38,37 @@ Page({
     if(time != "" && classid != ""){
       if(time == "本周"){
         var temp = [];
-        db.collection("student").where({classID: classid}).orderBy("point", "desc").get().then(res => {
-          for(var i = 0; i < res.data.length; i++){
-            var data = {
-              name: res.data[i].name,
-              score: res.data[i].point
-            }
-            temp.push(data);
-            that.setData({student: temp});
-          }
+        db.collection("student").where({classID: classid}).orderBy("point", "desc").get().then(res1 => {
+          db.collection("student").where({classID: classid}).orderBy("point", "desc").skip(20).get().then(res2 => {
+            db.collection("student").where({classID: classid}).orderBy("point", "desc").skip(40).get().then(res3 => {
+              var temp1 = res1.data.concat(res2.data.concat(res3.data))
+              for(var i = 0; i < temp1.length; i++){
+                var data = {
+                  name: temp1[i].name,
+                  score: temp1[i].point
+                }
+                temp.push(data);
+                that.setData({student: temp});
+              }
+            })
+          })
         })
       }else{
         var temp = [];
-        db.collection("student").where({classID: classid}).orderBy("experience", "desc").get().then(res => {
-          for(var i = 0; i < res.data.length; i++){
-            var data = {
-              name: res.data[i].name,
-              score: res.data[i].experience
-            }
-            temp.push(data);
-            that.setData({student: temp});
-          }
+        db.collection("student").where({classID: classid}).orderBy("experience", "desc").get().then(res1 => {
+          db.collection("student").where({classID: classid}).orderBy("experience", "desc").skip(20).get().then(res2 => {
+            db.collection("student").where({classID: classid}).orderBy("experience", "desc").skip(40).get().then(res3 => {
+              var temp1 = res1.data.concat(res2.data.concat(res3.data))
+              for(var i = 0; i < temp1.length; i++){
+                var data = {
+                  name: temp1[i].name,
+                  score: temp1[i].experience
+                }
+                temp.push(data);
+                that.setData({student: temp});
+              }
+            })
+          })
         })
       }
     }
@@ -86,6 +89,20 @@ Page({
     db.collection("teacher").where({teacherID: id}).get().then(r => {
       if(r.data.length != 0){
         db.collection("class").where({teacherID: id}).get().then(res => {
+          var temp1 = [];
+          var temp2 = [];
+          for(var i = 0; i < res.data.length; i++){
+            var data = {text: res.data[i].name};
+            temp1.push(data);
+            temp2.push(res.data[i].classID);
+          }
+          that.setData({
+            selectArray: temp1,
+            classids: temp2
+          })
+        })
+      }else{
+        db.collection("assist").where({tutorialID: id}).get().then(res => {
           var temp1 = [];
           var temp2 = [];
           for(var i = 0; i < res.data.length; i++){

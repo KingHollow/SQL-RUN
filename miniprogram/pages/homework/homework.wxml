@@ -1,23 +1,28 @@
 <!--pages/homework/homework.wxml-->
 <view class="title">作业列表</view>
 
-<view class="container"> 
- <view class="login-form"> 
+<view class="container">
+  <view class="login-form">
 
-        <view wx:for="{{release}}" wx:key="index" data-id="{{item.homeworkid}}">
-          <view class="inputView" >
-            <view class="homework-name" >{{item.title}}</view>
-            <view wx:if="{{item.state=='0'}}" class="homework-info0" bindtap="DoHomework" data-id="{{item.homeworkid}}">待做</view>
-            <view wx:if="{{item.state=='1'}}" class="homework-info" bindtap="HomeworkResult" data-id="{{item.homeworkid}}">超时</view>
-            <view wx:if="{{item.state=='2'}}" class="homework-info2" bindtap="HomeworkResult" data-id="{{item.homeworkid}}">待批</view>
-            <view wx:if="{{item.state=='3'}}" class="homework-info" bindtap="HomeworkResult" data-id="{{item.homeworkid}}">分数：{{item.score}}</view>
-            <!--待做跳转至答题页面；其余为标答页面-->
-          </view>
-            <view class="line"></view>
+    <view wx:for="{{release}}" wx:key="index" data-id="{{item.homeworkid}}">
+      <view class="inputView">
+        <view class="homework-name">{{item.title}}</view>
+        <view wx:if="{{item.state=='0'}}" class="homework-info0" bindtap="DoHomework" data-id="{{item.homeworkid}}">待做
         </view>
-      
-  
+        <view wx:if="{{item.state=='1'}}" class="homework-info" bindtap="HomeworkResult" data-id="{{item.homeworkid}}">
+          超时</view>
+        <view wx:if="{{item.state=='2'}}" class="homework-info2" data-id="{{item.homeworkid}}">待批</view>
+        <view wx:if="{{item.state=='3'}}" class="homework-info" bindtap="HomeworkResult" data-id="{{item.homeworkid}}">分数：{{item.score}}</view>
 
+        <!--待做跳转至答题页面；其余为标答页面-->
+
+      </view>
+      <view wx:if="{{item.type==0}}" class="deadline">作业截止时间：{{item.deadline}}</view>
+      <view class="line"></view>
+
+    </view>
+
+
+
+  </view>
 </view>
- </view> 
-

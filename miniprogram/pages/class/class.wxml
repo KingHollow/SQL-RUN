@@ -1,6 +1,6 @@
 <!--pages/class/class.wxml-->
 <view class="rank">
-  <view class="title">
+  <view class="title" >
     <image class="pic" src="../../images/icon/rank_select.png"></image>
     <view class="title-name">排行榜</view>
     <image class="pic" src="../../images/icon/rank_select.png"></image>

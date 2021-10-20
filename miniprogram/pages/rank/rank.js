@@ -18,12 +18,14 @@ Page({
       })
     } else {
       var id = wx.getStorageSync('id')
-      db.collection('student').where({studentID: id}).get().then(r => {
-        if(r.data[0].challenge == 2){
+      db.collection('student').where({
+        studentID: id
+      }).get().then(r => {
+        if (r.data[0].challenge == 2) {
           wx.showModal({
             content: '本周最多发起两次挑战，若挑战题目未通过，次数会返还，请耐心等待',
           })
-        }else{
+        } else {
           wx.showModal({
             content: '确认要挑战' + e.currentTarget.dataset.name + '同学吗？',
             success: function (res) {
@@ -51,24 +53,46 @@ Page({
       var classid = res.data[0].classID;
       db.collection("student").where({
         classID: classid
-      }).orderBy("point", "desc").get().then(r => {
-        var temp = [];
-        for (var i = 0; i < r.data.length; i++) {
-          var data = {
-            id: r.data[i].studentID,
-            name: r.data[i].name,
-            score: r.data[i].point
-          }
-          temp.push(data);
-          that.setData({
-            student: temp
-          });
-        }
+      }).orderBy("point", "desc").get().then(r1 => {
+        db.collection('student').where({
+          classID: classid
+        }).orderBy("point", "desc").skip(20).get().then(r2 => {
+          db.collection('student').where({
+            classID: classid
+          }).orderBy("point", "desc").skip(40).get().then(r3 => {
+            var temp1 = r1.data.concat(r2.data.concat(r3.data));
+            var temp = [];
+            for (var i = 0; i < temp1.length; i++) {
+              var data = {
+                id: temp1[i].studentID,
+                name: temp1[i].name,
+                score: temp1[i].point
+              }
+              temp.push(data);
+              that.setData({
+                student: temp
+              });
+            }
+            var score = temp[temp.length-1].score;
+            var i = 0;
+            for(i = 0; i < temp.length; i++){
+              if(temp[i].score < score) break;
+            }
+            if(i == temp.length){
+
+            }else{
+              temp.splice(i, temp.length - i);
+              that.setData({
+                student: temp
+              })
+            }
+          })
+        })
       })
     })
   },
 
-  turntomychallenge:function(e) {
+  turntomychallenge: function (e) {
     wx.navigateTo({
       url: '../../pages/mychallenge/mychallenge',
     })
@@ -76,7 +100,7 @@ Page({
 
   },
 
-  turntorandom:function(e) {
+  turntorandom: function (e) {
     wx.navigateTo({
       url: '../../pages/random/random',
     })
@@ -84,12 +108,15 @@ Page({
 
   },
 
-  turntorun:function(e) {
+  turntorun: function (e) {
+    /*wx.showToast({
+      title: '该功能尚在开发~',
+      icon: 'none',
+      duration: 1500
+    })*/
     wx.navigateTo({
       url: '../../pages/run_wait/run_wait',
     })
-
-
   },
 
   /**

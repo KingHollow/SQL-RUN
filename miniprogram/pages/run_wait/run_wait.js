@@ -59,7 +59,7 @@ Page({
       })
     })
 
-    db.collection('invite')
+    this.watcher1 = db.collection('invite')
       .where({
         playerB: wx.getStorageSync('id'),
         //作为被挑战者
@@ -82,29 +82,29 @@ Page({
                         flag: true
                       })
                     }
+                    if (that.data.flag) {
+                      //被邀请者同意邀请
+                      wx.cloud.callFunction({
+                        name: "updateinvite", //云函数名，修改邀请状态
+                        data: {
+                          playerA: snapshot.docChanges[0].doc.playerA,
+                          playerB: wx.getStorageSync('id'),
+                        }
+                      }).then(res => {
+                        console.log('更新Sharelist数据库成功')
+                      })
+                      wx.redirectTo({
+                        url: '../../pages/run_race/run_race?rivalID=' + snapshot.docChanges[0].doc.playerA,
+                      })
+                    } else {
+                      wx.showToast({
+                        title: '邀请已被取消',
+                        icon: 'error',
+                        duration: 1500
+                      })
+                    }
                   })
-                  if (that.data.flag) {
-                    //被邀请者同意邀请
-                    wx.cloud.callFunction({
-                      name: "updateinvite", //云函数名，修改邀请状态
-                      data: {
-                        playerA: snapshot.docChanges[0].doc.playerA,
-                        playerB: wx.getStorageSync('id'),
-                      }
-                    }).then(res => {
-                      console.log('更新Sharelist数据库成功')
-                    })
 
-                    wx.navigateTo({
-                      url: '../../pages/run_race/run_race',
-                    })
-                  } else {
-                    wx.showToast({
-                      title: '邀请已被取消',
-                      icon: 'error',
-                      duration: 1500
-                    })
-                  }
 
 
                 } else {
@@ -118,24 +118,24 @@ Page({
                         flag: true
                       })
                     }
+                    if (that.data.flag) {
+                      wx.cloud.callFunction({
+                        name: "updateinvite_r", //云函数名，修改邀请状态
+                        data: {
+                          playerA: snapshot.docChanges[0].doc.playerA,
+                          playerB: wx.getStorageSync('id'),
+                        }
+                      }).then(res => {
+                        console.log('更新Sharelist数据库成功')
+                      })
+                    } else {
+                      wx.showToast({
+                        title: '邀请已被取消',
+                        icon: 'error',
+                        duration: 1500
+                      })
+                    }
                   })
-                  if (that.data.flag) {
-                    wx.cloud.callFunction({
-                      name: "updateinvite_r", //云函数名，修改邀请状态
-                      data: {
-                        playerA: snapshot.docChanges[0].doc.playerA,
-                        playerB: wx.getStorageSync('id'),
-                      }
-                    }).then(res => {
-                      console.log('更新Sharelist数据库成功')
-                    })
-                  } else {
-                    wx.showToast({
-                      title: '邀请已被取消',
-                      icon: 'error',
-                      duration: 1500
-                    })
-                  }
                 }
               }
             })
@@ -149,7 +149,7 @@ Page({
         }
       })
 
-    db.collection('invite').where({
+    this.watcher2 = db.collection('invite').where({
       playerA: wx.getStorageSync('id')
     }).watch({
       onChange: function (snapshot) {
@@ -163,8 +163,8 @@ Page({
               icon: 'success',
               duration: 1500
             })
-            wx.navigateTo({
-              url: '../../pages/run_race/run_race',
+            wx.redirectTo({
+              url: '../../pages/run_race/run_race?rivalID=' + snapshot.docChanges[0].doc.playerB,
             })
           } else if (snapshot.docChanges[0].doc.state == 2) {
             //拒绝
@@ -268,7 +268,22 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    this.watcher1.close();
+    this.watcher2.close();
+    db.collection('invite').where({
+      playerA: wx.getStorageSync('id'),
+      state: 0
+    }).get().then( res => {
+      if(res.data.length != 0){
+        wx.cloud.callFunction({
+          name: "saveresult", //云函数名，修改邀请状态
+          data: {
+            _id: res.data[0]._id,
+            state: 4,
+          }
+        })
+      }
+    })
   },
 
   /**

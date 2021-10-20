@@ -3,17 +3,20 @@
 
 <view class="container">
   <view class="subtitle">问    题</view>
-  <view class="content" style="padding:1vh 1vh 1vh 1vh">{{content}}</view>
+  <view wx:if="{{flag}}" class='subpic'>
+    <image class='img' src="{{picurl}}" mode='widthFix'></image>
+  </view>
+  <text class="content" style="padding:1vh 1vh 1vh 1vh">{{content}}</text>
 
   <view class="subtitle">回    答</view>
 <view class="width">
   <view view class="answer">
     <view class = "name">{{name}}</view>
-    <text class="text">{{answers.answer}}</text>
+    <text class="text">{{answers.ans}}</text>
     <view class="line"></view>
     <view class="inputView"> 
   <label class="loginLab">分数 <text class="star">*</text></label> 
-  <input class="inputText" placeholder="请输入分数"  bindinput="resultInput"/> 
+  <input class="inputText" value="{{oldresult}}" placeholder="请输入分数(满分为5分)"  bindinput="resultInput"/> 
   </view> 
   </view>
 </view>
@@ -21,7 +24,7 @@
 <!--按钮-->
 <view class="loginBtnView">
  
- <button class="button" hover-class="hover" bindtap="turntocorrect">
+ <button class="button" hover-class="hover" bindtap="submit">
    提交分数
  </button>
 

@@ -31,7 +31,8 @@ Page({
           data: {
             classID: classid,
             name: classname,
-            teacherID: teacherid
+            teacherID: teacherid,
+            progress: 0
           }
         })
         wx.showModal({

@@ -17,7 +17,7 @@
       <block wx:for="{{conLists}}" wx:key="index">
         <view class='template_title_list flex-x'>
           <view class="del" bindtap='del' data-index='{{index}}'>-</view>
-          <input class="input" placeholder='请填写答案（中文逗号分隔多个可行答案）' bindinput='changeConTitle' data-index='{{index}}' value = "{{item}}"></input>
+          <input class="input" placeholder='（中文逗号分隔多个可行答案）' bindinput='changeConTitle' data-index='{{index}}' value = "{{item}}"></input>
         </view>
       </block>
 

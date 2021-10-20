@@ -1,5 +1,19 @@
 // pages/correct/correct.js
 const db = wx.cloud.database();
+const formatTime = date => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const hour = date.getHours()
+  const minute = date.getMinutes()
+  const second = date.getSeconds()
+
+  return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+}
+const formatNumber = n => {
+  n = n.toString()
+  return n[1] ? n : '0' + n
+}
 
 Page({
 
@@ -15,7 +29,10 @@ Page({
     classID: '',
     //当前homework
     homeworkID: '',
-    //当前release是否已经发布成绩（0：否；1：是）
+    //当前homework的类型
+    type: 0,
+    ddl: '',  //当前作业（release）是否已经过期（0：否；1：是）
+    //当前release是否已经发布成绩（0：否；1：是; 2: 难题）
     correct: 0,
     //题目栏属性
     problem1: {
@@ -129,11 +146,29 @@ Page({
     }
   },
 
-  correct: function (e) {
-    if (this.data.correct == 0)
+  checkquestion:function (e) {
+    var index = e.currentTarget.dataset.index
+    var type = this.data.type
+    var problemID = this.data.problem_id[index]
+    //release里的type=1对应题库里的type=2，转换一下
+    if(type == 1){
+      type++
+    }
+    console.log(type)
+    if(problemID != undefined){
       wx.navigateTo({
-        url: '/pages/correct_subj/correct_subj?studentIndex=' + e.currentTarget.dataset.index + '&problemIndex=' + e.currentTarget.dataset.problem + '&studentID=' + this.data.student[e.currentTarget.dataset.index].id + '&problemID=' + this.data.problem_id[e.currentTarget.dataset.problem] + '&homeworkID=' + this.data.homeworkID
+        url: '/pages/' + problemID.substring(0,1) + '_correct/' + problemID.substring(0,1) + '_correct?type=' + type + '&problemID=' + problemID,
       })
+    }
+  },
+
+  correct: function (e) {
+    if (this.data.correct != 1){
+      if(this.data.problem_id[e.currentTarget.dataset.problem].substring(0,1) == 'o')
+      wx.navigateTo({
+        url: '/pages/correct_subj/correct_subj?studentIndex=' + e.currentTarget.dataset.index + '&problemIndex=' + e.currentTarget.dataset.problem + '&studentID=' + this.data.student[e.currentTarget.dataset.index].id + '&problemID=' + this.data.problem_id[e.currentTarget.dataset.problem] + '&homeworkID=' + this.data.homeworkID + '&problemNumber=' + e.currentTarget.dataset.number + '&type=' + this.data.type*2
+      })
+    }
   },
 
   confirm: function () {
@@ -161,83 +196,102 @@ Page({
           }
           if (!flag) {
             wx.showToast({
-              title: '打分未完成，无法发布！',
+              title: '打分未完成',
               icon: 'none',
               duration: 1500
             })
           } else {
-            var student = that.data.student
-            var homeworkid = that.data.homeworkID
-            for (var index in student) {
-              //修改result的state
-              db.collection('result').where({
-                  studentID: student[index].id,
-                  homeworkID: homeworkid
-                })
-                .get().then(res => {
-                  if (res.data.length != 0) {
-                    for(var a = 0; a < that.data.student.length; a++){
-                      if(that.data.student[a].id == res.data[0].studentID) break
-                    }
-                    wx.cloud.callFunction({
-                      // 云函数名称
-                      name: 'updateresult',
-                      // 传给云函数的参数
-                      data: {
-                        homeworkid: homeworkid,
-                        studentid: res.data[0].studentID,
-                        answer: res.data[0].answer,
-                        state: 3,
-                        time: res.data.time,
-                        score: that.data.score[a]
-                      },
-                    })
-                    //修改学生每周积分和总积分
-                    db.collection('student').where({
-                      studentID: res.data[0].studentID
-                    }).get().then(r => {
-                      console.log(that.data.student[a].id)
+            if(that.data.ddl == 0){
+              wx.showToast({
+                title: '尚未到期',
+                icon: 'none',
+                duration: 1500
+              })
+            }else{
+              var student = that.data.student
+              var homeworkid = that.data.homeworkID
+              for (var index in student) {
+                //修改result的state
+                db.collection('result').where({
+                    studentID: student[index].id,
+                    homeworkID: homeworkid
+                  })
+                  .get().then(res => {
+                    if (res.data.length != 0) {
+                      for (var a = 0; a < that.data.student.length; a++) {
+                        if (that.data.student[a].id == res.data[0].studentID) break
+                      }
                       wx.cloud.callFunction({
                         // 云函数名称
-                        name: 'updatestudent',
+                        name: 'updateresult',
                         // 传给云函数的参数
                         data: {
-                          studentID: r.data[0].studentID,
-                          experience: r.data[0].experience + that.data.score[a],
-                          point: r.data[0].point + that.data.score[a],
+                          homeworkid: homeworkid,
+                          studentid: res.data[0].studentID,
+                          answer: res.data[0].answer,
+                          state: 3,
+                          time: res.data[0].time,
+                          score: String(that.data.score[a])
                         },
                       })
-                    })
-                  }
+                      //修改学生每周积分和总积分
+                      db.collection('student').where({
+                        studentID: res.data[0].studentID
+                      }).get().then(r => {
+                        console.log(that.data.student[a].id)
+                        wx.cloud.callFunction({
+                          // 云函数名称
+                          name: 'updatestudent',
+                          // 传给云函数的参数
+                          data: {
+                            studentID: r.data[0].studentID,
+                            experience: r.data[0].experience + parseInt(that.data.score[a]),
+                            point: r.data[0].point + parseInt(that.data.score[a]),
+                            challenge: r.data[0].challenge,
+                            answer: r.data[0].answer,
+                            random: r.data[0].random,
+                            race: r.data[0].race,
+                            rockets: r.data[0].rockets,
+                            peals: r.data[0].peals,
+                            cards: r.data[0].cards,
+                            coin: r.data[0].coin
+                          },
+                        })
+                      })
+                    }
+                  })
+              }
+              //修改release的发布情况
+              db.collection('release').where({
+                classID: that.data.classID,
+                homeworkID: that.data.homeworkID
+              }).get().then(res => {
+                console.log(res.data)
+                console.log(that.data.classID, that.data.homeworkID)
+                wx.cloud.callFunction({
+                  // 云函数名称
+                  name: 'updaterelease',
+                  // 传给云函数的参数
+                  data: {
+                    classID: that.data.classID,
+                    homeworkID: that.data.homeworkID,
+                    date: res.data[0].date,
+                    deadline: res.data[0].deadline,
+                    title: res.data[0].title,
+                    type: res.data[0].type,
+                    correct: 1
+                  },
                 })
-            }
-            //修改release的发布情况
-            db.collection('release').where({
-              classID: that.data.classID,
-              homeworkID: that.data.homeworkID
-            }).get().then(res => {
-              console.log(res.data)
-              console.log(that.data.classID,that.data.homeworkID)
-              wx.cloud.callFunction({
-                // 云函数名称
-                name: 'updaterelease',
-                // 传给云函数的参数
-                data: {
-                  classID: that.data.classID,
-                  homeworkID: that.data.homeworkID,
-                  date: res.data[0].date,
-                  deadline: res.data[0].deadline,
-                  title: res.data[0].title,
-                  type: res.data[0].type,
-                  correct: 1
-                },
               })
-            })
-            wx.showToast({
-              title: '成绩已发布！',
-              icon: 'none',
-              duration: 1500
-            })
+              wx.showToast({
+                title: '成绩已发布！',
+                icon: 'none',
+                duration: 1500
+              })
+              that.setData({
+                correct: 1
+              })
+            }
           }
         }
       }
@@ -283,21 +337,23 @@ Page({
         var i = 0
         var name1 = ''
         var name2 = ''
+        var name3 = ''
+        //清空数组
         var selectArray2 = that.data.selectArray2
         selectArray2.splice(0, selectArray2.length)
         that.setData({
           selectArray2: selectArray2
         })
         for (var index in res.data) {
-          if (res.data[index].type == 0) {
-            name1 = "selectArray2[" + i + "].text"
-            name2 = "selectArray2[" + i + "].id"
-            that.setData({
-              [name1]: res.data[index].title,
-              [name2]: res.data[index].homeworkID,
-            });
-            i++
-          }
+          name1 = "selectArray2[" + i + "].text"
+          name2 = "selectArray2[" + i + "].id"
+          name3 = "selectArray2[" + i + "].type"
+          that.setData({
+            [name1]: res.data[index].title,
+            [name2]: res.data[index].homeworkID,
+            [name3]: res.data[index].type
+          });
+          i++
         }
       })
     }
@@ -346,19 +402,27 @@ Page({
       if (e.detail.text == this.data.selectArray2[index].text) {
         //inhomework = true
         //获取当前选择的作业，获取题目id数组
-        hid = this.data.selectArray2[index].id
+        hid = this.data.selectArray2[e.detail.index].id
         this.setData({
           homeworkID: hid,
         })
-        console.log(cid, hid)
+        console.log(hid)
         db.collection('release').where({
             classID: that.data.classID,
             homeworkID: hid
           })
           .get().then(res => {
-            console.log(res.data)
+            var nowtime = formatTime(new Date())
+            if(nowtime < res.data.deadline){
+              var ddl = 0
+            }
+            else{
+              var ddl = 1
+            }
             that.setData({
-              correct: res.data[0].correct
+              correct: res.data[0].correct,
+              type: res.data[0].type,
+              ddl: ddl
             })
           })
         db.collection('homework').where({
@@ -522,6 +586,9 @@ Page({
                 //console.log(index, that.data.student[index])
                 //清空result，同时赋初值'-'
                 if (a == 0) {
+                  that.setData({
+                    result:[[]]
+                  })
                   for (var i = 0; i < pro_num; ++i) {
                     for (var j = 0; j < that.data.student.length; ++j) {
                       r_name = "result[" + i + "][" + j + "]"
@@ -559,7 +626,6 @@ Page({
                     })
                   }
                 }
-                console.log('result:', that.data.result)
 
                 //根据作业计算单题准确率
                 if (a == that.data.student.length) {
@@ -604,9 +670,8 @@ Page({
                         if (result[x][y] == "√") {
                           right++
                           sum++
-                          console.log(right, sum)
                         }
-                        if (result[x][y] == "x") {
+                        if (result[x][y] == "×") {
                           sum++
                         }
                       }
@@ -649,14 +714,27 @@ Page({
                   for (var x in student) {
                     score[x] = 0
                     if (student[x].state == 0) {
-                      for (var y in result) {
-                        console.log(result[y][x])
-                        if (result[y][x] == '√') { //客观题难度分
-                          score[x] = score[x] + difficulty[y]
-                        } else if (result[y][x] != '×' && result[y][x] != '-' && result[y][x] != '') { //主观题分数
-                          score[x] = score[x] + parseInt(result[y][x])
+                      //普通作业
+                      if(that.data.type == 0){
+                        for (var y in result) {
+                          if (result[y][x] == '√') { //客观题难度分
+                            score[x] = score[x] + difficulty[y]
+                          } else if (result[y][x] != '×' && result[y][x] != '-' && result[y][x] != '') { //主观题分数
+                            score[x] = score[x] + parseInt(result[y][x])
+                          }
                         }
                       }
+                      //难题，难度分直接为5
+                      else{
+                        for (var y in result) {
+                          if (result[y][x] == '√') { //客观题难度分
+                            score[x] = score[x] + 5
+                          } else if (result[y][x] != '×' && result[y][x] != '-' && result[y][x] != '') { //主观题分数
+                            score[x] = score[x] + parseInt(result[y][x])
+                          }
+                        }
+                      }
+
                     }
                   }
                   that.setData({
@@ -678,6 +756,7 @@ Page({
     var id = wx.getStorageSync('id')
     //获取班级列表
     var that = this
+    //老师
     db.collection('class').where({
         teacherID: id
       })
@@ -696,6 +775,32 @@ Page({
                 [name2]: res.data[index].classID
               });
             }
+          }
+        }
+      })
+      //助教
+      db.collection('assist').where({
+        tutorialID: id
+      })
+      .get({
+        success: (res) => {
+          if (res.data.length == 0) {
+            console.log('无对应班级')
+          } else {
+            db.collection('class').where({
+              classID: res.data[0].classID
+            }).get().then( r => {
+              var name1 = ""
+              var name2 = ""
+              for (var index in r.data) {
+                name1 = "selectArray1[" + index + "].text"
+                name2 = "selectArray1[" + index + "].id"
+                that.setData({
+                  [name1]: res.data[index].name,
+                  [name2]: res.data[index].classID
+                });
+              }
+            })
           }
         }
       })

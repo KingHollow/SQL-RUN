@@ -22,8 +22,8 @@
     </view>
   </view>
 
+  <!--成功回答提问
   <view class="margin"></view>
-
   <view class="score-mono">
     <view class="subtitle">
       · 成功回答提问
@@ -32,7 +32,7 @@
       <progress percent="{{questionans_per}}" color="#506caa" border-radius='15' stroke-width="15" />
       <view class="score">{{questionans}}/{{questionans_top}}</view>
     </view>
-  </view>
+  </view>-->
 
   <view class="margin"></view>
 

@@ -81,7 +81,15 @@ Page({
                   point: 0,
                   experience: 0,
                   coin: 0,
-                  classID: classid
+                  classID: classid,
+                  rockets: 0,
+                  peals: 0,
+                  cards: 0,
+                  challenge: 0,
+                  answer: 0,
+                  random: 0,
+                  race: 0,
+                  challengescore: 0
                 }
               })
               wx.showModal({

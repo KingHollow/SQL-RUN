@@ -11,7 +11,7 @@
 </navigator>
  </view> 
 
- <!--别人的提问-->
+ <!--别人的提问
 <view class="loginBtnView2">
 <navigator url="../../pages/askme/askme">
  <button class="register" hover-class="hover" bindtap="o_question">
@@ -19,7 +19,7 @@
   提问箱
   </button> 
 </navigator>
- </view> 
+ </view> -->
 
  <!--别人的挑战-->
  <view class="loginBtnView2">
