@@ -50,7 +50,7 @@
 </view>
 
 <view class="check-work">
-  <button class="btn">
+  <button class="btn" bindtap="correct">
     查看作业完成情况
   </button>
 </view>

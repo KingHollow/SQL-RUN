@@ -71,6 +71,12 @@ Page({
     }
   },
 
+  correct:function(e){
+    wx.navigateTo({
+      url: '../correct/correct',
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

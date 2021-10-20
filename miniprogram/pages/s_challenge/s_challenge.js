@@ -176,6 +176,18 @@ Page({
           wx.showToast({
             title: '发起成功',
           })
+          var id = wx.getStorageSync('id')
+          db.collection('student').where({studentID: id}).get().then(r => {
+            wx.cloud.callFunction({
+              // 云函数名称
+              name: 'updatestudent',
+              // 传给云函数的参数
+              data: {
+                studentID: id,
+                challenge: r.data[0].challenge + 1
+              },
+            })
+          })
           wx.redirectTo({
             url: '../rank/rank',
           })

@@ -118,7 +118,31 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    let that = this;
+    var id = wx.getStorageSync('id');
+    var rlist = that.data.list;
+    
+    db.collection("challenge").where({
+      challengerID: id
+    }).skip(rlist.length).get().then(res => {
+      var j = 0;
+      console.log(res.data)
+      for (var i = 0; i < res.data.length; i++) {
+        //获取状态       
+        var temp = {
+          state: res.data[j].state,
+          cdname: res.data[j].challengedName,
+          questionID: res.data[j].questionID,
+          content: res.data[j].content,
+        }
+        j++;
+        rlist.push(temp);
+        that.setData({
+          list: rlist
+        })
+        
+      }
+    })
   },
 
   /**

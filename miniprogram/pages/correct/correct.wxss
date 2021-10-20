@@ -1,0 +1,199 @@
+/* pages/correct/correct.wxss */
+.result{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title{
+  width:100%;
+  font-size:larger;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  color:#42589a;
+  margin-top: 30rpx;
+}
+
+.content{
+  padding-left: 30rpx;
+}
+
+.choice{
+  padding: 20rpx 20rpx 20rpx 20rpx;
+  background-color: #f1efef;
+  border-radius: 10rpx;
+  margin-top: 30rpx;
+  width:660rpx;
+  height: 170rpx;
+}
+
+.choose-period{
+  display: flex;
+  align-items: center;
+  margin-top: 20rpx;
+}
+
+.gap{
+  height: 3rpx;
+  background-color: #2e2e2e;
+}
+
+.choose-class{
+  margin-bottom: 15rpx;
+  display: flex;
+  align-items: center;
+}
+
+.rank-list{
+  padding: 20rpx 20rpx 20rpx 20rpx;
+  background-color: #f1efef;
+  border-radius: 10rpx;
+  margin-top: 30rpx;
+  width:660rpx;
+  height: 650rpx;
+}
+
+.list-title-group{
+  display: flex;
+  justify-content: left;
+}
+
+.list-title{
+  color:#506caa;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.list-title1{
+  color:#000000;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.comb{
+  width: 130rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title-locate{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title-locate1{
+  margin-left: 80rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.underline{
+  background-color: #3d518a;
+  height:4rpx;
+  width:100rpx;
+}
+
+.underline1{
+  background-color:transparent;
+  height:5rpx;
+  width:200rpx;
+}
+
+.student-all{
+  text-align: center;
+}
+
+.student{
+  height: 45rpx;
+  color: #506caa;
+  font-weight: 600;
+  margin-bottom: 5rpx;
+  width: 150rpx;
+}
+
+.student2{
+  color: #a83636;
+  font-weight: 600;
+  margin-bottom: 5rpx;
+  width: 150rpx;
+}
+
+.score1{
+  height: 45rpx;
+  color: #54565c;
+  font-weight: 600;
+  margin-bottom: 5rpx;
+  width: 130rpx;
+}
+
+.name-all{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.score{
+  width: 130rpx;
+  text-align: center;
+}
+
+.X{
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.head{
+  width:150rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #506caa;
+  font-weight: 600;
+}
+
+.changebtn{
+  align-items: center;
+  width: 20%!important;
+}
+
+.change{
+  width:30rpx;
+  height:30rpx;
+}
+
+.gap2{
+  width: 40rpx;
+}
+
+.scroll1{
+  width: 510rpx;
+}
+
+.scroll2{
+  height: 525rpx;
+  width:660rpx;
+}
+
+.name-score{
+  display: flex;
+  justify-content: center;
+}
+
+.y-data{
+  display: flex;
+  justify-content: left;
+}
+
+.announce{
+  background-color: #5e7dbd;
+  color:white;
+  margin-top: 40rpx;
+}

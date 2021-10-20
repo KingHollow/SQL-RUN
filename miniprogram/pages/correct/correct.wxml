@@ -1,0 +1,143 @@
+<!--pages/correct/correct.wxml-->
+<view class="result">
+
+  <view class="title">
+    作业完成情况
+  </view>
+
+  <view class="choice">
+    <view class="choose-class">
+      <view class="content">目前班级：</view>
+      <Select-class prop-array='{{selectArray1}}' bind:chooseData='chooseData'></Select-class>
+    </view>
+    <view class="gap"></view>
+    <view class="choose-period">
+      <view class="content">目前作业：</view>
+      <Select prop-array='{{selectArray2}}' bind:chooseData='chooseData'></Select>
+    </view>
+  </view>
+
+  <view class="rank-list">
+
+    <view class="X">
+      <view class="head">
+        准确率
+      </view>
+      <view class="scroll1">
+        <view class="list-title-group">
+          <view class="list-title1">
+            <view class="comb">
+              {{problem1.acc}}
+            </view>
+            <view class="comb">
+              {{problem2.acc}}
+            </view>
+            <view class="comb">
+              {{problem3.acc}}
+            </view>
+            <view class="comb">              
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="X">
+      <view class="head">
+          <image class="change" src="../../images/icon/left.png" bindtap="left"></image>
+          <view class="gap2"></view>
+          <image class="change" src="../../images/icon/right.png" bindtap="right"></image>
+      </view>
+
+      <view class="scroll1">
+        <view class="list-title-group">
+          <view class="list-title">
+            <view class="comb">
+              {{problem1.value}}
+              <view class="underline"></view>
+            </view>
+            <view class="comb">
+              {{problem2.value}}
+              <view class="underline"></view>
+            </view>
+            <view class="comb">
+              {{problem3.value}}
+              <view class="underline"></view>
+            </view>
+            <view class="comb">
+              总分
+              <view class="underline"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="y-data">
+      <scroll-view class="scroll2" scroll-y="true">
+        <view class="name-score">
+          <view class="student-all">
+            <view class="name-all">
+              <view class="student" wx:for="{{student}}">
+                <view wx:if="{{item.state==0}}">
+                  {{item.name}}
+                </view>
+                <view wx:else class="student2">
+                  {{item.name}}
+                </view>
+              </view>
+            </view>
+          </view>
+
+            <view class="score">
+              <view class="score1" wx:if="{{result[problem1.index][0] != ''}}" wx:for="{{result[problem1.index]}}">
+                <view wx:if="{{item != ''}}">
+                  {{item}}
+                </view>
+                <view wx:if="{{item == ''}}" bindtap="correct">
+                  待批
+                </view>
+              </view>
+            </view>
+
+
+            <view class="score">
+              <view class="score1" wx:if="{{result[problem2.index][0] != ''}}" wx:for="{{result[problem2.index]}}">
+                <view wx:if="{{item != ''}}">
+                  {{item}}
+                </view>
+                <view wx:if="{{item == ''}}" bindtap="correct">
+                  待批
+                </view>
+              </view>
+            </view>
+
+
+            <view class="score">
+              <view class="score1" wx:if="{{result[problem4.index][0] != ''}}" wx:for="{{result[problem3.index]}}">
+                <view wx:if="{{item != ''}}">
+                  {{item}}
+                </view>
+                <view wx:if="{{item == ''}}" bindtap="correct">
+                  待批
+                </view>
+              </view>
+            </view>
+
+            <view class="score">
+              <view class="score1" wx:for="{{score}}">
+                  {{item}}
+              </view>
+            </view>
+
+        </view>
+      </scroll-view>
+
+    </view>
+  </view>
+
+  <button class="announce" bindtap="confirm">
+    发布成绩
+  </button>
+
+</view>

@@ -12,7 +12,9 @@ Page({
       crname: '',
       state: '',
       content: "暂无挑战",
-    }]
+    }],
+    list1: [],
+    list2: []
 
   },
 
@@ -23,6 +25,8 @@ Page({
     let that = this;
     var id = wx.getStorageSync('id');
     var rlist = new Array();
+    var temp1 = []
+    var temp2 = []
     
     db.collection("challenge").where({
       challengedID: id,
@@ -39,9 +43,11 @@ Page({
           content: res.data[j].content,
         }
         j++;
-        rlist.push(temp);
+        temp2.push(temp);
+        rlist = temp2.concat(temp1)
         that.setData({
-          list: rlist
+          list: rlist,
+          list2: temp2
         })
       }
     })
@@ -60,8 +66,10 @@ Page({
           content: res.data[j].content,
         }
         j++;
-        rlist.push(temp);
+        temp1.push(temp);
+        rlist = temp2.concat(temp1)
         that.setData({
+          list1: temp1,
           list: rlist
         })
         
@@ -134,7 +142,59 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    let that = this;
+    var id = wx.getStorageSync('id');
+    var rlist = new Array();
+    var temp1 = that.data.list1
+    var temp2 = that.data.list2
+    
+    db.collection("challenge").where({
+      challengedID: id,
+      state: 2
+    }).skip(temp2.length).get().then(res => {
+      var j = 0;
+      console.log(res.data)
+      for (var i = 0; i < res.data.length; i++) {
+        //获取状态       
+        var temp = {
+          state: 2,
+          crname: res.data[j].challengerName,
+          questionID: res.data[j].questionID,
+          content: res.data[j].content,
+        }
+        j++;
+        temp2.push(temp);
+        rlist = temp2.concat(temp1)
+        that.setData({
+          list: rlist,
+          list2: temp2
+        })
+      }
+    })
+    db.collection("challenge").where({
+      challengedID: id,
+      state: 1
+    }).skip(temp1.length).get().then(res => {
+      var j = 0;
+      console.log(res.data)
+      for (var i = 0; i < res.data.length; i++) {
+        //获取状态       
+        var temp = {
+          state: 1,
+          crname: res.data[j].challengerName,
+          questionID: res.data[j].questionID,
+          content: res.data[j].content,
+        }
+        j++;
+        temp1.push(temp);
+        rlist = temp2.concat(temp1)
+        that.setData({
+          list1: temp1,
+          list: rlist
+        })
+        
+      }
+    })
   },
 
   /**

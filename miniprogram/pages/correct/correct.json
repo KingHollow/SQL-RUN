@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "Select": "../../component/select-homework/select-homework",
+    "Select-class": "../../component/select-hclass/select-hclass"
+  }
+}

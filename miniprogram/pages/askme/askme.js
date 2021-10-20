@@ -134,7 +134,72 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    var that = this;
+    var id = wx.getStorageSync('id');
+    var num = that.data.question
+    db.collection("student").where({
+      studentID: id
+    }).skip(num).get().then(r => {
+      var classid = r.data[0].classID;
+      db.collection("question").where({
+        classID: classid
+      }).get().then(res => {
+        var temp = that.data.question;
+        for(var i = 0; i < res.data.length; i++){
+          if(res.data[i].stuID != id){
+            var flag = 0;
+            var result = "";
+            for(var j = 0; j < res.data[i].answers.length; j++){
+              if(res.data[i].answers[j].id == id){
+                flag = 1;
+                result = res.data[i].answers[j].result;
+              }
+            }
+            if(flag == 0){
+              var data = {
+                quesID: res.data[i].quesID,
+                content: res.data[i].content,
+                stuName: res.data[i].stuName,
+                result: '0'
+              }
+              temp.push(data);
+              that.setData({question: temp});
+            }else{
+              if(result == ""){
+                var data = {
+                  quesID: res.data[i].quesID,
+                  content: res.data[i].content,
+                  stuName: res.data[i].stuName,
+                  result: '1'
+                }
+                temp.push(data);
+                that.setData({question: temp});
+              }
+              if(result == "pass"){
+                var data = {
+                  quesID: res.data[i].quesID,
+                  content: res.data[i].content,
+                  stuName: res.data[i].stuName,
+                  result: '2'
+                }
+                temp.push(data);
+                that.setData({question: temp});
+              }
+              if(result == "nopass"){
+                var data = {
+                  quesID: res.data[i].quesID,
+                  content: res.data[i].content,
+                  stuName: res.data[i].stuName,
+                  result: '3'
+                }
+                temp.push(data);
+                that.setData({question: temp});
+              }
+            }
+          }
+        }
+      })
+    })
   },
 
   /**

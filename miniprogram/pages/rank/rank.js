@@ -17,14 +17,23 @@ Page({
         content: "你不能挑战你自己"
       })
     } else {
-      wx.showModal({
-        content: '确认要挑战' + e.currentTarget.dataset.name + '同学吗？',
-        success: function (res) {
-          if (res.confirm) {
-            wx.navigateTo({
-              url: '../../pages/challenge/challenge?challengedid=' + e.currentTarget.dataset.id
-            })
-          } else {}
+      var id = wx.getStorageSync('id')
+      db.collection('student').where({studentID: id}).get().then(r => {
+        if(r.data[0].challenge == 2){
+          wx.showModal({
+            content: '本周最多发起两次挑战，若挑战题目未通过，次数会返还，请耐心等待',
+          })
+        }else{
+          wx.showModal({
+            content: '确认要挑战' + e.currentTarget.dataset.name + '同学吗？',
+            success: function (res) {
+              if (res.confirm) {
+                wx.navigateTo({
+                  url: '../../pages/challenge/challenge?challengedid=' + e.currentTarget.dataset.id
+                })
+              } else {}
+            }
+          })
         }
       })
     }

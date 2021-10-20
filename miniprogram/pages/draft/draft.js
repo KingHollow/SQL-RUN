@@ -43,6 +43,33 @@ Page({
     })
   },
 
+  onReachBottom(){
+    let that = this;
+    var id = wx.getStorageSync('id');
+    var num = that.data.homework.length
+    db.where({
+      teacherID: id,
+      type: 0
+    }).skip(num).get({
+      success(res) {
+        var temp = that.data.homework;
+        for(var i = 0; i < res.data.length; i++){
+          var data = {
+            homeworkid: res.data[i].homeworkID,
+            name: res.data[i].name
+          }
+          temp.push(data);
+        }
+        that.setData({
+          homework: temp
+        })
+      },
+      fail: err => {
+        console.error('[数据库] [查询记录] 失败：', err)
+      }
+    })
+  },
+
   onShow: function(options){
     let that = this;
     var id = wx.getStorageSync('id');

@@ -25,6 +25,26 @@ Page({
     ,{
       flag:5,
       name:'第五章',
+    }
+    ,{
+      flag:6,
+      name:'第六章',
+    }
+    ,{
+      flag:7,
+      name:'第七章',
+    }
+    ,{
+      flag:8,
+      name:'第八章',
+    }
+    ,{
+      flag:9,
+      name:'第九章',
+    }
+    ,{
+      flag:10,
+      name:'第十章',
     }],
     style:['s','m','j','b'],
     quesID:''

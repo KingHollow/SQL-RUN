@@ -16,6 +16,16 @@ Page({
       "text": "第四章"
     }, {
       "text": "第五章"
+    }, {
+      "text": "第六章"
+    }, {
+      "text": "第七章"
+    }, {
+      "text": "第八章"
+    }, {
+      "text": "第九章"
+    }, {
+      "text": "第十章"
     }],
     selectArray2: [{
       "text": "1"
@@ -39,6 +49,11 @@ Page({
     if(e.detail.text == "第三章") this.setData({chapter: 3});
     if(e.detail.text == "第四章") this.setData({chapter: 4});
     if(e.detail.text == "第五章") this.setData({chapter: 5});
+    if(e.detail.text == "第六章") this.setData({chapter: 6});
+    if(e.detail.text == "第七章") this.setData({chapter: 7});
+    if(e.detail.text == "第八章") this.setData({chapter: 8});
+    if(e.detail.text == "第九章") this.setData({chapter: 9});
+    if(e.detail.text == "第十章") this.setData({chapter: 10});
     if(e.detail.text == "1") this.setData({level: 1});
     if(e.detail.text == "2") this.setData({level: 2});
     if(e.detail.text == "3") this.setData({level: 3});
@@ -68,7 +83,7 @@ Page({
           }).get().then(rm => {
             var number = rm.data[0].number;
             var temp = "00000" + (number + 1).toString()
-            var sinid = "s" + that.data.chapter.toString() + temp.substring(temp.length - 5, temp.length);
+            var sinid = "s" + that.data.chapter.toString().substring(that.data.chapter.toString().length - 1, that.data.chapter.toString().length) + temp.substring(temp.length - 5, temp.length);
             wx.cloud.callFunction({
               // 云函数名称
               name: 'updatequantity',
@@ -106,7 +121,7 @@ Page({
           }).get().then(rm => {
             var number = rm.data[0].number;
             var temp = "00000" + (number + 1).toString()
-            var mulid = "m" + that.data.chapter.toString() + temp.substring(temp.length - 5, temp.length);
+            var mulid = "m" + that.data.chapter.toString().substring(that.data.chapter.toString().length - 1, that.data.chapter.toString().length) + temp.substring(temp.length - 5, temp.length);
             wx.cloud.callFunction({
               // 云函数名称
               name: 'updatequantity',
@@ -144,7 +159,7 @@ Page({
           }).get().then(rm => {
             var number = rm.data[0].number;
             var temp = "00000" + (number + 1).toString()
-            var judgeid = "j" + that.data.chapter.toString() + temp.substring(temp.length - 5, temp.length);
+            var judgeid = "j" + that.data.chapter.toString().substring(that.data.chapter.toString().length - 1, that.data.chapter.toString().length) + temp.substring(temp.length - 5, temp.length);
             wx.cloud.callFunction({
               // 云函数名称
               name: 'updatequantity',
@@ -181,7 +196,7 @@ Page({
           }).get().then(rm => {
             var number = rm.data[0].number;
             var temp = "00000" + (number + 1).toString()
-            var blankid = "b" + that.data.chapter.toString() + temp.substring(temp.length - 5, temp.length);
+            var blankid = "b" + that.data.chapter.toString().substring(that.data.chapter.toString().length - 1, that.data.chapter.toString().length) + temp.substring(temp.length - 5, temp.length);
             wx.cloud.callFunction({
               // 云函数名称
               name: 'updatequantity',
